@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rimon Abdelmasih | Junior Flutter Developer</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --panel: rgba(255, 255, 255, 0.04);
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --success: #22c55e;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      --radius: 22px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(15, 23, 42, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 88px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 999px;
+      color: #d9f5ff;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+
+    .hero-role {
+      color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin-bottom: 26px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #082032;
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .quick-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card,
+    .card,
+    .project-card,
+    .skill-card,
+    .timeline-item,
+    .contact-box,
+    .certificate-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 24px;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 340px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      margin: 0 auto 20px;
+      background: #0b1120;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .mini-item div,
+    .section-subtitle,
+    .card p,
+    .project-card p,
+    .timeline-item p,
+    .contact-box p,
+    .certificate-content p {
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 24px;
+      transition: 0.2s ease;
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .certificate-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.28);
+    }
+
+    .skill-card h3 {
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-size: 1.15rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .skill-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.97rem;
+    }
+
+    .skill-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .timeline-year {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .certificate-card {
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+
+    .certificate-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      background: #0b1120;
+    }
+
+    .certificate-content {
+      padding: 18px;
+    }
+
+    .certificate-content h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    .certificate-content p {
+      margin-bottom: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 22px;
+      height: 100%;
+      transition: 0.2s ease;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      font-size: 0.84rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      background: rgba(34, 197, 94, 0.12);
+      color: #bbf7d0;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .tech-stack {
+      margin-top: 12px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 28px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1100px) {
+      .skills-grid,
+      .certificates-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .projects-grid,
+      .skills-grid,
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+
+      .hero-card,
+      .card,
+      .skill-card,
+      .project-card,
+      .timeline-item,
+      .contact-box {
+        padding: 18px;
+      }
+
+      .certificate-content {
+        padding: 18px;
+      }
+
+      .profile-photo {
+        height: 340px;
+      }
+
+      .certificate-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Ri<span>mon</span></div>
+
+      <div class="nav-links">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#training">Training</a>
+        <a class="nav-link" href="#certificates">Certificates</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">Junior Flutter Developer — Open to internships & entry-level roles</div>
+
+        <h1>Rimon Abdelmasih</h1>
+
+        <div class="hero-role">Junior Flutter Developer</div>
+
+        <p class="hero-text">
+          Flutter Developer focused on building clean, responsive, and practical mobile applications using Flutter and Dart.
+          I create well-structured apps with maintainable code, smooth navigation, API integration, and clean user interfaces.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" id="view-projects-btn" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" id="contact-btn" href="#contact">Contact Me</a>
+          <a class="btn btn-secondary" href="Rimon-Abdelmasih-CV.pdf" target="_blank">Download CV</a>
+        </div>
+
+        <div class="quick-info">
+          <span>📍 Egypt</span>
+          <span>📱 Junior Flutter Developer</span>
+          <span>⚙️ Flutter • Dart • APIs</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img class="profile-photo" src="profile.jpg" alt="Rimon Abdelmasih profile photo" />
+
+        <h3 style="margin-bottom: 10px;">Current Focus</h3>
+
+        <p style="margin-bottom: 18px; color: var(--muted);">
+          Building Flutter applications with clean UI, responsive layouts, API integration, state management,
+          and organized project structure.
+        </p>
+
+        <div class="mini-list">
+          <div class="mini-item">
+            <strong>Core Skills</strong>
+            <div>Flutter, Dart, REST APIs, Dio, Firebase, Bloc/Cubit, and responsive UI development</div>
+          </div>
+
+          <div class="mini-item">
+            <strong>Development Style</strong>
+            <div>Clean UI, organized structure, reusable widgets, maintainable code, and practical app flow</div>
+          </div>
+
+          <div class="mini-item">
+            <strong>Career Goal</strong>
+            <div>Join a team as a Junior Flutter Developer and contribute to real mobile applications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">A quick overview of my Flutter development focus and current technical direction.</p>
+      </div>
+
+      <div class="card">
+        <p>
+          I am a Junior Flutter Developer focused on building clean, responsive, and practical mobile applications using Flutter and Dart.
+        </p>
+
+        <p style="margin-top: 14px;">
+          I create Flutter apps with clean UI, organized structure, smooth navigation, API integration, and maintainable code.
+          My projects help me apply real mobile development concepts such as state management, local storage, Firebase, and reusable widgets.
+        </p>
+
+        <p style="margin-top: 14px;">
+          My goal is to contribute to real products, improve continuously, and grow as a reliable Flutter Developer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">The main tools and concepts I use to build Flutter applications.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Mobile Development</h3>
+          <ul class="skill-list">
+            <li>Flutter</li>
+            <li>Dart</li>
+            <li>Responsive UI</li>
+            <li>App Navigation</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>State Management</h3>
+          <ul class="skill-list">
+            <li>Bloc</li>
+            <li>Cubit</li>
+            <li>App State Handling</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Backend & APIs</h3>
+          <ul class="skill-list">
+            <li>REST APIs</li>
+            <li>Dio</li>
+            <li>Firebase</li>
+            <li>JSON Handling</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Storage</h3>
+          <ul class="skill-list">
+            <li>Shared Preferences</li>
+            <li>Secure Storage</li>
+            <li>Local Storage Basics</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Code Quality</h3>
+          <ul class="skill-list">
+            <li>OOP</li>
+            <li>SOLID Principles</li>
+            <li>Clean Code</li>
+            <li>Organized Structure</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Tools</h3>
+          <ul class="skill-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>VS Code</li>
+            <li>Android Studio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="training">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Training & Certifications</h2>
+        <p class="section-subtitle">Training experiences that supported my Flutter development path.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div>
+            <h3>Sprints × Microsoft Summer Camp</h3>
+            <p>
+              Mobile development training focused on app fundamentals, practical implementation, teamwork,
+              and building hands-on development experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div>
+            <h3>NTI Mobile Development Trainee</h3>
+            <p>
+              Mobile development training covering Dart, OOP, Flutter, Bloc/Cubit, SOLID principles,
+              local storage, Dio, Firebase, and animation.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025–2026</div>
+          <div>
+            <h3>Udemy Flutter Courses</h3>
+            <p>
+              Structured Flutter and Dart learning focused on UI development, app navigation, APIs,
+              and project-based practice.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Certificates</h2>
+        <p class="section-subtitle">Certificates that support my Flutter and mobile development learning path.</p>
+      </div>
+
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <img src="certificates/sprints-microsoft-certificate.jpg" alt="Sprints Microsoft Summer Camp Certificate" />
+
+          <div class="certificate-content">
+            <h3>Sprints × Microsoft Summer Camp</h3>
+            <p>Sprints × Microsoft — 2025</p>
+            <a class="btn btn-secondary" href="certificates/sprints-microsoft-certificate.jpg" target="_blank">
+              View Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">A selection of Flutter projects that reflect my current mobile development skills.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-tag">Completed</div>
+
+          <h3>News App</h3>
+
+          <p>
+            A Flutter news application that fetches articles from a REST API and displays them by categories
+            with search and details screens. The project focuses on API integration, Dio, GoRouter, app flow,
+            and handling remote data.
+          </p>
+
+          <div class="tech-stack"><strong>Tech:</strong> Flutter, Dart, Dio, REST API, GoRouter</div>
+
+          <div class="contact-links" style="justify-content: flex-start; margin-top: 16px;">
+            <a class="btn btn-secondary" href="https://github.com/rimonnnn/news_app.git" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-tag">Completed</div>
+
+          <h3>Meals App</h3>
+
+          <p>
+            A Flutter meals browsing app that displays meal categories, details, and saved user preferences
+            using local storage. The project focuses on clean UI, navigation flow, reusable widgets,
+            and local data persistence.
+          </p>
+
+          <div class="tech-stack"><strong>Tech:</strong> Flutter, Dart, Local Storage, Navigation</div>
+
+          <div class="contact-links" style="justify-content: flex-start; margin-top: 16px;">
+            <a class="btn btn-secondary" href="https://github.com/rimonnnn/meals-app-.git" target="_blank">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/posts/rimon-abdelmasih_flutter-mobileapp-ui-activity-7439229987976671233-7NAB?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEBFP_4BNXoEl071rdB-Eu3lEfmfqSwuj0c" target="_blank">Demo</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-tag">UI Project</div>
+
+          <h3>Finance App</h3>
+
+          <p>
+            A finance-themed Flutter UI project focused on responsive layouts, visual hierarchy,
+            reusable components, and clean screen structure.
+          </p>
+
+          <div class="tech-stack"><strong>Tech:</strong> Flutter, Dart, UI Design, Responsive Layout</div>
+
+          <div class="contact-links" style="justify-content: flex-start; margin-top: 16px;">
+            <a class="btn btn-secondary" href="https://github.com/rimonnnn/financeApp.git" target="_blank">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/posts/rimon-abdelmasih_flutter-mobileapp-ui-activity-7433783952676421632-92rL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEBFP_4BNXoEl071rdB-Eu3lEfmfqSwuj0c" target="_blank">Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2 class="section-title">Contact Me</h2>
+
+        <p class="section-subtitle">
+          Open to Flutter internships, junior roles, and collaboration opportunities.
+        </p>
+
+        <div class="contact-links">
+          <a class="btn btn-secondary" href="tel:+201206174130">Phone</a>
+          <a class="btn btn-secondary" href="mailto:rimonabdelmasih92@gmail.com">Email</a>
+          <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank">GitHub</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Rimon Abdelmasih. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('header, section');
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+    internalLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        if (targetSection) {
+          e.preventDefault();
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+
+        if (window.scrollY >= top && window.scrollY < top + height) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      links.forEach(link => {
+        link.classList.remove('active');
+
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
