@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Grid World AI Game</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="game-container">
+    <header class="game-header">
+      <h1>Grid World AI Game</h1>
+      <p>
+        An interactive AI game that demonstrates Simple Reflex Agent and Q-Learning Agent.
+      </p>
+    </header>
+
+    <section class="game-layout">
+      <div class="grid" id="grid"></div>
+
+      <aside class="side-panel">
+        <h2>Game Rules</h2>
+
+        <div class="rule">
+          <span>🤖</span>
+          <p>Agent starts from <strong>(0, 0)</strong>.</p>
+        </div>
+
+        <div class="rule">
+          <span>💎</span>
+          <p>Goal is located at <strong>(3, 3)</strong>.</p>
+        </div>
+
+        <div class="rule">
+          <span>🔥</span>
+          <p>Fire cells are losing cells.</p>
+        </div>
+
+        <div class="scores">
+          <p><strong>Goal Reward:</strong> +20</p>
+          <p><strong>Fire Penalty:</strong> -20</p>
+          <p><strong>Move Penalty:</strong> -1</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="status-box">
+      <p id="status">Choose an agent to start</p>
+    </section>
+
+    <section class="buttons">
+      <button onclick="runSimpleReflexAgent()">
+        Run Simple Reflex Agent
+      </button>
+
+      <button onclick="trainAndRunLearningAgent()">
+        Train + Run Learning Agent
+      </button>
+
+      <button onclick="runSavedLearningAgent()">
+        Run Saved Learning Agent
+      </button>
+
+      <button onclick="resetLearningMemory()" class="danger">
+        Reset Learning Memory
+      </button>
+    </section>
+
+    <section class="info">
+      <h2>About This Game</h2>
+
+      <p>
+        This project simulates an AI agent moving inside a 4x4 grid.
+        The Simple Reflex Agent follows rules, while the Learning Agent uses Q-Learning
+        to improve its decisions based on rewards and penalties.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
