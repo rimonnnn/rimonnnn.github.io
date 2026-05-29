@@ -262,8 +262,14 @@ p {
   justify-content: center;
   min-height: 46px;
   padding: 0 18px;
+  border: 0;
   border-radius: 14px;
+  font: inherit;
   font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
 }
 
@@ -1014,6 +1020,29 @@ p {
   background: rgba(248,113,113,.1);
 }
 
+.form-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-actions-row .btn {
+  width: 100%;
+}
+
+.form-hint {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .form-actions-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .project-card.is-coming-soon {
   border-color: rgba(56,189,248,.24);
 }
@@ -1147,15 +1176,18 @@ body::after {
 .btn {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .btn-primary::before {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 45%, transparent 72%);
   transform: translateX(-120%);
   transition: transform .55s ease;
+  z-index: -1;
 }
 
 .btn-primary:hover::before {
@@ -2273,7 +2305,11 @@ body::after {
             </div>
 
             <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            <button class="btn btn-primary" id="submitButton" type="submit">Send Message</button>
+            <div class="form-actions-row" aria-label="Choose how to send your message">
+              <button class="btn btn-primary" id="submitButton" type="submit">Send via Email</button>
+              <button class="btn btn-secondary" id="whatsappSubmitButton" type="button">Send via WhatsApp</button>
+            </div>
+            <p class="form-hint">Choose Email to send the message through the contact form, or WhatsApp to open a ready message directly.</p>
           </form>
         </div>
       </div>
@@ -2351,6 +2387,8 @@ sections.forEach((section) => navObserver.observe(section));
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitButton = document.getElementById('submitButton');
+const whatsappSubmitButton = document.getElementById('whatsappSubmitButton');
+const whatsappNumber = '201206174130';
 
 const showFormStatus = (message, type) => {
   if (!formStatus) return;
@@ -2358,14 +2396,21 @@ const showFormStatus = (message, type) => {
   formStatus.className = `form-status visible ${type}`;
 };
 
+const getContactFormData = () => ({
+  name: document.getElementById('clientName')?.value.trim() || '',
+  email: document.getElementById('clientEmail')?.value.trim() || '',
+  message: document.getElementById('clientMessage')?.value.trim() || ''
+});
+
 contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!submitButton) return;
 
   const originalText = submitButton.textContent;
-  submitButton.textContent = 'Sending...';
+  submitButton.textContent = 'Sending via Email...';
   submitButton.setAttribute('disabled', 'true');
+  whatsappSubmitButton?.setAttribute('disabled', 'true');
   formStatus?.classList.remove('visible', 'success', 'error');
 
   try {
@@ -2377,16 +2422,37 @@ contactForm?.addEventListener('submit', async (event) => {
 
     if (response.ok) {
       contactForm.reset();
-      showFormStatus('Message sent successfully. I will get back to you soon.', 'success');
+      showFormStatus('Message sent by email successfully. I will get back to you soon.', 'success');
     } else {
-      showFormStatus('Something went wrong. Please try again or contact me directly by email.', 'error');
+      showFormStatus('Email sending failed. Please try again or use WhatsApp instead.', 'error');
     }
   } catch (error) {
-    showFormStatus('Network error. Please try again or use the direct email button.', 'error');
+    showFormStatus('Network error. Please try again or send the message via WhatsApp.', 'error');
   } finally {
     submitButton.textContent = originalText;
     submitButton.removeAttribute('disabled');
+    whatsappSubmitButton?.removeAttribute('disabled');
   }
+});
+
+whatsappSubmitButton?.addEventListener('click', () => {
+  if (!contactForm) return;
+
+  if (!contactForm.checkValidity()) {
+    contactForm.reportValidity();
+    return;
+  }
+
+  const { name, email, message } = getContactFormData();
+  const whatsappMessage = `Hi Rimon, I saw your portfolio and would like to contact you.
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  showFormStatus('Opening WhatsApp with your message ready to send.', 'success');
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 });
 
 </script>
