@@ -277,6 +277,27 @@ p {
   transform: translateY(-2px);
 }
 
+
+.btn-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  stroke-width: 2.2;
+}
+
+.btn-small .btn-icon {
+  width: .92rem;
+  height: .92rem;
+}
+
+.btn svg {
+  margin-right: 7px;
+}
+
+.btn-disabled svg {
+  opacity: .8;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--cyan));
   color: #fff;
@@ -1614,6 +1635,275 @@ body::after {
   }
 }
 
+/* ===== Compact Projects + Responsive Project Modal ===== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.project-image-button {
+  width: 100%;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: inherit;
+}
+
+.project-image-button:focus-visible {
+  outline: 3px solid rgba(56,189,248,.62);
+  outline-offset: -3px;
+}
+
+.project-card .project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card .project-content h3 {
+  margin-bottom: 10px;
+}
+
+.project-short {
+  display: -webkit-box;
+  min-height: 3.1em;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.compact-tech-list {
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+
+.compact-tech-list span:nth-child(n + 6) {
+  display: none;
+}
+
+.project-card .project-actions {
+  margin-top: auto;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  padding: 22px;
+}
+
+.project-modal.is-open {
+  display: grid;
+}
+
+.project-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, .74);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+
+.project-modal.is-open .project-modal__backdrop {
+  opacity: 1;
+}
+
+.project-modal__panel {
+  position: relative;
+  width: min(1040px, 100%);
+  max-height: min(88vh, 920px);
+  overflow: auto;
+  border: 1px solid rgba(148,163,184,.24);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(56,189,248,.12), transparent 32%),
+    linear-gradient(180deg, rgba(17,24,39,.98), rgba(15,23,42,.96));
+  box-shadow: 0 34px 120px rgba(0,0,0,.58);
+  transform: translateY(18px) scale(.98);
+  opacity: 0;
+  transition: transform .24s ease, opacity .24s ease;
+}
+
+.project-modal.is-open .project-modal__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.project-modal__close {
+  position: sticky;
+  top: 16px;
+  float: right;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  margin: 16px 16px -58px 0;
+  border: 1px solid rgba(148,163,184,.25);
+  border-radius: 14px;
+  background: rgba(2,6,23,.72);
+  color: var(--text);
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.project-modal__close:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56,189,248,.48);
+  background: rgba(15,23,42,.95);
+}
+
+.project-modal__media {
+  min-height: 360px;
+  background: rgba(2,6,23,.55);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.project-modal__media img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+}
+
+.project-modal__placeholder {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  padding: 36px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(56,189,248,.2), transparent 45%),
+    linear-gradient(135deg, rgba(37,99,235,.18), rgba(15,23,42,.78));
+}
+
+.project-modal__placeholder strong {
+  display: block;
+  color: var(--cyan);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -.05em;
+  margin-bottom: 10px;
+}
+
+.project-modal__placeholder span {
+  color: var(--muted-2);
+  font-weight: 800;
+}
+
+.project-modal__body {
+  padding: 34px;
+}
+
+.project-modal__label {
+  display: inline-flex;
+  color: var(--cyan);
+  background: rgba(56,189,248,.1);
+  border: 1px solid rgba(56,189,248,.22);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: .8rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.project-modal__body h2 {
+  margin-bottom: 14px;
+}
+
+.project-modal__overview {
+  max-width: 900px;
+  margin: 0 0 22px;
+  color: var(--muted-2);
+  font-size: 1.02rem;
+}
+
+.project-modal__sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.project-detail-block {
+  padding: 16px;
+  border: 1px solid rgba(148,163,184,.14);
+  border-radius: 18px;
+  background: rgba(2,6,23,.32);
+}
+
+.project-detail-block strong {
+  display: block;
+  color: var(--text);
+  font-size: .92rem;
+  margin-bottom: 8px;
+}
+
+.project-detail-block p,
+.project-detail-block li {
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.62;
+}
+
+.project-detail-block p {
+  margin: 0;
+}
+
+.project-detail-block ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.project-modal__tech {
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.project-modal__actions {
+  padding-top: 2px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .project-modal {
+    padding: 12px;
+    align-items: end;
+  }
+
+  .project-modal__panel {
+    max-height: 92vh;
+    border-radius: 22px;
+  }
+
+  .project-modal__media,
+  .project-modal__placeholder {
+    min-height: 245px;
+  }
+
+  .project-modal__body {
+    padding: 22px;
+  }
+
+  .project-modal__sections {
+    grid-template-columns: 1fr;
+  }
+
+  .project-modal__close {
+    top: 12px;
+    margin: 12px 12px -54px 0;
+  }
+}
+
   </style>
 </head>
 
@@ -1641,7 +1931,7 @@ body::after {
         <a href="#skills">Skills</a>
         <a href="#training">Training</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cv" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener">View CV</a>
+        <a class="nav-cv" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
       </div>
     </nav>
   </header>
@@ -1662,9 +1952,9 @@ body::after {
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener">View CV</a>
-            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+            <a class="btn btn-primary" href="#projects"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>View Projects</a>
+            <a class="btn btn-secondary" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
+            <a class="btn btn-secondary" href="#contact"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Contact Me</a>
           </div>
 
           <div class="hero-stats" aria-label="Quick achievements">
@@ -1828,277 +2118,206 @@ body::after {
       <div class="container">
         <div class="section-heading centered reveal">
           <p class="section-kicker">Featured Projects</p>
-          <h2>Practical Flutter work, presented clearly.</h2>
-          <p>Focused examples of API integration, local storage, state management, routing, responsive UI, and clean structure.</p>
+          <h2>Clean project cards with full details on demand.</h2>
+          <p>Compact cards for fast scanning, with detailed case-study information available inside responsive project modals.</p>
         </div>
 
         <div class="project-grid">
-          <article class="project-card reveal">
-            <div class="project-image">
+          <article class="project-card reveal" data-project-card="news">
+            <button class="project-image project-image-button" type="button" data-project-open="news" aria-label="Open News App details">
               <img src="./assets/news_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/news_app.png';" alt="News App screenshot showing live article feed" loading="lazy" width="520" height="360" />
-            </div>
+            </button>
 
             <div class="project-content">
               <div class="project-topline badge-row">
                 <span class="project-type">Functional App</span>
                 <span class="project-chip">Completed</span>
                 <span class="project-chip">API Integrated</span>
-                <span class="project-chip">Android</span>
               </div>
 
               <h3>News App</h3>
               <p class="project-short">Live news app with search, categories, article details, and localization.</p>
 
-              <div class="case-study">
-                <div class="case-item">
-                  <strong>Purpose</strong>
-                  <p>API-based Flutter app for browsing live headlines with categories, search, article details, and localization.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>My Role</strong>
-                  <p>Built the UI, integrated NewsAPI with Dio, handled Cubit states, routing, localization, and reusable widgets.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>Highlights</strong>
-                  <p>Live API data · Search · Categories · Article details · Arabic/English localization · Loading/error states</p>
-                </div>
-              </div>
-
-              <div class="tech-list" aria-label="News App tech stack">
+              <div class="tech-list compact-tech-list" aria-label="News App tech stack">
                 <span>Flutter</span>
                 <span>Dart</span>
                 <span>Cubit</span>
-                <span>Bloc</span>
                 <span>Dio</span>
                 <span>NewsAPI</span>
-                <span>GoRouter</span>
-                <span>Easy Localization</span>
-                <span>Cached Network Image</span>
-                <span>ScreenUtil</span>
               </div>
 
               <div class="project-actions">
-                <a class="btn btn-small btn-primary" href="https://github.com/rimonnnn/news_app" target="_blank" rel="noopener">GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link" target="_blank" rel="noopener">Demo Video</a>
+                <button class="btn btn-small btn-primary" type="button" data-project-open="news"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/news_app" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
               </div>
             </div>
           </article>
 
-          <article class="project-card reveal delay-1">
-            <div class="project-image">
+          <article class="project-card reveal delay-1" data-project-card="meals">
+            <button class="project-image project-image-button" type="button" data-project-open="meals" aria-label="Open Meals App details">
               <img src="./assets/meals_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/meals_app.png';" alt="Meals App screenshot showing meal recipe list" loading="lazy" width="520" height="360" />
-            </div>
+            </button>
 
             <div class="project-content">
               <div class="project-topline badge-row">
                 <span class="project-type">Local Storage App</span>
                 <span class="project-chip">Completed</span>
                 <span class="project-chip">SQLite</span>
-                <span class="project-chip">Android</span>
               </div>
 
               <h3>Meals App</h3>
               <p class="project-short">Meal recipe app using local storage, validation, onboarding, and responsive screens.</p>
 
-              <div class="case-study">
-                <div class="case-item">
-                  <strong>Purpose</strong>
-                  <p>Local-storage Flutter app for saving and viewing meal recipes without depending on an online backend.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>My Role</strong>
-                  <p>Implemented the UI, SQLite flow, onboarding persistence, form validation, navigation, and responsive screens.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>Highlights</strong>
-                  <p>SQLite storage · SharedPreferences onboarding · Form validation · GoRouter navigation · Responsive UI</p>
-                </div>
-              </div>
-
-              <div class="tech-list" aria-label="Meals App tech stack">
+              <div class="tech-list compact-tech-list" aria-label="Meals App tech stack">
                 <span>Flutter</span>
                 <span>Dart</span>
                 <span>SQLite</span>
                 <span>SharedPreferences</span>
                 <span>GoRouter</span>
-                <span>ScreenUtil</span>
-                <span>Form Validation</span>
               </div>
 
               <div class="project-actions">
-                <a class="btn btn-small btn-primary" href="https://github.com/rimonnnn/meals-app-" target="_blank" rel="noopener">GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link" target="_blank" rel="noopener">Demo Video</a>
+                <button class="btn btn-small btn-primary" type="button" data-project-open="meals"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/meals-app-" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
               </div>
             </div>
           </article>
 
-          <article class="project-card is-coming-soon reveal delay-2" aria-label="E-commerce App project in progress">
-            <div class="project-placeholder" aria-hidden="true">
+          <article class="project-card is-coming-soon reveal delay-2" data-project-card="ecommerce" aria-label="E-commerce App project in progress">
+            <button class="project-placeholder project-image-button" type="button" data-project-open="ecommerce" aria-label="Open E-commerce App details">
               <div>
                 <strong>E-commerce App</strong>
                 <span>Production-style Flutter project in progress</span>
               </div>
-            </div>
+            </button>
 
             <div class="project-content">
               <div class="project-topline badge-row">
                 <span class="project-type">In Progress</span>
                 <span class="project-chip">E-commerce</span>
-                <span class="project-chip">API Planned</span>
                 <span class="project-chip">Clean Architecture</span>
               </div>
 
               <h3>E-commerce App</h3>
-              <p class="project-short">A production-style Flutter e-commerce app focused on authentication, products, cart, favorites, API integration, local token storage, and clean architecture.</p>
+              <p class="project-short">Production-style shopping app focused on auth, products, cart, favorites, APIs, and local token storage.</p>
 
-              <div class="case-study">
-                <div class="case-item">
-                  <strong>Purpose</strong>
-                  <p>Build a realistic shopping app flow that demonstrates product browsing, user actions, local session handling, and API-driven screens.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>Planned Highlights</strong>
-                  <p>Auth flow · Products · Cart · Favorites · API integration · Local token storage · Cubit/Bloc · Clean Architecture</p>
-                </div>
-              </div>
-
-              <div class="tech-list" aria-label="E-commerce App planned tech stack">
+              <div class="tech-list compact-tech-list" aria-label="E-commerce App planned tech stack">
                 <span>Flutter</span>
                 <span>Dart</span>
                 <span>Cubit/Bloc</span>
                 <span>Dio</span>
-                <span>REST APIs</span>
-                <span>Local Storage</span>
                 <span>Clean Architecture</span>
               </div>
 
               <div class="project-actions">
-                <span class="btn btn-small btn-disabled" aria-disabled="true">Coming Soon</span>
+                <button class="btn btn-small btn-primary" type="button" data-project-open="ecommerce"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <span class="btn btn-small btn-disabled" aria-disabled="true"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>Coming Soon</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card reveal delay-3">
-            <div class="project-image">
+          <article class="project-card reveal delay-3" data-project-card="finance">
+            <button class="project-image project-image-button" type="button" data-project-open="finance" aria-label="Open Finance App UI details">
               <img src="./assets/finance_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/finance_app.png';" alt="Finance App UI screenshot showing dashboard and statistics screens" loading="lazy" width="520" height="360" />
-            </div>
+            </button>
 
             <div class="project-content">
               <div class="project-topline badge-row">
                 <span class="project-type">UI Project</span>
                 <span class="project-chip">UI Only</span>
                 <span class="project-chip">Provider</span>
-                <span class="project-chip">Android</span>
               </div>
 
               <h3>Finance App UI</h3>
               <p class="project-short">Finance app interface with onboarding, authentication, dashboard, and profile screens.</p>
 
-              <div class="case-study">
-                <div class="case-item">
-                  <strong>Purpose</strong>
-                  <p>Polished finance mobile UI demonstrating complete app flow screens and responsive dashboard layouts.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>My Role</strong>
-                  <p>Built reusable UI components, navigation flow, authentication screens, dashboard UI, and Provider-based state handling.</p>
-                </div>
-
-                <div class="case-item">
-                  <strong>Highlights</strong>
-                  <p>Onboarding · Auth screens · OTP UI · Dashboard screens · Provider/ChangeNotifier · Custom UI components</p>
-                </div>
-
-                <div class="case-item note-item">
-                  <strong>Project Note</strong>
-                  <p>UI-focused project without real backend integration.</p>
-                </div>
-              </div>
-
-              <div class="tech-list" aria-label="Finance App tech stack">
+              <div class="tech-list compact-tech-list" aria-label="Finance App tech stack">
                 <span>Flutter</span>
                 <span>Dart</span>
                 <span>Provider</span>
-                <span>ChangeNotifier</span>
                 <span>GoRouter</span>
-                <span>ScreenUtil</span>
-                <span>Flutter SVG</span>
-                <span>Pin Code</span>
-                <span>Carousel Slider</span>
                 <span>Custom UI</span>
               </div>
 
               <div class="project-actions">
-                <a class="btn btn-small btn-primary" href="https://github.com/rimonnnn/financeApp" target="_blank" rel="noopener">GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link" target="_blank" rel="noopener">Demo Video</a>
+                <button class="btn btn-small btn-primary" type="button" data-project-open="finance"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/financeApp" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
               </div>
             </div>
           </article>
         </div>
 
         <div class="projects-footer reveal">
-          <a class="btn btn-secondary" href="https://github.com/rimonnnn?tab=repositories" target="_blank" rel="noopener">View All Repositories</a>
+          <a class="btn btn-secondary" href="https://github.com/rimonnnn?tab=repositories" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>View All Repositories</a>
         </div>
       </div>
     </section>
 
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+      <div class="project-modal__backdrop" data-modal-close></div>
+
+      <article class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" tabindex="-1">
+        <button class="project-modal__close" type="button" data-modal-close aria-label="Close project details">×</button>
+
+        <div class="project-modal__media" id="modalProjectMedia"></div>
+
+        <div class="project-modal__body">
+          <span class="project-modal__label" id="modalProjectLabel"></span>
+          <h2 id="modalProjectTitle"></h2>
+          <p class="project-modal__overview" id="modalProjectOverview"></p>
+
+          <div class="project-modal__sections" id="modalProjectSections"></div>
+
+          <div class="tech-list project-modal__tech" id="modalProjectTech" aria-label="Project tech stack"></div>
+
+          <div class="project-actions project-modal__actions" id="modalProjectLinks"></div>
+        </div>
+      </article>
+    </div>
+
     <section class="ai-project section-padding" id="ai-project">
       <div class="container">
-        <article class="ai-project-card reveal">
-          <div class="ai-project-image">
-            <img src="./assets/grid_world_game.png" onerror="this.onerror=null;this.src='assets/grid_world_game.png';" alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal" loading="lazy" width="520" height="430" />
-          </div>
+        <div class="section-heading centered reveal">
+          <p class="section-kicker">AI Projects</p>
+          <h2>AI and Data Science work, presented with the same project-card system.</h2>
+          <p>Compact AI project cards for quick scanning, with full Reinforcement Learning details available inside the responsive modal.</p>
+        </div>
 
-          <div class="ai-project-content">
-            <span class="ai-label">Special AI Project</span>
-            <h2>Grid World Q-Learning Game</h2>
+        <div class="project-grid">
+          <article class="project-card reveal" data-project-card="gridworld">
+            <button class="project-image project-image-button" type="button" data-project-open="gridworld" aria-label="Open Grid World Q-Learning Game details">
+              <img src="./assets/grid_world_game.png" onerror="this.onerror=null;this.src='assets/grid_world_game.png';" alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal" loading="lazy" width="520" height="360" />
+            </button>
 
-            <p>
-              Interactive Python/Tkinter game demonstrating Q-Learning where an agent learns to reach a goal while avoiding fire cells using rewards, penalties, and a Q-table.
-            </p>
-
-            <div class="case-study">
-              <div class="case-item">
-                <strong>Purpose</strong>
-                <p>Show reinforcement learning basics through a visual grid environment where decisions improve through Q-values.</p>
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">AI Project</span>
+                <span class="project-chip">Reinforcement Learning</span>
+                <span class="project-chip">Playable</span>
               </div>
 
-              <div class="case-item">
-                <strong>My Role</strong>
-                <p>Built the grid logic, movement rules, reward system, Q-table storage, and Tkinter interface.</p>
+              <h3>Grid World Q-Learning Game</h3>
+              <p class="project-short">Interactive Q-Learning game where an agent learns to reach a goal while avoiding fire cells.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="Grid World AI concepts and tech stack">
+                <span>Python</span>
+                <span>Q-Learning</span>
+                <span>Reinforcement Learning</span>
+                <span>Tkinter</span>
+                <span>JSON</span>
               </div>
 
-              <div class="case-item">
-                <strong>Highlights</strong>
-                <p>Agent movement · Goal reward · Fire penalties · Q-table learning · JSON persistence · Playable web version</p>
-              </div>
-
-              <div class="case-item">
-                <strong>Technical Highlights</strong>
-                <p>Reinforcement learning basics, Q-Learning update logic, reward design, Tkinter UI, and JSON storage.</p>
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="gridworld"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/grid_world_game.git" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="grid_world_game/index.html" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 12h12"/><path d="M12 6v12"/><path d="M17 17l3 3"/><path d="M7 17l-3 3"/><rect x="3" y="8" width="18" height="8" rx="4"/></svg>Try Game</a>
               </div>
             </div>
-
-            <div class="tech-list" aria-label="Grid World tech stack">
-              <span>Python</span>
-              <span>Reinforcement Learning</span>
-              <span>Q-Learning</span>
-              <span>Tkinter</span>
-              <span>JSON</span>
-            </div>
-
-            <div class="project-actions">
-              <a class="btn btn-primary" href="https://github.com/rimonnnn/grid_world_game.git" target="_blank" rel="noopener">GitHub Repo</a>
-              <a class="btn btn-secondary" href="grid_world_game/index.html" target="_blank" rel="noopener">Try the Game</a>
-            </div>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -2264,10 +2483,10 @@ body::after {
             <p>Available for Flutter internships, junior roles, and small freelance mobile app projects.</p>
 
             <div class="contact-actions">
-              <a class="btn btn-primary" href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">Email Directly</a>
-              <a class="btn btn-secondary" href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-              <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn btn-primary" href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email Directly</a>
+              <a class="btn btn-secondary" href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you." target="_blank" rel="noopener noreferrer"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>WhatsApp</a>
+              <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
             </div>
 
             <div class="contact-details">
@@ -2306,8 +2525,8 @@ body::after {
 
             <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             <div class="form-actions-row" aria-label="Choose how to send your message">
-              <button class="btn btn-primary" id="submitButton" type="submit">Send via Email</button>
-              <button class="btn btn-secondary" id="whatsappSubmitButton" type="button">Send via WhatsApp</button>
+              <button class="btn btn-primary" id="submitButton" type="submit"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Send via Email</button>
+              <button class="btn btn-secondary" id="whatsappSubmitButton" type="button"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>Send via WhatsApp</button>
             </div>
             <p class="form-hint">Choose Email to send the message through the contact form, or WhatsApp to open a ready message directly.</p>
           </form>
@@ -2453,6 +2672,218 @@ Message: ${message}`;
 
   showFormStatus('Opening WhatsApp with your message ready to send.', 'success');
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+});
+
+
+
+function getButtonIcon(typeOrLabel = '') {
+  const key = String(typeOrLabel).toLowerCase();
+  if (key.includes('github')) {
+    return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>';
+  }
+  if (key.includes('try') || key.includes('game') || key.includes('app')) {
+    return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>';
+  }
+  if (key.includes('demo') || key.includes('live') || key.includes('preview')) {
+    return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>';
+  }
+  return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>';
+}
+
+const projectDetails = {
+  news: {
+    label: 'Functional App · Completed · API Integrated',
+    title: 'News App',
+    image: './assets/news_app.png',
+    fallbackImage: 'https://rimonnnn.github.io/assets/news_app.png',
+    imageAlt: 'News App screenshot showing live article feed',
+    overview: 'A live news Flutter app for browsing headlines through API data, with search, categories, article details, localization, and clear loading/error handling.',
+    purpose: 'Build an API-based Flutter app that demonstrates real content fetching, category filtering, search, article details, and localization.',
+    role: 'Built the UI, integrated NewsAPI with Dio, managed Cubit states, implemented routing, localization, and reusable widgets.',
+    features: ['Live API headlines', 'Search flow', 'News categories', 'Article details screen', 'Arabic/English localization', 'Loading and error states'],
+    technical: ['Dio for REST API requests', 'Cubit/Bloc for state management', 'GoRouter for navigation', 'Easy Localization for multilingual support', 'Cached Network Image for network images', 'ScreenUtil for responsive sizing'],
+    challenges: 'Handled API loading, empty results, and error states clearly so the user experience stays understandable instead of showing broken screens.',
+    tech: ['Flutter', 'Dart', 'Cubit', 'Bloc', 'Dio', 'NewsAPI', 'GoRouter', 'Easy Localization', 'Cached Network Image', 'ScreenUtil'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/rimonnnn/news_app', primary: true },
+      { label: 'Demo Video', url: 'https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link' }
+    ]
+  },
+  meals: {
+    label: 'Local Storage App · Completed · SQLite',
+    title: 'Meals App',
+    image: './assets/meals_app.png',
+    fallbackImage: 'https://rimonnnn.github.io/assets/meals_app.png',
+    imageAlt: 'Meals App screenshot showing meal recipe list',
+    overview: 'A local-storage Flutter recipe app for saving and viewing meals without depending on an online backend, with onboarding, validation, and responsive screens.',
+    purpose: 'Create an offline-friendly app that proves local persistence, form handling, navigation, and clean screen structure.',
+    role: 'Implemented the UI, SQLite flow, onboarding persistence, form validation, navigation, and responsive layouts.',
+    features: ['Meal recipe screens', 'Local SQLite storage', 'Onboarding persistence', 'Form validation', 'Responsive UI', 'Clean navigation flow'],
+    technical: ['SQLite for saved meal data', 'SharedPreferences for onboarding state', 'GoRouter for screen navigation', 'ScreenUtil for responsive UI', 'Reusable form and layout widgets'],
+    challenges: 'Separated local data handling from UI flow so the app remains easier to maintain and expand.',
+    tech: ['Flutter', 'Dart', 'SQLite', 'SharedPreferences', 'GoRouter', 'ScreenUtil', 'Form Validation'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/rimonnnn/meals-app-', primary: true },
+      { label: 'Demo Video', url: 'https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link' }
+    ]
+  },
+  ecommerce: {
+    label: 'In Progress · E-commerce · Clean Architecture',
+    title: 'E-commerce App',
+    placeholder: true,
+    overview: 'A production-style Flutter e-commerce app in progress, focused on authentication, products, cart, favorites, API integration, local token storage, and clean architecture.',
+    purpose: 'Build a realistic shopping app flow that demonstrates product browsing, user actions, local session handling, and API-driven screens.',
+    role: 'Designing and implementing the app structure, authentication flow, API layer, state management, product modules, and local session handling.',
+    features: ['Authentication flow', 'Product listing', 'Product details', 'Cart flow', 'Favorites', 'Local token storage', 'API-driven screens'],
+    technical: ['Clean Architecture approach', 'Cubit/Bloc state management', 'Dio for REST APIs', 'Local storage for auth/session data', 'Feature-based project structure'],
+    challenges: 'Main focus is keeping the architecture clean while adding real product features without turning the project into messy screen-based code.',
+    tech: ['Flutter', 'Dart', 'Cubit/Bloc', 'Dio', 'REST APIs', 'Local Storage', 'Clean Architecture'],
+    links: []
+  },
+  finance: {
+    label: 'UI Project · Provider · Completed',
+    title: 'Finance App UI',
+    image: './assets/finance_app.png',
+    fallbackImage: 'https://rimonnnn.github.io/assets/finance_app.png',
+    imageAlt: 'Finance App UI screenshot showing dashboard and statistics screens',
+    overview: 'A polished finance mobile UI project showing onboarding, authentication screens, OTP UI, dashboard screens, profile screens, and reusable custom components.',
+    purpose: 'Demonstrate modern Flutter UI implementation, screen flow, reusable widgets, and responsive dashboard layouts.',
+    role: 'Built reusable UI components, navigation flow, authentication screens, dashboard UI, profile UI, and Provider-based state handling.',
+    features: ['Onboarding screens', 'Authentication UI', 'OTP UI', 'Dashboard screens', 'Profile screens', 'Reusable custom UI components'],
+    technical: ['Provider and ChangeNotifier for simple state handling', 'GoRouter for navigation', 'ScreenUtil for responsive sizing', 'Flutter SVG support', 'Pin Code input UI', 'Carousel Slider for onboarding'],
+    challenges: 'Kept the project clearly positioned as UI-focused without pretending it has backend integration.',
+    tech: ['Flutter', 'Dart', 'Provider', 'ChangeNotifier', 'GoRouter', 'ScreenUtil', 'Flutter SVG', 'Pin Code', 'Carousel Slider', 'Custom UI'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/rimonnnn/financeApp', primary: true },
+      { label: 'Demo Video', url: 'https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link' }
+    ]
+  },
+  gridworld: {
+    label: 'AI Project · Reinforcement Learning · Q-Learning',
+    title: 'Grid World Q-Learning Game',
+    image: './assets/grid_world_game.png',
+    fallbackImage: 'assets/grid_world_game.png',
+    imageAlt: 'Grid World Q-Learning Game cover showing agent, fire cells, and goal',
+    overview: 'An interactive Python/Tkinter game demonstrating Q-Learning where an agent learns to reach a goal while avoiding fire cells using rewards, penalties, exploration, and a Q-table.',
+    purpose: 'Show reinforcement learning basics through a visual grid environment where decisions improve over time based on Q-values and reward feedback.',
+    role: 'Built the grid environment, movement rules, reward system, Q-table storage, learning flow, Tkinter interface, and playable web version.',
+    features: ['Agent movement inside a grid', 'Start, goal, and fire cells', 'Reward and penalty system', 'Q-table learning', 'JSON persistence', 'Playable web version'],
+    aiConcepts: ['Reinforcement Learning', 'Q-Learning', 'Q-table', 'Rewards and penalties', 'Exploration vs exploitation', 'State-action values'],
+    technical: ['Q-Learning update logic', 'Grid environment design', 'Reward shaping', 'Tkinter UI for visualization', 'JSON storage for learned Q-values', 'Web version for portfolio interaction'],
+    challenges: 'The main challenge was making the learning process understandable visually, not just mathematically. The solution was to keep the grid simple, show clear states, and connect actions with rewards, penalties, and saved Q-values.',
+    tech: ['Python', 'Reinforcement Learning', 'Q-Learning', 'Tkinter', 'JSON', 'HTML', 'CSS', 'JavaScript'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/rimonnnn/grid_world_game.git', primary: true },
+      { label: 'Try Game', url: 'grid_world_game/index.html', type: 'game' }
+    ]
+  }
+};
+
+const projectModal = document.getElementById('projectModal');
+const modalPanel = projectModal?.querySelector('.project-modal__panel');
+const modalMedia = document.getElementById('modalProjectMedia');
+const modalLabel = document.getElementById('modalProjectLabel');
+const modalTitle = document.getElementById('modalProjectTitle');
+const modalOverview = document.getElementById('modalProjectOverview');
+const modalSections = document.getElementById('modalProjectSections');
+const modalTech = document.getElementById('modalProjectTech');
+const modalLinks = document.getElementById('modalProjectLinks');
+let lastFocusedProjectTrigger = null;
+
+function renderList(items) {
+  return `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+}
+
+function renderDetailBlock(title, content, isList = false) {
+  if (!content || (Array.isArray(content) && content.length === 0)) return '';
+  return `
+    <div class="project-detail-block">
+      <strong>${title}</strong>
+      ${isList ? renderList(content) : `<p>${content}</p>`}
+    </div>
+  `;
+}
+
+function openProjectModal(projectKey, triggerElement) {
+  const project = projectDetails[projectKey];
+  if (!project || !projectModal) return;
+
+  lastFocusedProjectTrigger = triggerElement || document.activeElement;
+
+  if (project.placeholder) {
+    modalMedia.innerHTML = `
+      <div class="project-modal__placeholder">
+        <div>
+          <strong>${project.title}</strong>
+          <span>Production-style Flutter project in progress</span>
+        </div>
+      </div>
+    `;
+  } else {
+    modalMedia.innerHTML = `
+      <img
+        src="${project.image}"
+        onerror="this.onerror=null;this.src='${project.fallbackImage}';"
+        alt="${project.imageAlt}"
+      />
+    `;
+  }
+
+  modalLabel.textContent = project.label;
+  modalTitle.textContent = project.title;
+  modalOverview.textContent = project.overview;
+
+  modalSections.innerHTML = [
+    renderDetailBlock('Purpose', project.purpose),
+    renderDetailBlock('My Role', project.role),
+    renderDetailBlock('Key Features', project.features, true),
+    renderDetailBlock('AI / ML Concepts Used', project.aiConcepts, true),
+    renderDetailBlock('Technical Highlights', project.technical, true),
+    renderDetailBlock('Challenges & Solutions', project.challenges)
+  ].join('');
+
+  modalTech.innerHTML = project.tech.map((tech) => `<span>${tech}</span>`).join('');
+
+  if (project.links.length > 0) {
+    modalLinks.innerHTML = project.links
+      .map((link) => `<a class="btn ${link.primary ? 'btn-primary' : 'btn-secondary'}" href="${link.url}" target="_blank" rel="noopener">${getButtonIcon(link.type || link.label)}${link.label}</a>`)
+      .join('');
+  } else {
+    modalLinks.innerHTML = '<span class="btn btn-disabled" aria-disabled="true"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>Project links coming soon</span>';
+  }
+
+  projectModal.classList.add('is-open');
+  projectModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  modalPanel?.focus();
+}
+
+function closeProjectModal() {
+  if (!projectModal) return;
+
+  projectModal.classList.remove('is-open');
+  projectModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+
+  if (lastFocusedProjectTrigger && typeof lastFocusedProjectTrigger.focus === 'function') {
+    lastFocusedProjectTrigger.focus();
+  }
+}
+
+document.querySelectorAll('[data-project-open]').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    openProjectModal(trigger.dataset.projectOpen, trigger);
+  });
+});
+
+document.querySelectorAll('[data-modal-close]').forEach((trigger) => {
+  trigger.addEventListener('click', closeProjectModal);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && projectModal?.classList.contains('is-open')) {
+    closeProjectModal();
+  }
 });
 
 </script>
