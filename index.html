@@ -1,642 +1,697 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="description" content="Rimon Abdelmasih portfolio — Flutter Developer building clean, API-driven mobile apps with Flutter, Dart, REST APIs, local storage, and modern UI." /> <meta property="og:title" content="Rimon Abdelmasih | Flutter Developer Portfolio"> <meta property="og:description" content="Flutter Developer portfolio with practical mobile apps, REST API integration, local storage, state management, and AI/Data Science background."> <meta property="og:image" content="https://rimonnnn.github.io/profile_photo.png"> <meta property="og:url" content="https://rimonnnn.github.io/"> <meta property="og:type" content="website"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Rimon Abdelmasih | Flutter Developer Portfolio"> <meta name="twitter:description" content="Flutter portfolio with practical mobile apps, API integration, local storage, and AI/Data Science background."> <meta name="twitter:image" content="https://rimonnnn.github.io/profile_photo.png"> <title>Rimon Abdelmasih | Flutter Developer Portfolio</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"> <style> :root { --bg: #020617; --bg-soft: #0f172a; --card: #111827; --card-2: #1e293b; --border: rgba(148, 163, 184, 0.18); --blue: #2563eb; --cyan: #38bdf8; --green: #22c55e; --text: #f8fafc; --muted: #94a3b8; --muted-2: #cbd5e1; --shadow: 0 24px 80px rgba(0, 0, 0, 0.4); --radius: 24px; --container: 1180px; } * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: radial-gradient(circle at 15% 8%, rgba(37, 99, 235, 0.22), transparent 34%), radial-gradient(circle at 82% 14%, rgba(56, 189, 248, 0.14), transparent 31%), linear-gradient(180deg, #020617 0%, #07111f 48%, #020617 100%); min-height: 100vh; overflow-x: hidden; } a { color: inherit; text-decoration: none; } img { display: block; max-width: 100%; } .page-noise { position: fixed; inset: 0; pointer-events: none; opacity: .05; background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, #000, transparent 80%); } .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; } .section-padding { padding: 86px 0; } .site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(2, 6, 23, 0.72); border-bottom: 1px solid var(--border); } .navbar { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; } .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; } .brand-mark { color: var(--cyan); font-weight: 800; } .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.92rem; color: var(--muted-2); } .nav-links a { transition: color .2s ease; } .nav-links a:hover { color: var(--cyan); } .nav-cv { padding: 10px 16px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: white !important; font-weight: 700; box-shadow: 0 12px 32px rgba(37, 99, 235, .28); } .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15, 23, 42, .8); cursor: pointer; } .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--text); margin: 4px auto; } .hero { padding-top: 104px; } .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 62px; align-items: center; } .eyebrow, .section-kicker { color: var(--cyan); font-weight: 700; letter-spacing: .02em; font-size: .9rem; } .eyebrow { display: inline-flex; gap: 10px; align-items: center; border: 1px solid var(--border); background: rgba(15,23,42,.72); padding: 9px 14px; border-radius: 999px; color: var(--muted-2); } .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 6px rgba(34,197,94,.12); } h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; margin: 0; letter-spacing: -0.045em; } h1 { font-size: clamp(2.9rem, 6.6vw, 5.5rem); line-height: .95; margin: 24px 0 18px; } h1 span { display: block; color: var(--cyan); } h2 { font-size: clamp(2rem, 3.7vw, 3.2rem); line-height: 1.04; } h3 { font-size: 1.22rem; } p { color: var(--muted-2); line-height: 1.68; } .hero-subtitle { font-size: 1.2rem; color: var(--text); max-width: 690px; font-weight: 600; } .hero-copy { max-width: 660px; color: var(--muted); } .hero-actions, .project-actions, .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; } .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border: 0; border-radius: 14px; font: inherit; font-weight: 800; line-height: 1; cursor: pointer; appearance: none; -webkit-appearance: none; transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease; } .btn:hover { transform: translateY(-2px); } .btn-icon { width: 1rem; height: 1rem; flex: 0 0 auto; stroke-width: 2.2; } .btn-small .btn-icon { width: .92rem; height: .92rem; } .btn svg { margin-right: 7px; } .btn-disabled svg { opacity: .8; } .btn-primary { background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff; box-shadow: 0 18px 44px rgba(37,99,235,.28); } .btn-primary:hover { box-shadow: 0 20px 54px rgba(37,99,235,.38); } .btn-secondary { border: 1px solid var(--border); background: rgba(15,23,42,.74); color: var(--text); } .btn-secondary:hover { border-color: rgba(56,189,248,.48); background: rgba(15,23,42,.95); } .btn-small { min-height: 39px; padding: 0 14px; border-radius: 11px; font-size: .88rem; } .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0; } .hero-stat { border: 1px solid var(--border); background: rgba(15,23,42,.68); border-radius: 18px; padding: 15px; } .hero-stat strong { display: block; color: var(--cyan); font-size: 1rem; margin-bottom: 5px; } .hero-stat span { display: block; color: var(--muted); font-size: .85rem; line-height: 1.45; } .hero-meta, .chip-list, .tech-list, .quality-list { display: flex; gap: 8px; flex-wrap: wrap; } .hero-meta { margin: 24px 0; } .hero-meta span, .tech-list span, .project-chip, .build-card span, .quality-list span, .skill-chip { border: 1px solid var(--border); color: var(--muted-2); background: rgba(15,23,42,.68); border-radius: 999px; padding: 7px 10px; font-size: .8rem; line-height: 1.35; } .social-row { display: flex; gap: 18px; color: var(--muted); font-weight: 700; font-size: .92rem; } .social-row a:hover, .inline-link:hover, .footer a:hover { color: var(--cyan); } .hero-visual { position: relative; min-height: 540px; display: grid; place-items: center; } .glow { position: absolute; border-radius: 999px; filter: blur(16px); opacity: .75; } .glow-one { width: 340px; height: 340px; background: rgba(37,99,235,.24); } .glow-two { width: 220px; height: 220px; background: rgba(56,189,248,.18); right: 32px; top: 80px; } .mockup-stack { position: relative; width: min(100%, 540px); height: 390px; } .phone-card { position: absolute; overflow: hidden; border: 1px solid var(--border); border-radius: 34px; background: #030712; box-shadow: var(--shadow); } .phone-card img { width: 100%; height: 100%; object-fit: cover; } .main-phone { inset: 16px 74px 0 74px; z-index: 3; } .phone-card-small { width: 210px; height: 310px; top: 72px; opacity: .9; } .phone-card-small.left { left: 0; transform: rotate(-8deg); } .phone-card-small.right { right: 0; transform: rotate(8deg); } .visual-card { position: absolute; left: 24px; bottom: 18px; width: 300px; padding: 18px; border: 1px solid var(--border); border-radius: 18px; background: rgba(15,23,42,.84); backdrop-filter: blur(16px); box-shadow: var(--shadow); z-index: 5; } .visual-card strong { display: block; margin-bottom: 6px; } .visual-card span { color: var(--muted); font-size: .92rem; line-height: 1.55; } .two-column { display: grid; grid-template-columns: .78fr 1.22fr; gap: 52px; align-items: start; } .section-heading p:last-child { max-width: 720px; margin: 14px auto 0; } .centered { text-align: center; max-width: 820px; margin: 0 auto 48px; } .about-card, .contact-card, .timeline, .skill-card, .project-card, .build-card, .quality-card, .education-card, .ai-project-card { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(17,24,39,.86), rgba(15,23,42,.78)); border-radius: var(--radius); box-shadow: 0 16px 50px rgba(0,0,0,.22); } .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; } .project-card { overflow: hidden; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; } .project-card:hover, .skill-card:hover, .timeline-item:hover, .build-card:hover, .ai-project-card:hover, .quality-card:hover, .education-card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,.4); box-shadow: 0 22px 70px rgba(0,0,0,.28); } .project-image { min-height: 215px; background: rgba(2,6,23,.6); display: grid; place-items: center; overflow: hidden; border-bottom: 1px solid var(--border); } .project-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .3s ease; } .project-card:hover .project-image img, .ai-project-card:hover .ai-project-image img { transform: scale(1.06); } .project-content { padding: 22px; } .project-topline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 16px; } .project-type { color: var(--cyan); background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.22); border-radius: 999px; padding: 7px 11px; font-size: .76rem; font-weight: 800; } .project-content h3 { font-size: 1.45rem; margin-bottom: 8px; } .project-short { color: var(--text); font-weight: 700; margin: 0; line-height: 1.55; } .case-study { display: grid; gap: 12px; margin: 18px 0; } .case-item { padding: 14px; border: 1px solid rgba(148,163,184,.14); border-radius: 16px; background: rgba(2,6,23,.28); } .case-item strong { display: block; color: var(--text); font-size: .88rem; margin-bottom: 6px; } .case-item p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.58; } .case-item ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.6; font-size: .9rem; } .tech-list { margin: 18px 0; } .tech-list span { font-size: .76rem; } .projects-footer { display: flex; justify-content: center; margin-top: 32px; } .ai-project { padding-top: 0; } .ai-project-card { display: grid; grid-template-columns: .92fr 1.08fr; overflow: hidden; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; position: relative; } .ai-project-card:before { content: ''; position: absolute; inset: -140px auto auto -140px; width: 320px; height: 320px; background: rgba(56,189,248,.12); border-radius: 999px; filter: blur(18px); } .ai-project-image { min-height: 430px; border-right: 1px solid var(--border); background: rgba(2,6,23,.58); overflow: hidden; } .ai-project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; } .ai-project-content { padding: 34px; position: relative; } .ai-label { display: inline-flex; color: var(--cyan); background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.22); border-radius: 999px; padding: 8px 12px; font-size: .8rem; font-weight: 800; margin-bottom: 16px; } .ai-project-content h2 { margin-bottom: 14px; } .ai-project-content > p { margin: 0 0 18px; } .build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 34px; } .build-card { padding: 20px; min-height: 155px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; } .build-card h3 { margin: 12px 0 8px; font-size: 1.1rem; } .build-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.55; } .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 34px; } .skill-card { padding: 22px; min-height: 180px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; } .skill-card h3 { color: var(--text); margin-bottom: 14px; font-size: 1.1rem; } .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; } .about-card { padding: 28px; } .about-profile { display: flex; gap: 18px; align-items: center; margin-bottom: 20px; } .about-profile img { width: 92px; height: 92px; border-radius: 24px; object-fit: cover; border: 1px solid var(--border); } .about-profile p { margin: 8px 0 0; } .about-card p { margin: 0 0 12px; } .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; } .stats-grid div { padding: 16px; border-radius: 18px; background: rgba(2,6,23,.52); border: 1px solid var(--border); } .stats-grid strong { display: block; font-size: 1.55rem; color: var(--cyan); margin-bottom: 4px; } .stats-grid span { color: var(--muted); font-size: .85rem; } .quality-card, .education-card { margin-top: 22px; padding: 22px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; } .quality-card h3, .education-card h3 { margin-bottom: 14px; } .education-meta { display: grid; gap: 10px; } .education-meta div { padding: 14px; border-radius: 16px; background: rgba(2,6,23,.35); border: 1px solid rgba(148,163,184,.14); } .education-meta strong { display: block; color: var(--cyan); font-size: .84rem; margin-bottom: 5px; } .education-meta span { color: var(--muted-2); line-height: 1.55; } .timeline { padding: 10px; } .timeline-item { padding: 22px; border-radius: 18px; border: 1px solid transparent; transition: transform .22s ease, border-color .22s ease, background .22s ease; } .timeline-item:not(:last-child) { border-bottom: 1px solid var(--border); } .timeline-item time { color: var(--cyan); font-weight: 800; font-size: .9rem; } .timeline-item h3 { margin: 9px 0 8px; } .timeline-item p { margin: 0 0 10px; color: var(--muted); } .inline-link { color: var(--cyan); font-weight: 800; } .contact-card { padding: 34px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: start; position: relative; overflow: hidden; } .contact-card:before { content: ''; position: absolute; inset: auto -120px -160px auto; width: 360px; height: 360px; border-radius: 999px; background: rgba(37,99,235,.2); filter: blur(16px); } .contact-card > * { position: relative; } .contact-actions { justify-content: flex-start; margin-top: 22px; } .contact-details { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); margin-top: 20px; } .contact-details span, .contact-details a { border: 1px solid var(--border); background: rgba(2,6,23,.44); padding: 10px 14px; border-radius: 999px; color: var(--muted-2); transition: color .2s ease, border-color .2s ease, transform .18s ease; } .contact-details a:hover { color: var(--cyan); border-color: rgba(56,189,248,.45); transform: translateY(-2px); } .contact-form { display: grid; gap: 15px; padding: 22px; border: 1px solid var(--border); background: rgba(2,6,23,.42); border-radius: 22px; } .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .form-field { display: grid; gap: 8px; } .form-field label { color: var(--muted-2); font-size: .9rem; font-weight: 700; } .form-field input, .form-field textarea { width: 100%; border: 1px solid rgba(148,163,184,.22); background: rgba(15,23,42,.78); color: var(--text); border-radius: 14px; padding: 13px 14px; font: inherit; outline: none; transition: border-color .2s ease, box-shadow .2s ease; } .form-field textarea { min-height: 145px; resize: vertical; } .form-field input:focus, .form-field textarea:focus { border-color: rgba(56,189,248,.72); box-shadow: 0 0 0 4px rgba(56,189,248,.1); } .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(148,163,184,.72); } .btn-disabled, .btn[aria-disabled="true"] { cursor: not-allowed; opacity: .72; pointer-events: none; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.62); color: var(--muted-2); } .btn[disabled] { cursor: not-allowed; opacity: .76; transform: none; } .form-status { display: none; margin: 0; padding: 12px 14px; border-radius: 14px; font-size: .92rem; font-weight: 700; line-height: 1.45; } .form-status.visible { display: block; } .form-status.success { color: #bbf7d0; border: 1px solid rgba(34,197,94,.28); background: rgba(34,197,94,.1); } .form-status.error { color: #fecaca; border: 1px solid rgba(248,113,113,.32); background: rgba(248,113,113,.1); } .form-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; } .form-actions-row .btn { width: 100%; } .form-hint { margin: -4px 0 0; color: var(--muted); font-size: .84rem; line-height: 1.5; } @media (max-width: 560px) { .form-actions-row { grid-template-columns: 1fr; } } .project-card.is-coming-soon { border-color: rgba(56,189,248,.24); } .project-placeholder { min-height: 215px; display: grid; place-items: center; padding: 24px; text-align: center; background: radial-gradient(circle at 50% 35%, rgba(56,189,248,.18), transparent 45%), linear-gradient(135deg, rgba(37,99,235,.18), rgba(15,23,42,.78)); border-bottom: 1px solid var(--border); } .project-placeholder strong { display: block; color: var(--cyan); font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: 1.45rem; letter-spacing: -.03em; margin-bottom: 8px; } .project-placeholder span { color: var(--muted-2); font-weight: 700; font-size: .92rem; } .footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); } .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; } .footer p { margin: 0; color: var(--muted); } .footer a { color: var(--muted-2); font-weight: 700; } .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; } .reveal.visible { opacity: 1; transform: translateY(0); } .delay-1 { transition-delay: .12s; } .delay-2 { transition-delay: .2s; } /* ===== Premium polish, About, active nav, animations ===== */ body::before, body::after { content: ''; position: fixed; pointer-events: none; border-radius: 999px; filter: blur(42px); opacity: .28; z-index: -1; } body::before { width: 360px; height: 360px; left: -130px; top: 28%; background: rgba(37, 99, 235, .26); } body::after { width: 420px; height: 420px; right: -170px; bottom: 10%; background: rgba(56, 189, 248, .18); } .nav-links a { position: relative; } .nav-links a:not(.nav-cv)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 999px; transform: scaleX(0); transform-origin: center; transition: transform .2s ease; } .nav-links a:not(.nav-cv):hover::after, .nav-links a:not(.nav-cv).active::after { transform: scaleX(1); } .nav-links a.active { color: var(--cyan); } .btn { position: relative; overflow: hidden; isolation: isolate; } .btn-primary::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 45%, transparent 72%); transform: translateX(-120%); transition: transform .55s ease; z-index: -1; } .btn-primary:hover::before { transform: translateX(120%); } .hero-content .eyebrow, .hero-content h1, .hero-subtitle, .hero-actions, .hero-stats, .hero-meta, .social-row, .hero-visual { animation: heroFadeUp .75s ease both; } .hero-content h1 { animation-delay: .08s; } .hero-subtitle { animation-delay: .16s; } .hero-actions { animation-delay: .24s; } .hero-stats { animation-delay: .32s; } .hero-meta { animation-delay: .4s; } .social-row { animation-delay: .48s; } .hero-visual { animation-delay: .18s; } .main-phone { animation: premiumFloat 6s ease-in-out infinite; } @keyframes heroFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } } @keyframes premiumFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } } .about-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(320px, .72fr); gap: 34px; align-items: center; } .about-intro { padding: 34px; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(17,24,39,.82), rgba(15,23,42,.62)); border-radius: var(--radius); box-shadow: 0 16px 50px rgba(0,0,0,.18); position: relative; overflow: hidden; } .about-intro::before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 999px; background: rgba(56,189,248,.12); filter: blur(12px); right: -120px; top: -130px; } .about-intro > * { position: relative; } .about-intro h2 { margin: 10px 0 16px; } .about-intro p { margin: 0; color: var(--muted-2); font-size: 1.03rem; } .about-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; } .about-highlights span { border: 1px solid rgba(56,189,248,.22); background: rgba(56,189,248,.08); color: var(--muted-2); border-radius: 999px; padding: 8px 11px; font-size: .82rem; font-weight: 700; } .about-showcase { display: grid; gap: 18px; } .profile-frame { position: relative; width: min(100%, 360px); justify-self: center; padding: 10px; border-radius: 34px; background: linear-gradient(135deg, rgba(37,99,235,.52), rgba(56,189,248,.28), rgba(15,23,42,.7)); box-shadow: 0 30px 90px rgba(0,0,0,.38), 0 0 0 1px rgba(56,189,248,.16); transition: transform .28s ease, box-shadow .28s ease; } .profile-frame::after { content: ''; position: absolute; inset: 18px; border-radius: 28px; border: 1px solid rgba(255,255,255,.12); pointer-events: none; } .profile-frame:hover { transform: translateY(-5px); box-shadow: 0 34px 105px rgba(0,0,0,.45), 0 0 44px rgba(56,189,248,.16); } .profile-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 26px; border: 1px solid rgba(148,163,184,.22); background: rgba(2,6,23,.72); } .premium-about-card { padding: 22px; } .about-profile-text h3 { font-size: 1.4rem; margin-bottom: 6px; } .about-profile-text p { margin: 0; color: var(--cyan); font-weight: 700; } .about-stats { margin-top: 18px; } .about-details-grid { grid-column: 1 / -1; display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; } .about-details-grid .education-card, .about-details-grid .quality-card { margin-top: 0; } .badge-row { justify-content: flex-start; } .note-item { border-color: rgba(56,189,248,.28); background: rgba(56,189,248,.06); } .compact-build { grid-template-columns: repeat(5, 1fr); } .skill-chip, .project-chip, .tech-list span, .hero-meta span, .quality-list span, .about-highlights span { transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease; } .skill-chip:hover, .project-chip:hover, .tech-list span:hover, .hero-meta span:hover, .quality-list span:hover, .about-highlights span:hover { transform: translateY(-2px); border-color: rgba(56,189,248,.45); background: rgba(56,189,248,.1); color: var(--text); } :focus-visible { outline: 3px solid rgba(56,189,248,.62); outline-offset: 4px; } .delay-3 { transition-delay: .28s; } @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; } .reveal { opacity: 1 !important; transform: none !important; } } @media (max-width: 1120px) { .project-grid, .build-grid { grid-template-columns: repeat(2, 1fr); } .skills-grid { grid-template-columns: repeat(3, 1fr); } } @media (max-width: 980px) { .section-padding { padding: 74px 0; } .hero-grid, .two-column, .contact-card, .ai-project-card { grid-template-columns: 1fr; } .hero { padding-top: 84px; } .hero-visual { min-height: 430px; } .ai-project-image { border-right: 0; border-bottom: 1px solid var(--border); min-height: 320px; } .contact-actions { justify-content: flex-start; } } @media (max-width: 760px) { .container { width: min(100% - 28px, var(--container)); } .menu-toggle { display: block; } .nav-links { position: absolute; top: 76px; left: 14px; right: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px; border: 1px solid var(--border); border-radius: 18px; background: rgba(2,6,23,.96); box-shadow: var(--shadow); } .nav-links.open { display: flex; } .nav-links a { padding: 14px; border-radius: 12px; } .nav-cv { text-align: center; margin-top: 6px; } h1 { font-size: clamp(2.45rem, 13vw, 3.8rem); } .hero-subtitle { font-size: 1.06rem; } .hero-stats, .project-grid, .skills-grid, .build-grid, .stats-grid { grid-template-columns: 1fr; } .hero-visual { min-height: 350px; } .mockup-stack { height: 300px; } .main-phone { inset: 16px 56px 0 56px; } .phone-card-small { width: 160px; height: 220px; top: 58px; } .visual-card { position: relative; left: auto; bottom: auto; width: 100%; margin-top: -28px; } .about-profile { align-items: flex-start; } .project-image { min-height: 210px; } .project-content, .about-card, .contact-card, .ai-project-content { padding: 22px; } .form-row { grid-template-columns: 1fr; } .footer-inner { flex-direction: column; align-items: flex-start; } } @media (max-width: 1120px) { .compact-build { grid-template-columns: repeat(2, 1fr); } .about-layout, .about-details-grid { grid-template-columns: 1fr; } .profile-frame { width: min(100%, 320px); } } @media (max-width: 760px) { .about-intro, .premium-about-card { padding: 22px; } .about-layout { gap: 22px; } .profile-frame { width: min(100%, 290px); border-radius: 28px; } .profile-frame img { border-radius: 22px; } .compact-build { grid-template-columns: 1fr; } .nav-links a:not(.nav-cv)::after { display: none; } } /* ===== Compact Projects + Responsive Project Modal ===== */ .project-card { display: flex; flex-direction: column; min-height: 100%; } .project-image-button { width: 100%; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0; text-align: inherit; } .project-image-button:focus-visible { outline: 3px solid rgba(56,189,248,.62); outline-offset: -3px; } .project-card .project-content { display: flex; flex-direction: column; flex: 1; } .project-card .project-content h3 { margin-bottom: 10px; } .project-short { display: -webkit-box; min-height: 3.1em; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; } .compact-tech-list { margin-top: 18px; margin-bottom: 22px; } .compact-tech-list span:nth-child(n + 6) { display: none; } .project-card .project-actions { margin-top: auto; } .project-modal { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 22px; } .project-modal.is-open { display: grid; } .project-modal__backdrop { position: absolute; inset: 0; background: rgba(2, 6, 23, .74); backdrop-filter: blur(16px); opacity: 0; transition: opacity .22s ease; } .project-modal.is-open .project-modal__backdrop { opacity: 1; } .project-modal__panel { position: relative; width: min(1040px, 100%); max-height: min(88vh, 920px); overflow: auto; border: 1px solid rgba(148,163,184,.24); border-radius: 28px; background: radial-gradient(circle at 18% 0%, rgba(56,189,248,.12), transparent 32%), linear-gradient(180deg, rgba(17,24,39,.98), rgba(15,23,42,.96)); box-shadow: 0 34px 120px rgba(0,0,0,.58); transform: translateY(18px) scale(.98); opacity: 0; transition: transform .24s ease, opacity .24s ease; } .project-modal.is-open .project-modal__panel { transform: translateY(0) scale(1); opacity: 1; } .project-modal__close { position: sticky; top: 16px; float: right; z-index: 2; width: 42px; height: 42px; margin: 16px 16px -58px 0; border: 1px solid rgba(148,163,184,.25); border-radius: 14px; background: rgba(2,6,23,.72); color: var(--text); font-size: 1.55rem; line-height: 1; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; } .project-modal__close:hover { transform: translateY(-2px); border-color: rgba(56,189,248,.48); background: rgba(15,23,42,.95); } .project-modal__media { min-height: 360px; background: rgba(2,6,23,.55); border-bottom: 1px solid var(--border); overflow: hidden; } .project-modal__media img { width: 100%; height: 100%; max-height: 460px; object-fit: cover; } .project-modal__placeholder { min-height: 360px; display: grid; place-items: center; padding: 36px; text-align: center; background: radial-gradient(circle at 50% 35%, rgba(56,189,248,.2), transparent 45%), linear-gradient(135deg, rgba(37,99,235,.18), rgba(15,23,42,.78)); } .project-modal__placeholder strong { display: block; color: var(--cyan); font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -.05em; margin-bottom: 10px; } .project-modal__placeholder span { color: var(--muted-2); font-weight: 800; } .project-modal__body { padding: 34px; } .project-modal__label { display: inline-flex; color: var(--cyan); background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.22); border-radius: 999px; padding: 8px 12px; font-size: .8rem; font-weight: 800; margin-bottom: 14px; } .project-modal__body h2 { margin-bottom: 14px; } .project-modal__overview { max-width: 900px; margin: 0 0 22px; color: var(--muted-2); font-size: 1.02rem; } .project-modal__sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } .project-detail-block { padding: 16px; border: 1px solid rgba(148,163,184,.14); border-radius: 18px; background: rgba(2,6,23,.32); } .project-detail-block strong { display: block; color: var(--text); font-size: .92rem; margin-bottom: 8px; } .project-detail-block p, .project-detail-block li { color: var(--muted); font-size: .92rem; line-height: 1.62; } .project-detail-block p { margin: 0; } .project-detail-block ul { margin: 0; padding-left: 18px; } .project-modal__tech { margin-top: 22px; margin-bottom: 22px; } .project-modal__actions { padding-top: 2px; } body.modal-open { overflow: hidden; } @media (max-width: 760px) { .project-modal { padding: 12px; align-items: end; } .project-modal__panel { max-height: 92vh; border-radius: 22px; } .project-modal__media, .project-modal__placeholder { min-height: 245px; } .project-modal__body { padding: 22px; } .project-modal__sections { grid-template-columns: 1fr; } .project-modal__close { top: 12px; margin: 12px 12px -54px 0; } } /* ===== Flutter identity system, theme toggle, hero profile, phone frames, certs, trust ===== */ :root { --primary: #54C5F8; --accent: #01579B; --dark-bg: #0D1117; --light-bg: #f8fbff; --light-surface: #ffffff; --light-text: #0f172a; --light-muted: #475569; --focus: rgba(84,197,248,.62); --shadow-soft: 0 18px 55px rgba(1,87,155,.18); --shadow-strong: 0 28px 90px rgba(0,0,0,.42); --radius-sm: 14px; --radius-md: 20px; --radius-lg: 28px; --duration: .24s; --ease: cubic-bezier(.2,.8,.2,1); color-scheme: dark; } body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; } body[data-theme="dark"] { --bg: #0D1117; --bg-soft: #101826; --card: #111827; --card-2: #172033; --border: rgba(148, 163, 184, 0.20); --blue: #01579B; --cyan: #54C5F8; --text: #f8fafc; --muted: #9aa8bb; --muted-2: #d4e0ee; --shadow: 0 24px 80px rgba(0, 0, 0, 0.42); color-scheme: dark; } body[data-theme="light"] { --bg: #f8fbff; --bg-soft: #eef7ff; --card: #ffffff; --card-2: #f0f7ff; --border: rgba(1, 87, 155, 0.14); --blue: #01579B; --cyan: #028bd4; --text: #0f172a; --muted: #475569; --muted-2: #334155; --shadow: 0 22px 70px rgba(1,87,155,.14); color-scheme: light; } body[data-theme="light"] { background: radial-gradient(circle at 15% 8%, rgba(84,197,248,.20), transparent 34%), radial-gradient(circle at 82% 14%, rgba(1,87,155,.10), transparent 31%), linear-gradient(180deg, #ffffff 0%, #f3f9ff 48%, #ffffff 100%); } body[data-theme="light"] .site-header, body[data-theme="light"] .nav-links, body[data-theme="light"] .menu-toggle, body[data-theme="light"] .btn-secondary, body[data-theme="light"] .eyebrow, body[data-theme="light"] .hero-stat, body[data-theme="light"] .visual-card, body[data-theme="light"] .contact-form, body[data-theme="light"] .form-field input, body[data-theme="light"] .form-field textarea, body[data-theme="light"] .contact-details span, body[data-theme="light"] .contact-details a { background: rgba(255,255,255,.86); } body[data-theme="light"] .about-card, body[data-theme="light"] .contact-card, body[data-theme="light"] .timeline, body[data-theme="light"] .skill-card, body[data-theme="light"] .project-card, body[data-theme="light"] .build-card, body[data-theme="light"] .quality-card, body[data-theme="light"] .education-card, body[data-theme="light"] .about-intro, body[data-theme="light"] .project-modal__panel, body[data-theme="light"] .testimonial-card { background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,248,255,.90)); box-shadow: var(--shadow); } body[data-theme="light"] .case-item, body[data-theme="light"] .project-detail-block, body[data-theme="light"] .stats-grid div, body[data-theme="light"] .education-meta div { background: rgba(255,255,255,.74); } .site-header { background: rgba(13,17,23,.78); } .theme-toggle { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 999px; display: inline-grid; place-items: center; background: rgba(15,23,42,.78); color: var(--text); cursor: pointer; transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease), background var(--duration) var(--ease); } .theme-toggle:hover { transform: translateY(-2px); border-color: rgba(84,197,248,.55); } .theme-toggle__icon { font-size: 1.05rem; line-height: 1; } .hero { position: relative; overflow: hidden; background: radial-gradient(circle at 18% 20%, rgba(84,197,248,.18), transparent 30%), radial-gradient(circle at 86% 10%, rgba(1,87,155,.22), transparent 28%), linear-gradient(135deg, rgba(84,197,248,.05), transparent 42%); } .hero::before { content: ''; position: absolute; inset: -30%; background: linear-gradient(115deg, transparent 0 34%, rgba(84,197,248,.10) 45%, transparent 56%), radial-gradient(circle at 30% 35%, rgba(84,197,248,.16), transparent 12%), radial-gradient(circle at 68% 52%, rgba(1,87,155,.18), transparent 14%); animation: meshMove 14s ease-in-out infinite alternate; pointer-events: none; } @keyframes meshMove { from { transform: translate3d(-2%, -1%, 0) rotate(0deg); } to { transform: translate3d(2%, 2%, 0) rotate(4deg); } } .hero > .container { position: relative; } h1 .typewriter-role { display: inline-block; color: var(--primary); min-height: 1.05em; } h1 .typewriter-role::after { content: ''; display: inline-block; width: .08em; height: .82em; margin-left: .1em; background: currentColor; vertical-align: -.08em; animation: caretBlink .9s steps(1) infinite; } @keyframes caretBlink { 50% { opacity: 0; } } .hero-title-line { color: var(--text); font-size: clamp(2rem, 5vw, 4.4rem); margin-top: 8px; } .hero-visual { align-content: center; gap: 18px; } .hero-profile-frame { position: relative; width: 210px; height: 210px; padding: 6px; border-radius: 50%; background: conic-gradient(from var(--spin-angle, 0deg), var(--primary), var(--accent), #7dd3fc, var(--primary)); box-shadow: 0 0 44px rgba(84,197,248,.22), var(--shadow); animation: spinGlow 6s linear infinite; z-index: 8; } .hero-profile-frame::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: inherit; filter: blur(16px); opacity: .38; z-index: -1; } .hero-profile-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; border: 4px solid var(--bg); } .open-work-badge { position: absolute; right: -34px; bottom: 22px; padding: 9px 12px; border: 1px solid rgba(84,197,248,.38); border-radius: 999px; background: rgba(13,17,23,.88); color: #fff; font-size: .82rem; font-weight: 900; box-shadow: 0 12px 34px rgba(0,0,0,.25); white-space: nowrap; } body[data-theme="light"] .open-work-badge { background: rgba(255,255,255,.96); color: var(--accent); } @keyframes spinGlow { to { --spin-angle: 360deg; } } @property --spin-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; } .hero-stat strong { font-size: 1.22rem; } .project-card:hover, .ai-project-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: var(--shadow-strong); } .project-image { position: relative; padding: 24px; min-height: 255px; } .project-image::before { content: ''; position: absolute; inset: 18px 50%; width: 74px; height: 10px; transform: translateX(-50%); border-radius: 999px; background: rgba(15,23,42,.88); z-index: 2; box-shadow: 0 0 0 1px rgba(148,163,184,.18); } .project-image img { width: min(100%, 210px); height: 100%; min-height: 360px; max-height: 430px; object-fit: cover; border: 10px solid #050b14; border-radius: 34px; box-shadow: 0 24px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(84,197,248,.18); background: #050b14; } .project-placeholder { border-radius: 0; } .project-placeholder > div { width: min(100%, 230px); min-height: 390px; display: grid; place-items: center; align-content: center; gap: 8px; padding: 28px 18px; border: 10px solid #050b14; border-radius: 34px; box-shadow: 0 24px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(84,197,248,.18); } .progress-wrap { margin: -4px 0 18px; } .progress-meta { display: flex; justify-content: space-between; gap: 12px; align-items: center; color: var(--muted-2); font-size: .82rem; font-weight: 800; margin-bottom: 8px; } .progress-track { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(148,163,184,.18); border: 1px solid rgba(148,163,184,.16); } .progress-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--primary)); box-shadow: 0 0 18px rgba(84,197,248,.35); } .build-card { display: flex; flex-direction: column; } .build-ref { margin-top: auto; padding-top: 16px; color: var(--primary); font-weight: 900; font-size: .88rem; } .build-ref:hover { color: var(--text); } .cert-grid { display: grid; gap: 16px; } .certificate-card { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 18px; align-items: center; border-bottom: 0 !important; background: rgba(2,6,23,.22); } .certificate-thumb { min-height: 112px; border-radius: 18px; border: 1px solid rgba(84,197,248,.22); overflow: hidden; display: grid; place-items: center; background: linear-gradient(135deg, rgba(84,197,248,.16), rgba(1,87,155,.24)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); } .certificate-thumb img { width: 100%; height: 112px; object-fit: cover; } .certificate-placeholder { color: var(--primary); font-weight: 900; font-size: 1.4rem; letter-spacing: .05em; } .certificate-body .btn { margin-top: 12px; } .testimonial-card { max-width: 780px; margin: 0 auto; position: relative; padding: 32px; border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(180deg, rgba(17,24,39,.86), rgba(15,23,42,.78)); box-shadow: var(--shadow); overflow: hidden; } .testimonial-mark { position: absolute; right: 24px; top: -18px; color: rgba(84,197,248,.22); font-size: 7rem; font-family: Georgia, serif; line-height: 1; } .testimonial-card p { position: relative; margin: 0 0 14px; color: var(--text); font-size: 1.12rem; font-weight: 800; } .testimonial-card span { color: var(--muted); font-weight: 700; } .project-modal__media { display: grid; place-items: center; padding: 26px; } .project-modal__media img { width: min(100%, 260px); max-height: 540px; min-height: 430px; object-fit: cover; border: 10px solid #050b14; border-radius: 34px; box-shadow: 0 24px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(84,197,248,.18); } @media (max-width: 980px) { .theme-toggle { margin-left: auto; } .hero-profile-frame { width: 186px; height: 186px; } } @media (max-width: 760px) { .navbar { gap: 10px; } .brand { flex: 1; } .theme-toggle, .menu-toggle { width: 42px; height: 42px; flex: 0 0 auto; } .hero-profile-frame { width: 166px; height: 166px; } .open-work-badge { right: -18px; bottom: 10px; font-size: .72rem; padding: 8px 10px; } .hero-title-line { font-size: clamp(1.8rem, 10vw, 3rem); } .project-image img, .project-placeholder > div { width: min(100%, 196px); min-height: 345px; } .certificate-card { grid-template-columns: 1fr; } .certificate-thumb img { height: 180px; } .project-modal__media img { width: min(100%, 210px); min-height: 360px; } } @media (max-width: 390px) { .container { width: min(100% - 22px, var(--container)); } .hero-actions .btn, .project-actions .btn, .contact-actions .btn { width: 100%; } .social-row { flex-wrap: wrap; } .project-content, .about-card, .contact-card, .ai-project-content, .project-modal__body { padding: 18px; } } </style> </head> <body data-theme="dark"> <div class="page-noise"></div> <header class="site-header" id="top"> <nav class="navbar container" aria-label="Primary navigation"> <a href="#top" class="brand" aria-label="Rimon home"> <span class="brand-mark">&lt;/&gt;</span> <span>Rimon.dev</span> </a>
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-    <span class="theme-toggle__icon" aria-hidden="true">☾</span>
-  </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rimon Abdelmasih portfolio — Flutter Developer building clean, API-driven mobile apps with Flutter, Dart, REST APIs, local storage, and modern UI." />
+  <meta name="theme-color" content="#0D1117" />
+  <link rel="canonical" href="https://rimonnnn.github.io/" />
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <meta property="og:title" content="Rimon Abdelmasih | Flutter Developer Portfolio">
+  <meta property="og:description" content="Flutter Developer portfolio with practical mobile apps, REST API integration, local storage, state management, and AI/Data Science background.">
+  <meta property="og:image" content="https://rimonnnn.github.io/profile_photo.png">
+  <meta property="og:url" content="https://rimonnnn.github.io/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rimon Abdelmasih | Flutter Developer Portfolio">
+  <meta name="twitter:description" content="Flutter portfolio with practical mobile apps, API integration, local storage, and AI/Data Science background.">
+  <meta name="twitter:image" content="https://rimonnnn.github.io/profile_photo.png">
 
-  <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#ai-project">AI Project</a>
-    <a href="#build">What I Build</a>
-    <a href="#skills">Skills</a>
-    <a href="#training">Training</a>
-    <a href="#contact">Contact</a>
-    <a class="nav-cv" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
-  </div>
-</nav>
-</header> <main> <section class="hero section-padding"> <div class="container hero-grid"> <div class="hero-content reveal"> <div class="eyebrow"> <span class="status-dot"></span> Open to Flutter Internships & Junior Roles </div>
-      <h1><span class="typewriter-role" id="typewriterRole" aria-live="polite">Flutter Developer</span><span class="hero-title-line">Building clean, API-driven mobile apps with Flutter</span></h1>
+  <title>Rimon Abdelmasih | Flutter Developer Portfolio</title>
 
-      <p class="hero-subtitle">
-        I build responsive Flutter apps with REST APIs, local storage, state management, and clean project structure.
-      </p>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>View Projects</a>
-        <a class="btn btn-secondary" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
-        <a class="btn btn-secondary" href="#contact"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Contact Me</a>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <script>
+    /* Critical, render-blocking, pre-paint theme resolver.
+       Placed first inside <body> (not <head>, since body already exists here)
+       to prevent a flash of the wrong theme for returning visitors. */
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
+        document.body.setAttribute('data-theme', theme);
+      } catch (e) { /* localStorage unavailable — fall back to default dark */ }
+    })();
+  </script>
+
+  <div class="page-noise"></div>
+
+  <header class="site-header" id="top">
+    <nav class="navbar container" aria-label="Primary navigation">
+      <a href="#top" class="brand" aria-label="Rimon home">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <span>Rimon.dev</span>
+      </a>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+        <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+      </button>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#ai-project">AI Project</a>
+        <a href="#build">What I Build</a>
+        <a href="#skills">Skills</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cv" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
       </div>
+    </nav>
+  </header>
 
-      <div class="hero-stats" aria-label="Quick achievements">
-        <div class="hero-stat">
-          <strong><span class="counter" data-count="6">0</span>+</strong>
-          <span>Projects</span>
-        </div>
-
-        <div class="hero-stat">
-          <strong><span class="counter" data-count="3">0</span>+</strong>
-          <span>REST API skills: Dio & JSON</span>
-        </div>
-
-        <div class="hero-stat">
-          <strong><span class="counter" data-count="2">0</span></strong>
-          <span>Cubit / Provider State Management</span>
-        </div>
-
-        <div class="hero-stat">
-          <strong><span class="counter" data-count="1">0</span></strong>
-          <span>AI & DS Academic Background</span>
-        </div>
-      </div>
-
-      <div class="hero-meta" aria-label="Core details">
-        <span>Egypt</span>
-        <span>Flutter</span>
-        <span>Dart</span>
-        <span>REST APIs</span>
-        <span>GoRouter</span>
-        <span>SQLite</span>
-      </div>
-
-      <div class="social-row">
-        <a href="https://github.com/rimonnnn" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">Email</a>
-      </div>
-    </div>
-
-    <div class="hero-visual reveal delay-1" aria-label="Flutter project previews">
-      <div class="glow glow-one"></div>
-      <div class="glow glow-two"></div>
-
-      <div class="hero-profile-frame" aria-label="Rimon Abdelmasih profile photo">
-        <img src="./assets/profile_photo.png" onerror="this.onerror=null;this.src='profile_photo.png';" alt="Photo of Rimon Abdelmasih" width="190" height="190" loading="eager" />
-        <span class="open-work-badge">Open to Work 🚀</span>
-      </div>
-
-      <div class="mockup-stack">
-        <article class="phone-card phone-card-small left">
-          <img src="./assets/meals_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/meals_app.png';" alt="Meals App preview" />
-        </article>
-
-        <article class="phone-card main-phone">
-          <img src="assets/news_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/news_app.png';" alt="News App preview" />
-        </article>
-
-        <article class="phone-card phone-card-small right">
-          <img src="./assets/finance_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/finance_app.png';" alt="Finance App preview" />
-        </article>
-      </div>
-
-      <div class="visual-card">
-        <strong>Flutter & Dart</strong>
-        <span>Responsive iOS & Android apps with maintainable codebases.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="about section-padding" id="about">
-  <div class="container about-layout">
-    <div class="about-intro reveal">
-      <p class="section-kicker">About Me</p>
-      <h2>Building reliable Flutter apps with clean structure and practical features.</h2>
-      <p>
-        I’m a Flutter Developer from Egypt building responsive Flutter apps with REST APIs, local storage, routing, and maintainable feature-based structure. I’m currently training at NTI and looking for Flutter internship or entry-level opportunities where I can contribute to real product features and keep improving through practical work.
-      </p>
-
-      <div class="about-highlights">
-        <span>Flutter</span>
-        <span>Dart</span>
-        <span>REST APIs</span>
-        <span>Local Storage</span>
-        <span>Clean Structure</span>
-      </div>
-    </div>
-
-    <div class="about-showcase reveal delay-1">
-      <div class="profile-frame">
-        <img
-          src="assets\about_photo.jpg"
-          onerror="this.onerror=null;this.src='profile_photo.png';"
-          alt="Photo of Rimon Abdelmasih"
-          loading="lazy"
-          width="360"
-          height="450"
-        />
-      </div>
-
-      <div class="about-card premium-about-card">
-        <div class="about-profile-text">
-          <h3>Rimon Abdelmasih</h3>
-          <p>Flutter Developer · Egypt</p>
-        </div>
-
-        <div class="stats-grid about-stats">
-          <div>
-            <strong>4+</strong>
-            <span>Practice & Portfolio Projects</span>
+  <main>
+    <section class="hero section-padding">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            Open to Flutter Internships &amp; Junior Roles
           </div>
 
-          <div>
-            <strong>2+</strong>
-            <span>Training Programs</span>
+          <h1><span class="typewriter-role" id="typewriterRole" aria-live="polite">Flutter Developer</span><span class="hero-title-line">Building clean, API-driven mobile apps with Flutter</span></h1>
+
+          <p class="hero-subtitle">
+            I build responsive Flutter apps with REST APIs, local storage, state management, and clean project structure.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>View Projects</a>
+            <a class="btn btn-secondary" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Reordered.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
+            <a class="btn btn-secondary" href="#contact"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Contact Me</a>
           </div>
 
-          <div>
-            <strong>1</strong>
-            <span>Main Focus: Flutter</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="about-details-grid">
-      <div class="education-card reveal">
-        <h3>Education</h3>
-
-        <div class="education-meta">
-          <div>
-            <strong>Expected Graduation</strong>
-            <span>2027</span>
-          </div>
-
-          <div>
-            <strong>Degree</strong>
-            <span>B.Sc. in Computers and Information — AI & Data Science Track</span>
+          <div class="hero-stats" aria-label="Quick achievements">
+            <div class="hero-stat">
+              <strong><span class="counter" data-count="6">0</span>+</strong>
+              <span>Projects</span>
+            </div>
+            <div class="hero-stat">
+              <strong><span class="counter" data-count="3">0</span>+</strong>
+              <span>REST API skills: Dio &amp; JSON</span>
+            </div>
+            <div class="hero-stat">
+              <strong><span class="counter" data-count="2">0</span></strong>
+              <span>Cubit / Provider State Management</span>
+            </div>
+            <div class="hero-stat">
+              <strong><span class="counter" data-count="1">0</span></strong>
+              <span>AI &amp; DS Academic Background</span>
+            </div>
           </div>
 
-          <div>
-            <strong>Faculty / University</strong>
-            <span>Faculty of Computers and Information, Beni-Suef National University</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="quality-card reveal delay-1">
-        <h3>Code Quality Focus</h3>
-        <div class="quality-list">
-          <span>Feature-based folder structure</span>
-          <span>Reusable widgets</span>
-          <span>Clear state handling</span>
-          <span>API error handling</span>
-          <span>Responsive design</span>
-          <span>Clean and readable code</span>
-          <span>GitHub README documentation</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="projects section-padding" id="projects">
-  <div class="container">
-    <div class="section-heading centered reveal">
-      <p class="section-kicker">Featured Projects</p>
-      <h2>Clean project cards with full details on demand.</h2>
-      <p>Compact cards for fast scanning, with detailed case-study information available inside responsive project modals.</p>
-    </div>
-
-    <div class="project-grid">
-      <article class="project-card reveal" data-project-card="news">
-        <button class="project-image project-image-button" type="button" data-project-open="news" aria-label="Open News App details">
-          <img src="assets/project_news_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/news_app.jpg';" alt="News App screenshot showing live article feed" loading="lazy" width="520" height="360" />
-        </button>
-
-        <div class="project-content">
-          <div class="project-topline badge-row">
-            <span class="project-type">Functional App</span>
-            <span class="project-chip">Completed</span>
-            <span class="project-chip">API Integrated</span>
-          </div>
-
-          <h3>News App</h3>
-          <p class="project-short">Live news app with search, categories, article details, and localization.</p>
-
-          <div class="tech-list compact-tech-list" aria-label="News App tech stack">
+          <div class="hero-meta" aria-label="Core details">
+            <span>Egypt</span>
             <span>Flutter</span>
             <span>Dart</span>
-            <span>Cubit</span>
-            <span>Dio</span>
-            <span>NewsAPI</span>
-          </div>
-
-          <div class="project-actions">
-            <button class="btn btn-small btn-primary" type="button" data-project-open="news"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-            <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/news_app" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-            <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card reveal delay-1" data-project-card="meals">
-        <button class="project-image project-image-button" type="button" data-project-open="meals" aria-label="Open Meals App details">
-          <img src="assets/project_meals_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/project_meals_app_photo.jpg';" alt="Meals App screenshot showing meal recipe list" loading="lazy" width="520" height="360" />
-        </button>
-
-        <div class="project-content">
-          <div class="project-topline badge-row">
-            <span class="project-type">Local Storage App</span>
-            <span class="project-chip">Completed</span>
-            <span class="project-chip">SQLite</span>
-          </div>
-
-          <h3>Meals App</h3>
-          <p class="project-short">Meal recipe app using local storage, validation, onboarding, and responsive screens.</p>
-
-          <div class="tech-list compact-tech-list" aria-label="Meals App tech stack">
-            <span>Flutter</span>
-            <span>Dart</span>
+            <span>REST APIs</span>
+            <span>GoRouter</span>
             <span>SQLite</span>
-            <span>SharedPreferences</span>
-            <span>GoRouter</span>
           </div>
 
-          <div class="project-actions">
-            <button class="btn btn-small btn-primary" type="button" data-project-open="meals"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-            <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/meals-app-" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-            <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
+          <div class="social-row">
+            <a href="https://github.com/rimonnnn" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">Email</a>
           </div>
         </div>
-      </article>
 
-      <article class="project-card is-coming-soon reveal delay-2" data-project-card="ecommerce" aria-label="E-commerce App project in progress">
-        <button class="project-placeholder project-image-button" type="button" data-project-open="ecommerce" aria-label="Open E-commerce App details">
-          <div>
-            <strong>E-commerce App</strong>
-            <span>In Progress — ~60% Complete</span>
-          </div>
-        </button>
+        <div class="hero-visual reveal delay-1" aria-label="Flutter project previews">
+          <div class="glow glow-one"></div>
+          <div class="glow glow-two"></div>
 
-        <div class="project-content">
-          <div class="project-topline badge-row">
-            <span class="project-type">In Progress</span>
-            <span class="project-chip">E-commerce</span>
-            <span class="project-chip">Clean Architecture</span>
+          <div class="hero-profile-frame" aria-label="Rimon Abdelmasih profile photo">
+            <img src="./assets/profile_photo.png" onerror="this.onerror=null;this.src='profile_photo.png';" alt="Photo of Rimon Abdelmasih" width="190" height="190" loading="eager" decoding="async" />
+            <span class="open-work-badge">Open to Work 🚀</span>
           </div>
 
-          <h3>E-commerce App</h3>
-          <p class="project-short">Production-style shopping app focused on auth, products, cart, favorites, APIs, and local token storage.</p>
+          <div class="mockup-stack">
+            <article class="phone-card phone-card-small left">
+              <img src="./assets/meals_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/meals_app.png';" alt="Meals App preview" loading="lazy" decoding="async" />
+            </article>
 
-          <div class="tech-list compact-tech-list" aria-label="E-commerce App planned tech stack">
-            <span>Flutter</span>
-            <span>Dart</span>
-            <span>Cubit/Bloc</span>
-            <span>Dio</span>
-            <span>Clean Architecture</span>
+            <article class="phone-card main-phone">
+              <img src="assets/news_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/news_app.png';" alt="News App preview" loading="eager" decoding="async" />
+            </article>
+
+            <article class="phone-card phone-card-small right">
+              <img src="./assets/finance_app.png" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/finance_app.png';" alt="Finance App preview" loading="lazy" decoding="async" />
+            </article>
           </div>
 
-          <div class="progress-wrap" aria-label="E-commerce App completion progress">
-            <div class="progress-meta"><span>In Progress — ~60% Complete</span><strong>60%</strong></div>
-            <div class="progress-track"><span style="width:60%"></span></div>
+          <div class="visual-card">
+            <strong>Flutter &amp; Dart</strong>
+            <span>Responsive iOS &amp; Android apps with maintainable codebases.</span>
           </div>
-
-          <div class="project-actions">
-            <button class="btn btn-small btn-primary" type="button" data-project-open="ecommerce"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-            <span class="btn btn-small btn-disabled" aria-disabled="true"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>In Progress — ~60% Complete</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card reveal delay-3" data-project-card="finance">
-        <button class="project-image project-image-button" type="button" data-project-open="finance" aria-label="Open Finance App UI details">
-          <img src="assets/project_finance_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/finance_app.png';" alt="Finance App UI screenshot showing dashboard and statistics screens" loading="lazy" width="520" height="360" />
-        </button>
-
-        <div class="project-content">
-          <div class="project-topline badge-row">
-            <span class="project-type">UI Project</span>
-            <span class="project-chip">UI Only</span>
-            <span class="project-chip">Provider</span>
-          </div>
-
-          <h3>Finance App UI</h3>
-          <p class="project-short">Finance app interface with onboarding, authentication, dashboard, and profile screens.</p>
-
-          <div class="tech-list compact-tech-list" aria-label="Finance App tech stack">
-            <span>Flutter</span>
-            <span>Dart</span>
-            <span>Provider</span>
-            <span>GoRouter</span>
-            <span>Custom UI</span>
-          </div>
-
-          <div class="project-actions">
-            <button class="btn btn-small btn-primary" type="button" data-project-open="finance"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-            <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/financeApp" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-            <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="projects-footer reveal">
-      <a class="btn btn-secondary" href="https://github.com/rimonnnn?tab=repositories" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>View All Repositories</a>
-    </div>
-  </div>
-</section>
-
-<div class="project-modal" id="projectModal" aria-hidden="true">
-  <div class="project-modal__backdrop" data-modal-close></div>
-
-  <article class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" tabindex="-1">
-    <button class="project-modal__close" type="button" data-modal-close aria-label="Close project details">×</button>
-
-    <div class="project-modal__media" id="modalProjectMedia"></div>
-
-    <div class="project-modal__body">
-      <span class="project-modal__label" id="modalProjectLabel"></span>
-      <h2 id="modalProjectTitle"></h2>
-      <p class="project-modal__overview" id="modalProjectOverview"></p>
-
-      <div class="project-modal__sections" id="modalProjectSections"></div>
-
-      <div class="tech-list project-modal__tech" id="modalProjectTech" aria-label="Project tech stack"></div>
-
-      <div class="project-actions project-modal__actions" id="modalProjectLinks"></div>
-    </div>
-  </article>
-</div>
-
-<section class="ai-project section-padding" id="ai-project">
-  <div class="container">
-    <div class="section-heading centered reveal">
-      <p class="section-kicker">AI Projects</p>
-      <h2>AI and Data Science work, presented with the same project-card system.</h2>
-      <p>Compact AI project cards for quick scanning, with full Reinforcement Learning details available inside the responsive modal.</p>
-    </div>
-
-    <div class="project-grid">
-      <article class="project-card reveal" data-project-card="gridworld">
-        <button class="project-image project-image-button" type="button" data-project-open="gridworld" aria-label="Open Grid World Q-Learning Game details">
-          <img src="./assets/grid_world_game.png" onerror="this.onerror=null;this.src='assets/grid_world_game.png';" alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal" loading="lazy" width="520" height="360" />
-        </button>
-
-        <div class="project-content">
-          <div class="project-topline badge-row">
-            <span class="project-type">AI Project</span>
-            <span class="project-chip">Reinforcement Learning</span>
-            <span class="project-chip">Playable</span>
-          </div>
-
-          <h3>Grid World Q-Learning Game</h3>
-          <p class="project-short">Interactive Q-Learning game where an agent learns to reach a goal while avoiding fire cells.</p>
-
-          <div class="tech-list compact-tech-list" aria-label="Grid World AI concepts and tech stack">
-            <span>Python</span>
-            <span>Q-Learning</span>
-            <span>Reinforcement Learning</span>
-            <span>Tkinter</span>
-            <span>JSON</span>
-          </div>
-
-          <div class="project-actions">
-            <button class="btn btn-small btn-primary" type="button" data-project-open="gridworld"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-            <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/grid_world_game.git" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-            <a class="btn btn-small btn-secondary" href="grid_world_game/index.html" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 12h12"/><path d="M12 6v12"/><path d="M17 17l3 3"/><path d="M7 17l-3 3"/><rect x="3" y="8" width="18" height="8" rx="4"/></svg>Try Game</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="build section-padding" id="build">
-  <div class="container">
-    <div class="section-heading centered reveal">
-      <p class="section-kicker">What I Can Build</p>
-      <h2>Mobile features for real products.</h2>
-      <p>Clean Flutter screens and app flows ready to connect with APIs, local storage, and production-style structure.</p>
-    </div>
-
-    <div class="build-grid compact-build">
-      <article class="build-card reveal">
-        <span>API</span>
-        <h3>API-Based Flutter Apps</h3>
-        <p>Mobile apps connected to REST APIs with Dio, JSON parsing, loading states, and error handling.</p>
-        <a class="build-ref" href="#projects">→ See: News App</a>
-      </article>
-
-      <article class="build-card reveal delay-1">
-        <span>Storage</span>
-        <h3>Local Storage Apps</h3>
-        <p>Offline-friendly features using SQLite and SharedPreferences for app data and user preferences.</p>
-        <a class="build-ref" href="#projects">→ See: Meals App</a>
-      </article>
-
-      <article class="build-card reveal delay-2">
-        <span>Auth</span>
-        <h3>Auth & Onboarding Flows</h3>
-        <p>Login, register, onboarding, OTP UI, validation, and clean user journey screens.</p>
-        <a class="build-ref" href="#projects">→ See: Finance App</a>
-      </article>
-
-      <article class="build-card reveal">
-        <span>Tasks</span>
-        <h3>Admin / User Task Apps</h3>
-        <p>Role-based screens for admins, users, teams, tasks, dashboards, and workflow management.</p>
-        <a class="build-ref" href="#projects">→ See: E-commerce App</a>
-      </article>
-
-      <article class="build-card reveal delay-1">
-        <span>UI</span>
-        <h3>Responsive UI from Figma</h3>
-        <p>Modern mobile screens converted from designs into responsive Flutter layouts and reusable widgets.</p>
-        <a class="build-ref" href="#projects">→ See: Finance App</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="skills section-padding" id="skills">
-  <div class="container">
-    <div class="section-heading centered reveal">
-      <p class="section-kicker">Technical Skills</p>
-      <h2>Grouped for quick scanning.</h2>
-      <p>Skills I use across Flutter projects, APIs, local storage, UI implementation, and AI/Data Science basics.</p>
-    </div>
-
-    <div class="skills-grid">
-      <article class="skill-card reveal">
-        <h3>Flutter Core</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">Flutter</span>
-          <span class="skill-chip">Dart</span>
-          <span class="skill-chip">Responsive UI</span>
-          <span class="skill-chip">Custom Widgets</span>
-          <span class="skill-chip">GoRouter</span>
-        </div>
-      </article>
-
-      <article class="skill-card reveal delay-1">
-        <h3>State Management</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">Cubit</span>
-          <span class="skill-chip">Bloc</span>
-          <span class="skill-chip">Provider</span>
-        </div>
-      </article>
-
-      <article class="skill-card reveal delay-2">
-        <h3>APIs & Storage</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">REST APIs</span>
-          <span class="skill-chip">Dio</span>
-          <span class="skill-chip">JSON</span>
-          <span class="skill-chip">SQLite</span>
-          <span class="skill-chip">SharedPreferences</span>
-          <span class="skill-chip">Error Handling</span>
-        </div>
-      </article>
-
-      <article class="skill-card reveal">
-        <h3>Code Quality</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">OOP</span>
-          <span class="skill-chip">SOLID Basics</span>
-          <span class="skill-chip">Clean Architecture Basics</span>
-          <span class="skill-chip">Feature-based Structure</span>
-          <span class="skill-chip">Reusable Widgets</span>
-        </div>
-      </article>
-
-      <article class="skill-card reveal delay-1">
-        <h3>Tools</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">Git</span>
-          <span class="skill-chip">GitHub</span>
-          <span class="skill-chip">Postman</span>
-          <span class="skill-chip">Figma</span>
-          <span class="skill-chip">Android Studio</span>
-          <span class="skill-chip">VS Code</span>
-        </div>
-      </article>
-
-      <article class="skill-card reveal delay-2">
-        <h3>AI & Data Basics</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">Pandas</span>
-          <span class="skill-chip">NumPy</span>
-          <span class="skill-chip">Machine Learning Basics</span>
-          <span class="skill-chip">Q-Learning Basics</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-<section class="training section-padding" id="training">
-  <div class="container two-column">
-    <div class="section-heading reveal">
-      <p class="section-kicker">Training & Certifications</p>
-      <h2>Hands-on learning behind my Flutter path.</h2>
-      <p>Training programs and courses focused on practical mobile development, teamwork, and project delivery.</p>
-    </div>
-
-    <div class="timeline cert-grid reveal delay-1">
-      <article class="timeline-item certificate-card">
-        <div class="certificate-thumb certificate-placeholder" aria-hidden="true">NTI</div>
-        <div class="certificate-body">
-          <time>Mar 2026 — Present</time>
-          <h3>Flutter Developer Trainee — NTI</h3>
-          <p>Intensive training covering Dart, OOP, Flutter, Clean Architecture, SOLID principles, Dio, local storage, and animations.</p>
-        </div>
-      </article>
-
-      <article class="timeline-item certificate-card">
-        <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener" aria-label="View Sprints Microsoft certificate">
-          <img src="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" alt="Sprints and Microsoft Mobile Development Bootcamp certificate preview" loading="lazy" />
-        </a>
-        <div class="certificate-body">
-          <time>2025</time>
-          <h3>Mobile Development Bootcamp — Sprints × Microsoft</h3>
-          <p>Practical mobile development program focused on teamwork, implementation, code reviews, and real project delivery.</p>
-          <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener">View Certificate</a>
-        </div>
-      </article>
-
-      <article class="timeline-item certificate-card">
-        <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener" aria-label="View Udemy Flutter and Dart certificate">
-          <img src="https://rimonnnn.github.io/certificates/udemy_1.jpeg" alt="Udemy Flutter and Dart course certificate preview" loading="lazy" />
-        </a>
-        <div class="certificate-body"> 
-          <time>2025</time>
-          <h3>Flutter & Dart Course — Udemy</h3>
-          <p>Structured learning covering UI development, navigation, REST API integration, and project-based Flutter practice.</p>
-          <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener">View Certificate</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="contact section-padding" id="contact">
-  <div class="container">
-    <div class="contact-card reveal">
-      <div>
-        <p class="section-kicker">Let’s Work Together</p>
-        <h2>Have a Flutter role, internship opportunity, or freelance project?</h2>
-        <p>Available for Flutter internships, junior roles, and small freelance mobile app projects.</p>
-
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email Directly</a>
-          <a class="btn btn-secondary" href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you." target="_blank" rel="noopener noreferrer"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>WhatsApp</a>
-          <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-        </div>
-
-        <div class="contact-details">
-          <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">rimonabdelmasih92@gmail.com</a>
-          <a 
-            href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you."
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Contact Rimon on WhatsApp"
-          >
-            +20 120 617 4130
-          </a>
-          <span>Egypt</span>
         </div>
       </div>
+    </section>
 
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdwnzdo" method="POST">
-        <input type="hidden" name="_subject" value="New portfolio message from Rimon.dev">
+    <section class="about section-padding" id="about">
+      <div class="container about-layout">
+        <div class="about-intro reveal">
+          <p class="section-kicker">About Me</p>
+          <h2>Building reliable Flutter apps with clean structure and practical features.</h2>
+          <p>
+            I’m a Flutter Developer from Egypt building responsive Flutter apps with REST APIs, local storage, routing, and maintainable feature-based structure. I’m currently training at NTI and looking for Flutter internship or entry-level opportunities where I can contribute to real product features and keep improving through practical work.
+          </p>
 
-        <div class="form-row">
-          <div class="form-field">
-            <label for="clientName">Name</label>
-            <input id="clientName" type="text" name="name" placeholder="Your name" required>
+          <div class="about-highlights">
+            <span>Flutter</span>
+            <span>Dart</span>
+            <span>REST APIs</span>
+            <span>Local Storage</span>
+            <span>Clean Structure</span>
+          </div>
+        </div>
+
+        <div class="about-showcase reveal delay-1">
+          <div class="profile-frame">
+            <img
+              src="assets/about_photo.jpg"
+              onerror="this.onerror=null;this.src='profile_photo.png';"
+              alt="Photo of Rimon Abdelmasih"
+              loading="lazy"
+              decoding="async"
+              width="360"
+              height="450"
+            />
           </div>
 
-          <div class="form-field">
-            <label for="clientEmail">Email</label>
-            <input id="clientEmail" type="email" name="email" placeholder="you@example.com" required>
+          <div class="about-card premium-about-card">
+            <div class="about-profile-text">
+              <h3>Rimon Abdelmasih</h3>
+              <p>Flutter Developer · Egypt</p>
+            </div>
+
+            <div class="stats-grid about-stats">
+              <div>
+                <strong>4+</strong>
+                <span>Practice &amp; Portfolio Projects</span>
+              </div>
+              <div>
+                <strong>2+</strong>
+                <span>Training Programs</span>
+              </div>
+              <div>
+                <strong>1</strong>
+                <span>Main Focus: Flutter</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="form-field">
-          <label for="clientMessage">Message</label>
-          <textarea id="clientMessage" name="message" placeholder="Tell me about the role, internship, or project..." required></textarea>
+        <div class="about-details-grid">
+          <div class="education-card reveal">
+            <h3>Education</h3>
+            <div class="education-meta">
+              <div>
+                <strong>Expected Graduation</strong>
+                <span>2027</span>
+              </div>
+              <div>
+                <strong>Degree</strong>
+                <span>B.Sc. in Computers and Information — AI &amp; Data Science Track</span>
+              </div>
+              <div>
+                <strong>Faculty / University</strong>
+                <span>Faculty of Computers and Information, Beni-Suef National University</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quality-card reveal delay-1">
+            <h3>Code Quality Focus</h3>
+            <div class="quality-list">
+              <span>Feature-based folder structure</span>
+              <span>Reusable widgets</span>
+              <span>Clear state handling</span>
+              <span>API error handling</span>
+              <span>Responsive design</span>
+              <span>Clean and readable code</span>
+              <span>GitHub README documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects section-padding" id="projects">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="section-kicker">Featured Projects</p>
+          <h2>Clean project cards with full details on demand.</h2>
+          <p>Compact cards for fast scanning, with detailed case-study information available inside responsive project modals.</p>
         </div>
 
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        <div class="form-actions-row" aria-label="Choose how to send your message">
-          <button class="btn btn-primary" id="submitButton" type="submit"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Send via Email</button>
-          <button class="btn btn-secondary" id="whatsappSubmitButton" type="button"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>Send via WhatsApp</button>
+        <div class="project-grid">
+          <article class="project-card reveal" data-project-card="news">
+            <button class="project-image project-image-button" type="button" data-project-open="news" aria-label="Open News App details">
+              <img src="assets/project_news_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/news_app.jpg';" alt="News App screenshot showing live article feed" loading="lazy" decoding="async" width="520" height="360" />
+            </button>
+
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">Functional App</span>
+                <span class="project-chip">Completed</span>
+                <span class="project-chip">API Integrated</span>
+              </div>
+
+              <h3>News App</h3>
+              <p class="project-short">Live news app with search, categories, article details, and localization.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="News App tech stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Cubit</span>
+                <span>Dio</span>
+                <span>NewsAPI</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="news"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/news_app" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal delay-1" data-project-card="meals">
+            <button class="project-image project-image-button" type="button" data-project-open="meals" aria-label="Open Meals App details">
+              <img src="assets/project_meals_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/project_meals_app_photo.jpg';" alt="Meals App screenshot showing meal recipe list" loading="lazy" decoding="async" width="520" height="360" />
+            </button>
+
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">Local Storage App</span>
+                <span class="project-chip">Completed</span>
+                <span class="project-chip">SQLite</span>
+              </div>
+
+              <h3>Meals App</h3>
+              <p class="project-short">Meal recipe app using local storage, validation, onboarding, and responsive screens.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="Meals App tech stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>SQLite</span>
+                <span>SharedPreferences</span>
+                <span>GoRouter</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="meals"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/meals-app-" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card is-coming-soon reveal delay-2" data-project-card="ecommerce" aria-label="E-commerce App project in progress">
+            <button class="project-placeholder project-image-button" type="button" data-project-open="ecommerce" aria-label="Open E-commerce App details">
+              <div>
+                <strong>E-commerce App</strong>
+                <span>In Progress — ~60% Complete</span>
+              </div>
+            </button>
+
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">In Progress</span>
+                <span class="project-chip">E-commerce</span>
+                <span class="project-chip">Clean Architecture</span>
+              </div>
+
+              <h3>E-commerce App</h3>
+              <p class="project-short">Production-style shopping app focused on auth, products, cart, favorites, APIs, and local token storage.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="E-commerce App planned tech stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Cubit/Bloc</span>
+                <span>Dio</span>
+                <span>Clean Architecture</span>
+              </div>
+
+              <div class="progress-wrap" aria-label="E-commerce App completion progress">
+                <div class="progress-meta"><span>In Progress — ~60% Complete</span><strong>60%</strong></div>
+                <div class="progress-track"><span style="width:60%"></span></div>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="ecommerce"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <span class="btn btn-small btn-disabled" aria-disabled="true"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>In Progress — ~60% Complete</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal delay-3" data-project-card="finance">
+            <button class="project-image project-image-button" type="button" data-project-open="finance" aria-label="Open Finance App UI details">
+              <img src="assets/project_finance_app_photo.jpg" onerror="this.onerror=null;this.src='https://rimonnnn.github.io/assets/finance_app.png';" alt="Finance App UI screenshot showing dashboard and statistics screens" loading="lazy" decoding="async" width="520" height="360" />
+            </button>
+
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">UI Project</span>
+                <span class="project-chip">UI Only</span>
+                <span class="project-chip">Provider</span>
+              </div>
+
+              <h3>Finance App UI</h3>
+              <p class="project-short">Finance app interface with onboarding, authentication, dashboard, and profile screens.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="Finance App tech stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Provider</span>
+                <span>GoRouter</span>
+                <span>Custom UI</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="finance"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/financeApp" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
+              </div>
+            </div>
+          </article>
         </div>
-        <p class="form-hint">Choose Email to send the message through the contact form, or WhatsApp to open a ready message directly.</p>
-      </form>
+
+        <div class="projects-footer reveal">
+          <a class="btn btn-secondary" href="https://github.com/rimonnnn?tab=repositories" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>View All Repositories</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+      <div class="project-modal__backdrop" data-modal-close></div>
+
+      <article class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" tabindex="-1">
+        <button class="project-modal__close" type="button" data-modal-close aria-label="Close project details">×</button>
+
+        <div class="project-modal__media" id="modalProjectMedia"></div>
+
+        <div class="project-modal__body">
+          <span class="project-modal__label" id="modalProjectLabel"></span>
+          <h2 id="modalProjectTitle"></h2>
+          <p class="project-modal__overview" id="modalProjectOverview"></p>
+
+          <div class="project-modal__sections" id="modalProjectSections"></div>
+
+          <div class="tech-list project-modal__tech" id="modalProjectTech" aria-label="Project tech stack"></div>
+
+          <div class="project-actions project-modal__actions" id="modalProjectLinks"></div>
+        </div>
+      </article>
     </div>
-  </div>
-</section>
-</main> <footer class="footer"> <div class="container footer-inner"> <p>© 2026 Rimon Abdelmasih · Junior Flutter Developer · Egypt</p> <a href="#top">Back to top</a> </div> </footer> <script> const rootBody = document.body; const themeToggle = document.getElementById('themeToggle'); const storedTheme = localStorage.getItem('portfolio-theme'); const initialTheme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark'; function applyTheme(theme) { rootBody.setAttribute('data-theme', theme); if (themeToggle) { const isLight = theme === 'light'; themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode'); themeToggle.setAttribute('aria-pressed', String(isLight)); const icon = themeToggle.querySelector('.theme-toggle__icon'); if (icon) icon.textContent = isLight ? '☀' : '☾'; } } applyTheme(initialTheme); themeToggle?.addEventListener('click', () => { const nextTheme = rootBody.getAttribute('data-theme') === 'light' ? 'dark' : 'light'; localStorage.setItem('portfolio-theme', nextTheme); applyTheme(nextTheme); }); const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks'); menuToggle?.addEventListener('click', () => { const isOpen = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', String(isOpen)); }); navLinks?.querySelectorAll('a').forEach((link) => { link.addEventListener('click', () => { navLinks.classList.remove('open'); menuToggle?.setAttribute('aria-expanded', 'false'); }); }); const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; const typewriterElement = document.getElementById('typewriterRole'); const typewriterRoles = ['Flutter Developer', 'Mobile App Builder', 'REST API Integrator']; let typewriterRoleIndex = 0; let typewriterCharIndex = 0; let typewriterDeleting = false; function runTypewriter() { if (!typewriterElement || prefersReducedMotion) return; const currentRole = typewriterRoles[typewriterRoleIndex]; typewriterElement.textContent = currentRole.slice(0, typewriterCharIndex); if (!typewriterDeleting && typewriterCharIndex < currentRole.length) { typewriterCharIndex += 1; window.setTimeout(runTypewriter, 78); return; } if (!typewriterDeleting && typewriterCharIndex === currentRole.length) { typewriterDeleting = true; window.setTimeout(runTypewriter, 1200); return; } if (typewriterDeleting && typewriterCharIndex > 0) { typewriterCharIndex -= 1; window.setTimeout(runTypewriter, 38); return; } typewriterDeleting = false; typewriterRoleIndex = (typewriterRoleIndex + 1) % typewriterRoles.length; window.setTimeout(runTypewriter, 250); } if (typewriterElement) { if (prefersReducedMotion) { typewriterElement.textContent = typewriterRoles[0]; } else { runTypewriter(); } } const counters = document.querySelectorAll('.counter[data-count]'); const animateCounter = (counter) => { const target = Number(counter.dataset.count || 0); if (!target) return; const duration = 950; const start = performance.now(); const tick = (now) => { const progress = Math.min((now - start) / duration, 1); const eased = 1 - Math.pow(1 - progress, 3); counter.textContent = String(Math.round(target * eased)); if (progress < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }; const counterObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target); } }); }, { threshold: 0.6 }); counters.forEach((counter) => { if (prefersReducedMotion) { counter.textContent = counter.dataset.count || counter.textContent; } else { counterObserver.observe(counter); } }); const revealObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.12 }); document.querySelectorAll('.reveal').forEach((element) => { if (prefersReducedMotion) { element.classList.add('visible'); } else { revealObserver.observe(element); } }); const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]')); const sections = sectionLinks .map((link) => document.querySelector(link.getAttribute('href'))) .filter(Boolean); const setActiveLink = (id) => { sectionLinks.forEach((link) => { link.classList.toggle('active', link.getAttribute('href') === `#${id}`); }); }; const navObserver = new IntersectionObserver((entries) => { const visibleEntries = entries .filter((entry) => entry.isIntersecting) .sort((a, b) => b.intersectionRatio - a.intersectionRatio); if (visibleEntries.length) { setActiveLink(visibleEntries[0].target.id); } }, { rootMargin: '-22% 0px -58% 0px', threshold: [0.18, 0.32, 0.5] }); sections.forEach((section) => navObserver.observe(section)); const contactForm = document.getElementById('contactForm'); const formStatus = document.getElementById('formStatus'); const submitButton = document.getElementById('submitButton'); const whatsappSubmitButton = document.getElementById('whatsappSubmitButton'); const whatsappNumber = '201206174130'; const showFormStatus = (message, type) => { if (!formStatus) return; formStatus.textContent = message; formStatus.className = `form-status visible ${type}`; }; const getContactFormData = () => ({ name: document.getElementById('clientName')?.value.trim() || '', email: document.getElementById('clientEmail')?.value.trim() || '', message: document.getElementById('clientMessage')?.value.trim() || '' }); contactForm?.addEventListener('submit', async (event) => { event.preventDefault(); if (!submitButton) return; const originalText = submitButton.textContent; submitButton.textContent = 'Sending via Email...'; submitButton.setAttribute('disabled', 'true'); whatsappSubmitButton?.setAttribute('disabled', 'true'); formStatus?.classList.remove('visible', 'success', 'error'); try { const response = await fetch(contactForm.action, { method: 'POST', body: new FormData(contactForm), headers: { Accept: 'application/json' } }); if (response.ok) { contactForm.reset(); showFormStatus('Message sent by email successfully. I will get back to you soon.', 'success'); } else { showFormStatus('Email sending failed. Please try again or use WhatsApp instead.', 'error'); } } catch (error) { showFormStatus('Network error. Please try again or send the message via WhatsApp.', 'error'); } finally { submitButton.textContent = originalText; submitButton.removeAttribute('disabled'); whatsappSubmitButton?.removeAttribute('disabled'); } }); whatsappSubmitButton?.addEventListener('click', () => { if (!contactForm) return; if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; } const { name, email, message } = getContactFormData(); const whatsappMessage = `Hi Rimon, I saw your portfolio and would like to contact you. Name: ${name} Email: ${email} Message: ${message}`; const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`; showFormStatus('Opening WhatsApp with your message ready to send.', 'success'); window.open(whatsappUrl, '_blank', 'noopener,noreferrer'); }); function getButtonIcon(typeOrLabel = '') { const key = String(typeOrLabel).toLowerCase(); if (key.includes('github')) { return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>'; } if (key.includes('try') || key.includes('game') || key.includes('app')) { return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>'; } if (key.includes('demo') || key.includes('live') || key.includes('preview')) { return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>'; } return '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>'; } const projectDetails = { news: { label: 'Functional App · Completed · API Integrated', title: 'News App', image: 'assets/project_news_app_photo.jpg', fallbackImage: 'https://rimonnnn.github.io/assets/project_news_app_photo.jpg', imageAlt: 'News App screenshot showing live article feed', overview: 'A live news Flutter app for browsing headlines through API data, with search, categories, article details, localization, and clear loading/error handling.', purpose: 'Build an API-based Flutter app that demonstrates real content fetching, category filtering, search, article details, and localization.', role: 'Built the UI, integrated NewsAPI with Dio, managed Cubit states, implemented routing, localization, and reusable widgets.', features: ['Live API headlines', 'Search flow', 'News categories', 'Article details screen', 'Arabic/English localization', 'Loading and error states'], technical: ['Dio for REST API requests', 'Cubit/Bloc for state management', 'GoRouter for navigation', 'Easy Localization for multilingual support', 'Cached Network Image for network images', 'ScreenUtil for responsive sizing'], challenges: 'Handled API loading, empty results, and error states clearly so the user experience stays understandable instead of showing broken screens.', tech: ['Flutter', 'Dart', 'Cubit', 'Bloc', 'Dio', 'NewsAPI', 'GoRouter', 'Easy Localization', 'Cached Network Image', 'ScreenUtil'], links: [ { label: 'GitHub', url: 'https://github.com/rimonnnn/news_app', primary: true }, { label: 'Demo Video', url: 'https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link' } ] }, meals: { label: 'Local Storage App · Completed · SQLite', title: 'Meals App', image: 'assets/project_meals_app_photo.jpg', fallbackImage: 'https://rimonnnn.github.io/assets/project_meals_app_photo.jpg', imageAlt: 'Meals App screenshot showing meal recipe list', overview: 'A local-storage Flutter recipe app for saving and viewing meals without depending on an online backend, with onboarding, validation, and responsive screens.', purpose: 'Create an offline-friendly app that proves local persistence, form handling, navigation, and clean screen structure.', role: 'Implemented the UI, SQLite flow, onboarding persistence, form validation, navigation, and responsive layouts.', features: ['Meal recipe screens', 'Local SQLite storage', 'Onboarding persistence', 'Form validation', 'Responsive UI', 'Clean navigation flow'], technical: ['SQLite for saved meal data', 'SharedPreferences for onboarding state', 'GoRouter for screen navigation', 'ScreenUtil for responsive UI', 'Reusable form and layout widgets'], challenges: 'Separated local data handling from UI flow so the app remains easier to maintain and expand.', tech: ['Flutter', 'Dart', 'SQLite', 'SharedPreferences', 'GoRouter', 'ScreenUtil', 'Form Validation'], links: [ { label: 'GitHub', url: 'https://github.com/rimonnnn/meals-app-', primary: true }, { label: 'Demo Video', url: 'https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link' } ] }, ecommerce: { label: 'In Progress · E-commerce · Clean Architecture', title: 'E-commerce App', placeholder: true, progress: 60, overview: 'A production-style Flutter e-commerce app in progress, focused on authentication, products, cart, favorites, API integration, local token storage, and clean architecture.', purpose: 'Build a realistic shopping app flow that demonstrates product browsing, user actions, local session handling, and API-driven screens.', role: 'Designing and implementing the app structure, authentication flow, API layer, state management, product modules, and local session handling.', features: ['Authentication flow', 'Product listing', 'Product details', 'Cart flow', 'Favorites', 'Local token storage', 'API-driven screens'], technical: ['Clean Architecture approach', 'Cubit/Bloc state management', 'Dio for REST APIs', 'Local storage for auth/session data', 'Feature-based project structure'], challenges: 'Main focus is keeping the architecture clean while adding real product features without turning the project into messy screen-based code.', tech: ['Flutter', 'Dart', 'Cubit/Bloc', 'Dio', 'REST APIs', 'Local Storage', 'Clean Architecture'], links: [] }, finance: { label: 'UI Project · Provider · Completed', title: 'Finance App UI', image: 'assets/project_finance_app_photo.jpg', fallbackImage: 'https://rimonnnn.github.io/assets/project_finance_app_photo.jpg', imageAlt: 'Finance App UI screenshot showing dashboard and statistics screens', overview: 'A polished finance mobile UI project showing onboarding, authentication screens, OTP UI, dashboard screens, profile screens, and reusable custom components.', purpose: 'Demonstrate modern Flutter UI implementation, screen flow, reusable widgets, and responsive dashboard layouts.', role: 'Built reusable UI components, navigation flow, authentication screens, dashboard UI, profile UI, and Provider-based state handling.', features: ['Onboarding screens', 'Authentication UI', 'OTP UI', 'Dashboard screens', 'Profile screens', 'Reusable custom UI components'], technical: ['Provider and ChangeNotifier for simple state handling', 'GoRouter for navigation', 'ScreenUtil for responsive sizing', 'Flutter SVG support', 'Pin Code input UI', 'Carousel Slider for onboarding'], challenges: 'Kept the project clearly positioned as UI-focused without pretending it has backend integration.', tech: ['Flutter', 'Dart', 'Provider', 'ChangeNotifier', 'GoRouter', 'ScreenUtil', 'Flutter SVG', 'Pin Code', 'Carousel Slider', 'Custom UI'], links: [ { label: 'GitHub', url: 'https://github.com/rimonnnn/financeApp', primary: true }, { label: 'Demo Video', url: 'https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link' } ] }, gridworld: { label: 'AI Project · Reinforcement Learning · Q-Learning', title: 'Grid World Q-Learning Game', image: './assets/grid_world_game.png', fallbackImage: 'assets/grid_world_game.png', imageAlt: 'Grid World Q-Learning Game cover showing agent, fire cells, and goal', overview: 'An interactive Python/Tkinter game demonstrating Q-Learning where an agent learns to reach a goal while avoiding fire cells using rewards, penalties, exploration, and a Q-table.', purpose: 'Show reinforcement learning basics through a visual grid environment where decisions improve over time based on Q-values and reward feedback.', role: 'Built the grid environment, movement rules, reward system, Q-table storage, learning flow, Tkinter interface, and playable web version.', features: ['Agent movement inside a grid', 'Start, goal, and fire cells', 'Reward and penalty system', 'Q-table learning', 'JSON persistence', 'Playable web version'], aiConcepts: ['Reinforcement Learning', 'Q-Learning', 'Q-table', 'Rewards and penalties', 'Exploration vs exploitation', 'State-action values'], technical: ['Q-Learning update logic', 'Grid environment design', 'Reward shaping', 'Tkinter UI for visualization', 'JSON storage for learned Q-values', 'Web version for portfolio interaction'], challenges: 'The main challenge was making the learning process understandable visually, not just mathematically. The solution was to keep the grid simple, show clear states, and connect actions with rewards, penalties, and saved Q-values.', tech: ['Python', 'Reinforcement Learning', 'Q-Learning', 'Tkinter', 'JSON', 'HTML', 'CSS', 'JavaScript'], links: [ { label: 'GitHub', url: 'https://github.com/rimonnnn/grid_world_game.git', primary: true }, { label: 'Try Game', url: 'grid_world_game/index.html', type: 'game' } ] } }; const projectModal = document.getElementById('projectModal'); const modalPanel = projectModal?.querySelector('.project-modal__panel'); const modalMedia = document.getElementById('modalProjectMedia'); const modalLabel = document.getElementById('modalProjectLabel'); const modalTitle = document.getElementById('modalProjectTitle'); const modalOverview = document.getElementById('modalProjectOverview'); const modalSections = document.getElementById('modalProjectSections'); const modalTech = document.getElementById('modalProjectTech'); const modalLinks = document.getElementById('modalProjectLinks'); let lastFocusedProjectTrigger = null; function renderList(items) { return `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`; } function renderDetailBlock(title, content, isList = false) { if (!content || (Array.isArray(content) && content.length === 0)) return ''; return ` <div class="project-detail-block"> <strong>${title}</strong> ${isList ? renderList(content) : `<p>${content}</p>`} </div> `; } function openProjectModal(projectKey, triggerElement) { const project = projectDetails[projectKey]; if (!project || !projectModal) return; lastFocusedProjectTrigger = triggerElement || document.activeElement; if (project.placeholder) { modalMedia.innerHTML = ` <div class="project-modal__placeholder"> <div> <strong>${project.title}</strong> <span>In Progress — ~60% Complete</span> <div class="progress-wrap" style="width:min(280px,100%);margin:18px auto 0"> <div class="progress-track"><span style="width:${project.progress || 60}%"></span></div> </div> </div> </div> `; } else { modalMedia.innerHTML = ` <img src="${project.image}" onerror="this.onerror=null;this.src='${project.fallbackImage}';" alt="${project.imageAlt}" /> `; } modalLabel.textContent = project.label; modalTitle.textContent = project.title; modalOverview.textContent = project.overview; modalSections.innerHTML = [ renderDetailBlock('Purpose', project.purpose), renderDetailBlock('My Role', project.role), renderDetailBlock('Key Features', project.features, true), renderDetailBlock('AI / ML Concepts Used', project.aiConcepts, true), renderDetailBlock('Technical Highlights', project.technical, true), renderDetailBlock('Challenges & Solutions', project.challenges) ].join(''); modalTech.innerHTML = project.tech.map((tech) => `<span>${tech}</span>`).join(''); if (project.links.length > 0) { modalLinks.innerHTML = project.links .map((link) => `<a class="btn ${link.primary ? 'btn-primary' : 'btn-secondary'}" href="${link.url}" target="_blank" rel="noopener">${getButtonIcon(link.type || link.label)}${link.label}</a>`) .join(''); } else { modalLinks.innerHTML = '<span class="btn btn-disabled" aria-disabled="true"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>In Progress — ~60% Complete</span>'; } projectModal.classList.add('is-open'); projectModal.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-open'); modalPanel?.focus(); } function closeProjectModal() { if (!projectModal) return; projectModal.classList.remove('is-open'); projectModal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); if (lastFocusedProjectTrigger && typeof lastFocusedProjectTrigger.focus === 'function') { lastFocusedProjectTrigger.focus(); } } document.querySelectorAll('[data-project-open]').forEach((trigger) => { trigger.addEventListener('click', () => { openProjectModal(trigger.dataset.projectOpen, trigger); }); }); document.querySelectorAll('[data-modal-close]').forEach((trigger) => { trigger.addEventListener('click', closeProjectModal); }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && projectModal?.classList.contains('is-open')) { closeProjectModal(); } }); </script> </body> </html>
+
+    <section class="ai-project section-padding" id="ai-project">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="section-kicker">AI Projects</p>
+          <h2>AI and Data Science work, presented with the same project-card system.</h2>
+          <p>Compact AI project cards for quick scanning, with full Reinforcement Learning details available inside the responsive modal.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal" data-project-card="gridworld">
+            <button class="project-image project-image-button" type="button" data-project-open="gridworld" aria-label="Open Grid World Q-Learning Game details">
+              <img src="./assets/grid_world_game.png" onerror="this.onerror=null;this.src='assets/grid_world_game.png';" alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal" loading="lazy" decoding="async" width="520" height="360" />
+            </button>
+
+            <div class="project-content">
+              <div class="project-topline badge-row">
+                <span class="project-type">AI Project</span>
+                <span class="project-chip">Reinforcement Learning</span>
+                <span class="project-chip">Playable</span>
+              </div>
+
+              <h3>Grid World Q-Learning Game</h3>
+              <p class="project-short">Interactive Q-Learning game where an agent learns to reach a goal while avoiding fire cells.</p>
+
+              <div class="tech-list compact-tech-list" aria-label="Grid World AI concepts and tech stack">
+                <span>Python</span>
+                <span>Q-Learning</span>
+                <span>Reinforcement Learning</span>
+                <span>Tkinter</span>
+                <span>JSON</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-small btn-primary" type="button" data-project-open="gridworld"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
+                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/grid_world_game.git" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+                <a class="btn btn-small btn-secondary" href="grid_world_game/index.html" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 12h12"/><path d="M12 6v12"/><path d="M17 17l3 3"/><path d="M7 17l-3 3"/><rect x="3" y="8" width="18" height="8" rx="4"/></svg>Try Game</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="build section-padding" id="build">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="section-kicker">What I Can Build</p>
+          <h2>Mobile features for real products.</h2>
+          <p>Clean Flutter screens and app flows ready to connect with APIs, local storage, and production-style structure.</p>
+        </div>
+
+        <div class="build-grid compact-build">
+          <article class="build-card reveal">
+            <span>API</span>
+            <h3>API-Based Flutter Apps</h3>
+            <p>Mobile apps connected to REST APIs with Dio, JSON parsing, loading states, and error handling.</p>
+            <a class="build-ref" href="#projects">→ See: News App</a>
+          </article>
+
+          <article class="build-card reveal delay-1">
+            <span>Storage</span>
+            <h3>Local Storage Apps</h3>
+            <p>Offline-friendly features using SQLite and SharedPreferences for app data and user preferences.</p>
+            <a class="build-ref" href="#projects">→ See: Meals App</a>
+          </article>
+
+          <article class="build-card reveal delay-2">
+            <span>Auth</span>
+            <h3>Auth &amp; Onboarding Flows</h3>
+            <p>Login, register, onboarding, OTP UI, validation, and clean user journey screens.</p>
+            <a class="build-ref" href="#projects">→ See: Finance App</a>
+          </article>
+
+          <article class="build-card reveal">
+            <span>Tasks</span>
+            <h3>Admin / User Task Apps</h3>
+            <p>Role-based screens for admins, users, teams, tasks, dashboards, and workflow management.</p>
+            <a class="build-ref" href="#projects">→ See: E-commerce App</a>
+          </article>
+
+          <article class="build-card reveal delay-1">
+            <span>UI</span>
+            <h3>Responsive UI from Figma</h3>
+            <p>Modern mobile screens converted from designs into responsive Flutter layouts and reusable widgets.</p>
+            <a class="build-ref" href="#projects">→ See: Finance App</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills section-padding" id="skills">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="section-kicker">Technical Skills</p>
+          <h2>Grouped for quick scanning.</h2>
+          <p>Skills I use across Flutter projects, APIs, local storage, UI implementation, and AI/Data Science basics.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3>Flutter Core</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">Flutter</span>
+              <span class="skill-chip">Dart</span>
+              <span class="skill-chip">Responsive UI</span>
+              <span class="skill-chip">Custom Widgets</span>
+              <span class="skill-chip">GoRouter</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal delay-1">
+            <h3>State Management</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">Cubit</span>
+              <span class="skill-chip">Bloc</span>
+              <span class="skill-chip">Provider</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal delay-2">
+            <h3>APIs &amp; Storage</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">REST APIs</span>
+              <span class="skill-chip">Dio</span>
+              <span class="skill-chip">JSON</span>
+              <span class="skill-chip">SQLite</span>
+              <span class="skill-chip">SharedPreferences</span>
+              <span class="skill-chip">Error Handling</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Code Quality</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">OOP</span>
+              <span class="skill-chip">SOLID Basics</span>
+              <span class="skill-chip">Clean Architecture Basics</span>
+              <span class="skill-chip">Feature-based Structure</span>
+              <span class="skill-chip">Reusable Widgets</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal delay-1">
+            <h3>Tools</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">Git</span>
+              <span class="skill-chip">GitHub</span>
+              <span class="skill-chip">Postman</span>
+              <span class="skill-chip">Figma</span>
+              <span class="skill-chip">Android Studio</span>
+              <span class="skill-chip">VS Code</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal delay-2">
+            <h3>AI &amp; Data Basics</h3>
+            <div class="skill-chips">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">Pandas</span>
+              <span class="skill-chip">NumPy</span>
+              <span class="skill-chip">Machine Learning Basics</span>
+              <span class="skill-chip">Q-Learning Basics</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="training section-padding" id="training">
+      <div class="container two-column">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Training &amp; Certifications</p>
+          <h2>Hands-on learning behind my Flutter path.</h2>
+          <p>Training programs and courses focused on practical mobile development, teamwork, and project delivery.</p>
+        </div>
+
+        <div class="timeline cert-grid reveal delay-1">
+          <article class="timeline-item certificate-card">
+            <div class="certificate-thumb certificate-placeholder" aria-hidden="true">NTI</div>
+            <div class="certificate-body">
+              <time>Mar 2026 — Present</time>
+              <h3>Flutter Developer Trainee — NTI</h3>
+              <p>Intensive training covering Dart, OOP, Flutter, Clean Architecture, SOLID principles, Dio, local storage, and animations.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item certificate-card">
+            <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener" aria-label="View Sprints Microsoft certificate">
+              <img src="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" alt="Sprints and Microsoft Mobile Development Bootcamp certificate preview" loading="lazy" decoding="async" width="320" height="112" />
+            </a>
+            <div class="certificate-body">
+              <time>2025</time>
+              <h3>Mobile Development Bootcamp — Sprints × Microsoft</h3>
+              <p>Practical mobile development program focused on teamwork, implementation, code reviews, and real project delivery.</p>
+              <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener">View Certificate</a>
+            </div>
+          </article>
+
+          <article class="timeline-item certificate-card">
+            <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener" aria-label="View Udemy Flutter and Dart certificate">
+              <img src="https://rimonnnn.github.io/certificates/udemy_1.jpeg" alt="Udemy Flutter and Dart course certificate preview" loading="lazy" decoding="async" width="320" height="112" />
+            </a>
+            <div class="certificate-body">
+              <time>2025</time>
+              <h3>Flutter &amp; Dart Course — Udemy</h3>
+              <p>Structured learning covering UI development, navigation, REST API integration, and project-based Flutter practice.</p>
+              <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener">View Certificate</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-padding" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div>
+            <p class="section-kicker">Let’s Work Together</p>
+            <h2>Have a Flutter role, internship opportunity, or freelance project?</h2>
+            <p>Available for Flutter internships, junior roles, and small freelance mobile app projects.</p>
+
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email Directly</a>
+              <a class="btn btn-secondary" href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you." target="_blank" rel="noopener noreferrer"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>WhatsApp</a>
+              <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+            </div>
+
+            <div class="contact-details">
+              <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">rimonabdelmasih92@gmail.com</a>
+              
+               
+              </a>
+              <span>Egypt</span>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdwnzdo" method="POST">
+            <input type="hidden" name="_subject" value="New portfolio message from Rimon.dev">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="clientName">Name</label>
+                <input id="clientName" type="text" name="name" placeholder="Your name" required>
+              </div>
+
+              <div class="form-field">
+                <label for="clientEmail">Email</label>
+                <input id="clientEmail" type="email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="clientMessage">Message</label>
+              <textarea id="clientMessage" name="message" placeholder="Tell me about the role, internship, or project..." required></textarea>
+            </div>
+
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            <div class="form-actions-row" aria-label="Choose how to send your message">
+              <button class="btn btn-primary" id="submitButton" type="submit"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Send via Email</button>
+              <button class="btn btn-secondary" id="whatsappSubmitButton" type="button"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>Send via WhatsApp</button>
+            </div>
+            <p class="form-hint">Choose Email to send the message through the contact form, or WhatsApp to open a ready message directly.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Rimon Abdelmasih · Junior Flutter Developer · Egypt</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
