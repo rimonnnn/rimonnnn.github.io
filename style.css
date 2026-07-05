@@ -575,7 +575,7 @@ h1 .typewriter-role {
   color: var(--primary);
   min-height: 1.05em;
   white-space: nowrap;
-  font-size: clamp(1.7rem, 4.4vw, 3.2rem);
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
 }
 h1 .typewriter-role::after { content: ''; display: inline-block; width: .08em; height: .82em; margin-left: .1em; background: currentColor; vertical-align: -.08em; animation: caretBlink .9s steps(1) infinite; }
 @keyframes caretBlink { 50% { opacity: 0; } }
