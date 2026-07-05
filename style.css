@@ -570,7 +570,13 @@ body[data-theme="light"] .education-meta div {
 @keyframes meshMove { from { transform: translate3d(-2%, -1%, 0) rotate(0deg); } to { transform: translate3d(2%, 2%, 0) rotate(4deg); } }
 .hero > .container { position: relative; }
 
-h1 .typewriter-role { display: inline-block; color: var(--primary); min-height: 1.05em; }
+h1 .typewriter-role {
+  display: inline-block;
+  color: var(--primary);
+  min-height: 1.05em;
+  white-space: nowrap;
+  font-size: clamp(1.7rem, 4.4vw, 3.2rem);
+}
 h1 .typewriter-role::after { content: ''; display: inline-block; width: .08em; height: .82em; margin-left: .1em; background: currentColor; vertical-align: -.08em; animation: caretBlink .9s steps(1) infinite; }
 @keyframes caretBlink { 50% { opacity: 0; } }
 .hero-title-line { color: var(--text); font-size: clamp(2rem, 5vw, 4.4rem); margin-top: 8px; }
