@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (icon) icon.textContent = isLight ? '☀' : '☾';
   }
 
-  // Sync the toggle button's visual state with whatever the
-  // pre-paint inline script already applied to <body data-theme="...">
   syncThemeToggleUI(rootBody.getAttribute('data-theme') || 'dark');
 
   themeToggle?.addEventListener('click', () => {
@@ -294,9 +292,12 @@ Message: ${message}`;
     news: {
       label: 'Functional App · Completed · API Integrated',
       title: 'News App',
-      image: 'assets/project_news_app_photo.jpg',
-      fallbackImage: 'https://rimonnnn.github.io/assets/project_news_app_photo.jpg',
-      imageAlt: 'News App screenshot showing live article feed',
+      images: [
+        { src: 'assets/en_search_news.jpg', fallback: 'https://rimonnnn.github.io/assets/news_home.jpg', alt: 'News App home feed screen' },
+        { src: 'assets/search_news.jpg', fallback: 'https://rimonnnn.github.io/assets/news_categories.jpg', alt: 'News App categories screen' },
+        { src: 'assets/en_details_news.jpg', fallback: 'https://rimonnnn.github.io/assets/news_article_details.jpg', alt: 'News App article details screen' },
+        { src: 'assets/ar_details_news.jpg', fallback: 'https://rimonnnn.github.io/assets/news_search.jpg', alt: 'News App search screen' }
+      ],
       overview: 'A live news Flutter app for browsing headlines through API data, with search, categories, article details, localization, and clear loading/error handling.',
       purpose: 'Build an API-based Flutter app that demonstrates real content fetching, category filtering, search, article details, and localization.',
       role: 'Built the UI, integrated NewsAPI with Dio, managed Cubit states, implemented routing, localization, and reusable widgets.',
@@ -312,9 +313,12 @@ Message: ${message}`;
     meals: {
       label: 'Local Storage App · Completed · SQLite',
       title: 'Meals App',
-      image: 'assets/project_meals_app_photo.jpg',
-      fallbackImage: 'https://rimonnnn.github.io/assets/project_meals_app_photo.jpg',
-      imageAlt: 'Meals App screenshot showing meal recipe list',
+      images: [
+        { src: 'assets/meals_app_1.jpg', fallback: 'https://rimonnnn.github.io/assets/meals_home.jpg', alt: 'Meals App recipe list screen' },
+        { src: 'assets/meals_app_2.jpg', fallback: 'https://rimonnnn.github.io/assets/meals_details.jpg', alt: 'Meals App recipe details screen' },
+        { src: 'assets/meals_app_3.jpg', fallback: 'https://rimonnnn.github.io/assets/meals_onboarding.jpg', alt: 'Meals App onboarding screen' },
+        { src: 'assets/project_meals_app_photo.jpg', fallback: 'https://rimonnnn.github.io/assets/meals_favorites.jpg', alt: 'Meals App favorites screen' }
+      ],
       overview: 'A local-storage Flutter recipe app for saving and viewing meals without depending on an online backend, with onboarding, validation, and responsive screens.',
       purpose: 'Create an offline-friendly app that proves local persistence, form handling, navigation, and clean screen structure.',
       role: 'Implemented the UI, SQLite flow, onboarding persistence, form validation, navigation, and responsive layouts.',
@@ -448,7 +452,6 @@ Message: ${message}`;
     const counter = modalMedia.querySelector('.project-modal__gallery-count');
     if (counter) counter.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
 
-    // Preload neighbouring images so navigation feels instant
     [galleryIndex - 1, galleryIndex + 1].forEach((i) => {
       const neighbour = galleryImages[(i + galleryImages.length) % galleryImages.length];
       if (neighbour) { const pre = new Image(); pre.src = neighbour.src; }
@@ -462,7 +465,6 @@ Message: ${message}`;
     renderGalleryFrame();
   }
 
-  /* --- Swipe support (mobile) --- */
   function attachSwipe(el) {
     el.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
     el.addEventListener('touchend', (e) => {
@@ -472,7 +474,6 @@ Message: ${message}`;
     }, { passive: true });
   }
 
-  /* --- Lightbox (fullscreen zoom) --- */
   function buildLightbox() {
     if (lightboxEl) return lightboxEl;
     lightboxEl = document.createElement('div');
