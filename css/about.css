@@ -1,0 +1,66 @@
+/* =========================================================
+   about.css — about section, education, code-quality cards
+========================================================= */
+.about-card { padding: 28px; }
+.about-profile { display: flex; gap: 18px; align-items: center; margin-bottom: 20px; }
+.about-profile img { width: 92px; height: 92px; border-radius: 24px; object-fit: cover; border: 1px solid var(--border); }
+.about-profile p { margin: 8px 0 0; }
+.about-card p { margin: 0 0 12px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+.stats-grid div { padding: 16px; border-radius: 18px; background: rgba(2,6,23,.52); border: 1px solid var(--border); }
+.stats-grid strong { display: block; font-size: 1.55rem; color: var(--cyan); margin-bottom: 4px; }
+.stats-grid span { color: var(--muted); font-size: .85rem; }
+
+.quality-card, .education-card { margin-top: 22px; padding: 22px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.quality-card h3, .education-card h3 { margin-bottom: 14px; }
+.education-meta { display: grid; gap: 10px; }
+.education-meta div { padding: 14px; border-radius: 16px; background: rgba(2,6,23,.35); border: 1px solid rgba(148,163,184,.14); }
+.education-meta strong { display: block; color: var(--cyan); font-size: .84rem; margin-bottom: 5px; }
+.education-meta span { color: var(--muted-2); line-height: 1.55; }
+
+/* About section (premium layout) */
+.about-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(320px, .72fr); gap: 34px; align-items: center; }
+.about-intro { padding: 34px; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(17,24,39,.82), rgba(15,23,42,.62)); border-radius: var(--radius); box-shadow: 0 16px 50px rgba(0,0,0,.18); position: relative; overflow: hidden; }
+.about-intro::before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 999px; background: rgba(56,189,248,.12); filter: blur(12px); right: -120px; top: -130px; }
+.about-intro > * { position: relative; }
+.about-intro h2 { margin: 10px 0 16px; }
+.about-intro p { margin: 0; color: var(--muted-2); font-size: 1.03rem; }
+.about-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.about-highlights span { border: 1px solid rgba(56,189,248,.22); background: rgba(56,189,248,.08); color: var(--muted-2); border-radius: 999px; padding: 8px 11px; font-size: .82rem; font-weight: 700; }
+
+.about-showcase { display: grid; gap: 18px; }
+.profile-frame { position: relative; width: min(100%, 360px); justify-self: center; padding: 10px; border-radius: 34px; background: linear-gradient(135deg, rgba(37,99,235,.52), rgba(56,189,248,.28), rgba(15,23,42,.7)); box-shadow: 0 30px 90px rgba(0,0,0,.38), 0 0 0 1px rgba(56,189,248,.16); transition: transform .28s ease, box-shadow .28s ease; }
+.profile-frame::after { content: ''; position: absolute; inset: 18px; border-radius: 28px; border: 1px solid rgba(255,255,255,.12); pointer-events: none; }
+.profile-frame:hover { transform: translateY(-5px); box-shadow: 0 34px 105px rgba(0,0,0,.45), 0 0 44px rgba(56,189,248,.16); }
+.profile-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 26px; border: 1px solid rgba(148,163,184,.22); background: rgba(2,6,23,.72); }
+
+.premium-about-card { padding: 22px; }
+.about-profile-text h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.about-profile-text p { margin: 0; color: var(--cyan); font-weight: 700; }
+.about-stats { margin-top: 18px; }
+
+.about-details-grid { grid-column: 1 / -1; display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; }
+.about-details-grid .education-card, .about-details-grid .quality-card { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .about-profile { align-items: flex-start; }
+  .about-card { padding: 22px; }
+}
+
+@media (max-width: 1120px) {
+  .about-layout, .about-details-grid { grid-template-columns: 1fr; }
+  .profile-frame { width: min(100%, 320px); }
+}
+
+@media (max-width: 760px) {
+  .about-intro, .premium-about-card { padding: 22px; }
+  .about-layout { gap: 22px; }
+  .profile-frame { width: min(100%, 290px); border-radius: 28px; }
+  .profile-frame img { border-radius: 22px; }
+}
+
+@media (max-width: 390px) {
+  .about-card { padding: 18px; }
+}

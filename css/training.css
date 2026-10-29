@@ -1,0 +1,30 @@
+/* =========================================================
+   training.css — training timeline + certificates
+========================================================= */
+.two-column { display: grid; grid-template-columns: .78fr 1.22fr; gap: 52px; align-items: start; }
+
+.timeline { padding: 10px; }
+.timeline-item { padding: 22px; border-radius: 18px; border: 1px solid transparent; transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+.timeline-item:not(:last-child) { border-bottom: 1px solid var(--border); }
+.timeline-item time { color: var(--cyan); font-weight: 800; font-size: .9rem; }
+.timeline-item h3 { margin: 9px 0 8px; }
+.timeline-item p { margin: 0 0 10px; color: var(--muted); }
+.inline-link { color: var(--cyan); font-weight: 800; }
+.inline-link:hover { color: var(--cyan); }
+
+@media (max-width: 980px) {
+  .two-column { grid-template-columns: 1fr; }
+}
+
+/* Flutter identity system: certificates */
+.cert-grid { display: grid; gap: 16px; }
+.certificate-card { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 18px; align-items: center; border-bottom: 0 !important; background: rgba(2,6,23,.22); }
+.certificate-thumb { min-height: 112px; border-radius: 18px; border: 1px solid rgba(84,197,248,.22); overflow: hidden; display: grid; place-items: center; background: linear-gradient(135deg, rgba(84,197,248,.16), rgba(1,87,155,.24)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
+.certificate-thumb img { width: 100%; height: 112px; object-fit: cover; }
+.certificate-placeholder { color: var(--primary); font-weight: 900; font-size: 1.4rem; letter-spacing: .05em; }
+.certificate-body .btn { margin-top: 12px; }
+
+@media (max-width: 760px) {
+  .certificate-card { grid-template-columns: 1fr; }
+  .certificate-thumb img { height: 180px; }
+}

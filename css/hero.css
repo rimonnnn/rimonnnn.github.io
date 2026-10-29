@@ -1,0 +1,109 @@
+/* =========================================================
+   hero.css — hero section, typewriter, profile frame, phone mockups
+========================================================= */
+.hero { padding-top: 104px; }
+.hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 62px; align-items: center; }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; border: 1px solid var(--border); background: rgba(15,23,42,.72); padding: 9px 14px; border-radius: 999px; color: var(--muted-2); }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
+
+.hero-subtitle { font-size: 1.2rem; color: var(--text); max-width: 690px; font-weight: 600; }
+.hero-copy { max-width: 660px; color: var(--muted); }
+
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0; }
+.hero-stat { border: 1px solid var(--border); background: rgba(15,23,42,.68); border-radius: 18px; padding: 15px; }
+.hero-stat strong { display: block; color: var(--cyan); font-size: 1rem; margin-bottom: 5px; }
+.hero-stat span { display: block; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+
+.hero-meta { margin: 24px 0; }
+
+.social-row { display: flex; gap: 18px; color: var(--muted); font-weight: 700; font-size: .92rem; }
+.social-row a:hover { color: var(--cyan); }
+
+.hero-visual { position: relative; min-height: 540px; display: grid; place-items: center; }
+.glow { position: absolute; border-radius: 999px; filter: blur(16px); opacity: .75; }
+.glow-one { width: 340px; height: 340px; background: rgba(37,99,235,.24); }
+.glow-two { width: 220px; height: 220px; background: rgba(56,189,248,.18); right: 32px; top: 80px; }
+
+.mockup-stack { position: relative; width: min(100%, 540px); height: 390px; }
+.phone-card { position: absolute; overflow: hidden; border: 1px solid var(--border); border-radius: 34px; background: #030712; box-shadow: var(--shadow); }
+.phone-card img { width: 100%; height: 100%; object-fit: cover; }
+.main-phone { inset: 16px 74px 0 74px; z-index: 3; }
+.phone-card-small { width: 210px; height: 310px; top: 72px; opacity: .9; }
+.phone-card-small.left { left: 0; transform: rotate(-8deg); }
+.phone-card-small.right { right: 0; transform: rotate(8deg); }
+
+.visual-card { position: absolute; left: 24px; bottom: 18px; width: 300px; padding: 18px; border: 1px solid var(--border); border-radius: 18px; background: rgba(15,23,42,.84); backdrop-filter: blur(16px); box-shadow: var(--shadow); z-index: 5; }
+.visual-card strong { display: block; margin-bottom: 6px; }
+.visual-card span { color: var(--muted); font-size: .92rem; line-height: 1.55; }
+
+/* Hero entrance motion */
+.hero-content .eyebrow, .hero-content h1, .hero-subtitle, .hero-actions, .hero-stats, .hero-meta, .social-row, .hero-visual { animation: heroFadeUp .75s ease both; }
+.hero-content h1 { animation-delay: .08s; }
+.hero-subtitle { animation-delay: .16s; }
+.hero-actions { animation-delay: .24s; }
+.hero-stats { animation-delay: .32s; }
+.hero-meta { animation-delay: .4s; }
+.social-row { animation-delay: .48s; }
+.hero-visual { animation-delay: .18s; }
+.main-phone { animation: premiumFloat 6s ease-in-out infinite; }
+
+@keyframes heroFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes premiumFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 84px; }
+  .hero-visual { min-height: 430px; }
+}
+
+@media (max-width: 760px) {
+  .hero-subtitle { font-size: 1.06rem; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 350px; }
+  .mockup-stack { height: 300px; }
+  .main-phone { inset: 16px 56px 0 56px; }
+  .phone-card-small { width: 160px; height: 220px; top: 58px; }
+  .visual-card { position: relative; left: auto; bottom: auto; width: 100%; margin-top: -28px; }
+}
+
+/* Flutter identity system: hero background, typewriter, profile frame */
+.hero { position: relative; overflow: hidden; background: radial-gradient(circle at 18% 20%, rgba(84,197,248,.18), transparent 30%), radial-gradient(circle at 86% 10%, rgba(1,87,155,.22), transparent 28%), linear-gradient(135deg, rgba(84,197,248,.05), transparent 42%); }
+.hero::before { content: ''; position: absolute; inset: -30%; background: linear-gradient(115deg, transparent 0 34%, rgba(84,197,248,.10) 45%, transparent 56%), radial-gradient(circle at 30% 35%, rgba(84,197,248,.16), transparent 12%), radial-gradient(circle at 68% 52%, rgba(1,87,155,.18), transparent 14%); animation: meshMove 14s ease-in-out infinite alternate; pointer-events: none; }
+@keyframes meshMove { from { transform: translate3d(-2%, -1%, 0) rotate(0deg); } to { transform: translate3d(2%, 2%, 0) rotate(4deg); } }
+.hero > .container { position: relative; }
+
+h1 .typewriter-role {
+  display: inline-block;
+  color: var(--primary);
+  min-height: 1.05em;
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+}
+h1 .typewriter-role::after { content: ''; display: inline-block; width: .08em; height: .82em; margin-left: .1em; background: currentColor; vertical-align: -.08em; animation: caretBlink .9s steps(1) infinite; }
+@keyframes caretBlink { 50% { opacity: 0; } }
+.hero-title-line { color: var(--text); font-size: clamp(2rem, 5vw, 4.4rem); margin-top: 8px; }
+.hero-visual { align-content: center; gap: 18px; }
+
+.hero-profile-frame { position: relative; width: 210px; height: 210px; padding: 6px; border-radius: 50%; background: conic-gradient(from var(--spin-angle, 0deg), var(--primary), var(--accent), #7dd3fc, var(--primary)); box-shadow: 0 0 44px rgba(84,197,248,.22), var(--shadow); animation: spinGlow 6s linear infinite; z-index: 8; }
+.hero-profile-frame::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: inherit; filter: blur(16px); opacity: .38; z-index: -1; }
+.hero-profile-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; border: 4px solid var(--bg); }
+.open-work-badge { position: absolute; right: -34px; bottom: 22px; padding: 9px 12px; border: 1px solid rgba(84,197,248,.38); border-radius: 999px; background: rgba(13,17,23,.88); color: #fff; font-size: .82rem; font-weight: 900; box-shadow: 0 12px 34px rgba(0,0,0,.25); white-space: nowrap; }
+@keyframes spinGlow { to { --spin-angle: 360deg; } }
+@property --spin-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+.hero-stat strong { font-size: 1.22rem; }
+
+@media (max-width: 980px) {
+  .hero-profile-frame { width: 186px; height: 186px; }
+}
+
+@media (max-width: 760px) {
+  .hero-profile-frame { width: 166px; height: 166px; }
+  .open-work-badge { right: -18px; bottom: 10px; font-size: .72rem; padding: 8px 10px; }
+  .hero-title-line { font-size: clamp(1.8rem, 10vw, 3rem); }
+}
+
+@media (max-width: 390px) {
+  .hero-actions .btn { width: 100%; }
+  .social-row { flex-wrap: wrap; }
+}

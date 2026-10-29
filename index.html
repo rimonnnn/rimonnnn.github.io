@@ -47,19 +47,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/projects.css">
+<link rel="stylesheet" href="css/build-skills.css">
+<link rel="stylesheet" href="css/training.css">
+<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/utilities.css">
 </head>
 <body data-theme="dark">
   <script>
-    /* Critical, render-blocking, pre-paint theme resolver.
-       Placed first inside <body> (not <head>, since body already exists here)
-       to prevent a flash of the wrong theme for returning visitors. */
+    /* Critical, render-blocking, pre-paint bootstrap.
+       Placed first inside <body> (not <head>, since body already exists here).
+       It does three things before any content is parsed:
+       1) Marks the page as JS-enabled (<html class="js">) so scroll-reveal
+          content is only hidden when JavaScript is actually running.
+       2) Defines window.handleImgError so inline onerror="" handlers on <img>
+          tags can never run before the function exists (main.js is deferred).
+       3) Resolves the saved theme to prevent a flash of the wrong theme. */
     (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+
+      window.handleImgError = function (imgEl, fallbackSrc) {
+        imgEl.onerror = null;
+        imgEl.src = fallbackSrc;
+      };
+
       try {
         var stored = localStorage.getItem('portfolio-theme');
         var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
         document.body.setAttribute('data-theme', theme);
       } catch (e) { /* localStorage unavailable — fall back to default dark */ }
+
+      /* Safety net: if main.js never runs (blocked or failed to load),
+         drop the "js" class so .reveal content is not left invisible. */
+      window.setTimeout(function () {
+        if (!window.__portfolioReady) root.classList.remove('js');
+      }, 4000);
     })();
   </script>
 
@@ -90,7 +119,7 @@
         <a href="#skills">Skills</a>
         <a href="#training">Training</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cv" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Updated-1 (2).pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
+        <a class="nav-cv" href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
       </div>
     </nav>
   </header>
@@ -104,7 +133,7 @@
             Open to Flutter Internships &amp; Junior Roles
           </div>
 
-          <h1><span class="typewriter-role" id="typewriterRole" aria-live="polite">Flutter Developer</span><span class="hero-title-line">Building clean, API-driven mobile apps with Flutter</span></h1>
+          <h1 aria-label="Flutter Developer. Building clean, API-driven mobile apps with Flutter"><span class="typewriter-role" id="typewriterRole" aria-hidden="true">Flutter Developer</span><span class="hero-title-line">Building clean, API-driven mobile apps with Flutter</span></h1>
 
           <p class="hero-subtitle">
             I build responsive Flutter apps with REST APIs, local storage, state management, and clean project structure.
@@ -112,7 +141,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>View Projects</a>
-            <a class="btn btn-secondary" href="https://rimonnnn.github.io/Rimon_Abdelmasih_CV_ATS_Updated-1 (2).pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
+            <a class="btn btn-secondary" href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
             <a class="btn btn-secondary" href="#contact"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Contact Me</a>
           </div>
 
@@ -665,9 +694,6 @@
 
             <div class="contact-details">
               <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">rimonabdelmasih92@gmail.com</a>
-              
-               
-              </a>
               <span>Egypt</span>
             </div>
           </div>
@@ -712,6 +738,12 @@
     </div>
   </footer>
 
-  <script src="main.js" defer></script>
+  <script src="js/main.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/contact-form.js" defer></script>
+<script src="js/projects-data.js" defer></script>
+<script src="js/project-modal.js" defer></script>
 </body>
 </html>

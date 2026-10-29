@@ -1,0 +1,74 @@
+/* =========================================================
+   theme.css — dark/light theme variables + light-mode overrides
+   Load near the end: these selectors are more specific on purpose.
+========================================================= */
+body[data-theme="dark"] {
+  --bg: #0D1117;
+  --bg-soft: #101826;
+  --card: #111827;
+  --card-2: #172033;
+  --border: rgba(148, 163, 184, 0.20);
+  --blue: #01579B;
+  --cyan: #54C5F8;
+  --text: #f8fafc;
+  --muted: #9aa8bb;
+  --muted-2: #d4e0ee;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  color-scheme: dark;
+}
+
+body[data-theme="light"] {
+  --bg: #f8fbff;
+  --bg-soft: #eef7ff;
+  --card: #ffffff;
+  --card-2: #f0f7ff;
+  --border: rgba(1, 87, 155, 0.14);
+  --blue: #01579B;
+  --cyan: #028bd4;
+  --text: #0f172a;
+  --muted: #475569;
+  --muted-2: #334155;
+  --shadow: 0 22px 70px rgba(1,87,155,.14);
+  color-scheme: light;
+  background: radial-gradient(circle at 15% 8%, rgba(84,197,248,.20), transparent 34%), radial-gradient(circle at 82% 14%, rgba(1,87,155,.10), transparent 31%), linear-gradient(180deg, #ffffff 0%, #f3f9ff 48%, #ffffff 100%);
+}
+
+body[data-theme="light"] .site-header,
+body[data-theme="light"] .nav-links,
+body[data-theme="light"] .menu-toggle,
+body[data-theme="light"] .btn-secondary,
+body[data-theme="light"] .eyebrow,
+body[data-theme="light"] .hero-stat,
+body[data-theme="light"] .visual-card,
+body[data-theme="light"] .contact-form,
+body[data-theme="light"] .form-field input,
+body[data-theme="light"] .form-field textarea,
+body[data-theme="light"] .contact-details span,
+body[data-theme="light"] .contact-details a {
+  background: rgba(255,255,255,.86);
+}
+
+body[data-theme="light"] .about-card,
+body[data-theme="light"] .contact-card,
+body[data-theme="light"] .timeline,
+body[data-theme="light"] .skill-card,
+body[data-theme="light"] .project-card,
+body[data-theme="light"] .build-card,
+body[data-theme="light"] .quality-card,
+body[data-theme="light"] .education-card,
+body[data-theme="light"] .about-intro,
+body[data-theme="light"] .project-modal__panel,
+body[data-theme="light"] .testimonial-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,248,255,.90));
+  box-shadow: var(--shadow);
+}
+
+body[data-theme="light"] .case-item,
+body[data-theme="light"] .project-detail-block,
+body[data-theme="light"] .stats-grid div,
+body[data-theme="light"] .education-meta div {
+  background: rgba(255,255,255,.74);
+}
+
+body[data-theme="light"] .open-work-badge { background: rgba(255,255,255,.96); color: var(--accent); }
+body[data-theme="light"] .project-image-count { background: rgba(15,23,42,.78); border-color: rgba(15,23,42,.14); }

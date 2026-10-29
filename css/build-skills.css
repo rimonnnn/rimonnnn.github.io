@@ -1,0 +1,39 @@
+/* =========================================================
+   build-skills.css — "What I Build" cards + skills grid
+========================================================= */
+
+/* What I Build */
+.build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 34px; }
+.build-card { padding: 20px; min-height: 155px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.build-card h3 { margin: 12px 0 8px; font-size: 1.1rem; }
+.build-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.55; }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 34px; }
+.skill-card { padding: 22px; min-height: 180px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.skill-card h3 { color: var(--text); margin-bottom: 14px; font-size: 1.1rem; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.compact-build { grid-template-columns: repeat(5, 1fr); }
+
+@media (max-width: 1120px) {
+  .build-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .skills-grid, .build-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1120px) {
+  .compact-build { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .compact-build { grid-template-columns: 1fr; }
+}
+
+/* Flutter identity system: build card links */
+.build-card { display: flex; flex-direction: column; }
+.build-ref { margin-top: auto; padding-top: 16px; color: var(--primary); font-weight: 900; font-size: .88rem; }
+.build-ref:hover { color: var(--text); }
