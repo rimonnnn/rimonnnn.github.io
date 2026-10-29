@@ -11,143 +11,153 @@
 
 window.projectDetails = {
 
-  /* =======================================================
-     MASITER
-  ======================================================= */
 
-  masiter: {
-    label: 'Business Management · Mobile & Web',
-    title: 'Masiter | مسيطر',
-    image: 'assets/masiter.jpeg',
-    imageAlt: 'Masiter business management application collage.',
+/* =======================================================
+   MASITER — CASE STUDY
+======================================================= */
 
-    overview:
-      'Masiter is a Flutter business management application for shops and small businesses. It brings product inventory, customer records, outstanding balances, and sales invoices into one application, with support for mobile and web, Arabic and English, and light and dark themes.',
+masiter: {
+  label: 'Business Management · Mobile & Web',
+  title: 'Masiter | مسيطر',
+  image: 'assets/masiter.jpeg',
+  imageAlt: 'Masiter business management application across mobile and web.',
 
-    purpose:
-      'Build a practical business management tool that helps shop owners organize inventory, customer balances, and invoices through a clear interface.',
+  overview:
+    'Masiter is a cross-platform business management application built with Flutter to help small businesses organize inventory, customer records, sales invoices, and outstanding debts in one place. The application supports Android and web, Arabic and English, light and dark themes, and multiple invoice printing formats.',
 
-    role:
-      'Contributed to developing the Flutter application with a teammate, working on the user interface, state management, data integration, and core business workflows.',
+  purpose:
+    'Provide small businesses with a unified tool for managing products, customer balances, and sales invoices through practical workflows and a consistent cross-platform interface.',
 
-    features: [
-      'Product and inventory management',
-      'Customer records and outstanding balances',
-      'Sales invoices and purchase history',
-      'Invoice layouts for 58mm, 80mm, and A4 formats',
-      'Low-stock notifications',
-      'Morning reminders for outstanding receivables',
-      'Shared business data and account access',
-      'Arabic and English localization',
-      'Light and dark themes',
-      'Mobile and web support'
-    ],
+  role:
+    'Collaborated with a teammate on the development of Masiter, sharing responsibility across different parts of the application, including UI implementation, state management, data integration, and core business workflows.',
 
-    technical: [
-      'Flutter and Dart for cross-platform development',
-      'Cubit / Bloc for state management',
-      'Firebase Authentication for account access',
-      'Cloud Firestore for business data',
-      'Supabase for product image storage',
-      'GetIt for dependency injection',
-      'GoRouter for navigation',
-      'Easy Localization for Arabic and English',
-      'SharedPreferences for local preferences',
-      'Responsive layouts for mobile and web'
-    ],
+  features: [
+    'Inventory and product management',
+    'Customer records and outstanding debt tracking',
+    'Sales invoices and purchase history',
+    'PDF invoice generation and 58mm, 80mm, and A4 printing formats',
+    'Low-stock notifications',
+    'Morning reminders for outstanding receivables',
+    'Shared business data and account access',
+    'Firebase Authentication and email verification',
+    'Arabic and English localization with RTL support',
+    'Light and dark themes',
+    'Responsive mobile and web interfaces'
+  ],
 
-    challenges:
-      'Organizing products, customers, invoices, and outstanding balances into maintainable workflows while supporting shared business data and consistent experiences across mobile and web.',
+  technical: [
+    'Flutter and Dart for cross-platform development',
+    'Cubit / BLoC for state management',
+    'Firebase Authentication for user authentication',
+    'Cloud Firestore for business data and access rules',
+    'Supabase Storage for product images',
+    'GetIt for dependency injection',
+    'GoRouter for application navigation',
+    'EasyLocalization for Arabic and English support',
+    'SharedPreferences for local preferences',
+    'Responsive UI implementation for mobile and desktop',
+    'Clean Architecture',
+    'Unit and widget testing'
+  ],
 
-    tech: [
-      'Flutter',
-      'Dart',
-      'Cubit',
-      'Bloc',
-      'Firebase Auth',
-      'Cloud Firestore',
-      'Supabase',
-      'GetIt',
-      'GoRouter',
-      'Easy Localization',
-      'SharedPreferences',
-      'Responsive UI'
-    ],
+  challenges:
+    'Three key engineering challenges involved configuring Firebase Security Rules for user access and shared business data, testing application logic and UI behavior, and adapting layouts to the different requirements of mobile and desktop interfaces.',
 
-    links: [
-      {
-        label: 'Live Web App',
-        url: 'https://masiter.web.app/',
-        primary: true,
-        type: 'live'
-      },
-      {
-        label: 'GitHub',
-        url: 'https://github.com/rimonnnn/masiter',
-        type: 'github'
-      }
-    ],
+  tech: [
+    'Flutter',
+    'Dart',
+    'Cubit',
+    'BLoC',
+    'Firebase Authentication',
+    'Cloud Firestore',
+    'Supabase Storage',
+    'GetIt',
+    'GoRouter',
+    'EasyLocalization',
+    'SharedPreferences',
+    'Clean Architecture',
+    'Unit Testing',
+    'Widget Testing',
+    'Responsive UI'
+  ],
 
-    translations: {
-      ar: {
-        label: 'إدارة الأعمال · الموبايل والويب',
-        title: 'مسيطر | Masiter',
-        imageAlt: 'مجموعة صور من تطبيق مسيطر لإدارة الأعمال.',
-
-        overview:
-          'مسيطر هو تطبيق لإدارة الأعمال والمحلات الصغيرة باستخدام Flutter. يجمع إدارة المنتجات والمخزون والعملاء والأرصدة المستحقة وفواتير البيع في تطبيق واحد، مع دعم الموبايل والويب واللغتين العربية والإنجليزية والمظهرين الفاتح والداكن.',
-
-        purpose:
-          'تطوير أداة عملية تساعد أصحاب المحلات على تنظيم المخزون وأرصدة العملاء والفواتير من خلال واجهة واضحة.',
-
-        role:
-          'ساهمت في تطوير التطبيق بالتعاون مع أحد زملائي، من خلال العمل على واجهات المستخدم وإدارة الحالة والتكامل مع البيانات ومسارات العمل الأساسية.',
-
-        features: [
-          'إدارة المنتجات والمخزون',
-          'سجلات العملاء والأرصدة المستحقة',
-          'فواتير البيع وسجل المشتريات',
-          'تنسيقات الفواتير بمقاسات 58mm و80mm وA4',
-          'إشعارات انخفاض المخزون',
-          'تذكيرات صباحية بالمبالغ المستحقة',
-          'مشاركة بيانات النشاط التجاري وإتاحة الوصول للحساب',
-          'دعم اللغتين العربية والإنجليزية',
-          'المظهر الفاتح والداكن',
-          'دعم الموبايل والويب'
-        ],
-
-        technical: [
-          'استخدام Flutter وDart لتطوير التطبيق على أكثر من منصة',
-          'إدارة الحالة باستخدام Cubit / Bloc',
-          'Firebase Authentication لإدارة الوصول إلى الحسابات',
-          'Cloud Firestore لتخزين بيانات النشاط التجاري',
-          'Supabase لتخزين صور المنتجات',
-          'GetIt لحقن الاعتماديات (Dependency Injection)',
-          'GoRouter للتنقل بين الشاشات',
-          'Easy Localization لدعم العربية والإنجليزية',
-          'SharedPreferences لحفظ التفضيلات المحلية',
-          'واجهات متجاوبة للموبايل والويب'
-        ],
-
-        challenges:
-          'تنظيم المنتجات والعملاء والفواتير والأرصدة المستحقة ضمن مسارات عمل سهلة الصيانة، مع دعم مشاركة بيانات النشاط التجاري وتقديم تجربة متناسقة على الموبايل والويب.',
-
-        links: [
-          {
-            label: 'التطبيق المباشر',
-            url: 'https://masiter.web.app/',
-            primary: true,
-            type: 'live'
-          },
-          {
-            label: 'GitHub',
-            url: 'https://github.com/rimonnnn/masiter',
-            type: 'github'
-          }
-        ]
-      }
+  links: [
+    {
+      label: 'Live Web App',
+      url: 'https://masiter.web.app/',
+      primary: true,
+      type: 'live'
+    },
+    {
+      label: 'GitHub',
+      url: 'https://github.com/rimonnnn/masiter',
+      type: 'github'
     }
-  },
+  ],
+
+  translations: {
+    ar: {
+      label: 'إدارة الأعمال · الموبايل والويب',
+      title: 'مسيطر | Masiter',
+      imageAlt: 'مجموعة صور لتطبيق مسيطر لإدارة الأعمال على الموبايل والويب.',
+
+      overview:
+        'مسيطر هو تطبيق لإدارة الأعمال تم تطويره باستخدام Flutter لمساعدة المحلات والمشروعات الصغيرة على تنظيم المنتجات والمخزون وسجلات العملاء وفواتير البيع والديون المستحقة في مكان واحد. يدعم التطبيق أندرويد والويب، واللغتين العربية والإنجليزية، والمظهرين الفاتح والداكن، بالإضافة إلى تنسيقات متعددة لطباعة الفواتير.',
+
+      purpose:
+        'توفير أداة موحدة تساعد المشروعات الصغيرة على إدارة المنتجات وأرصدة العملاء وفواتير البيع من خلال مسارات عمل عملية وواجهة متناسقة على الموبايل والويب.',
+
+      role:
+        'شاركت في تطوير مسيطر بالتعاون مع أحد زملائي، مع توزيع المسؤوليات على أجزاء مختلفة من التطبيق، شملت تنفيذ الواجهات وإدارة الحالة والتكامل مع البيانات ومسارات العمل الأساسية.',
+
+      features: [
+        'إدارة المنتجات والمخزون',
+        'سجلات العملاء ومتابعة الديون المستحقة',
+        'فواتير البيع وسجل المشتريات',
+        'إنشاء فواتير PDF ودعم الطباعة بمقاسات 58mm و80mm وA4',
+        'إشعارات انخفاض المخزون',
+        'تذكيرات صباحية بالمبالغ المستحقة',
+        'مشاركة بيانات النشاط التجاري وإتاحة الوصول للحساب',
+        'المصادقة باستخدام Firebase والتحقق من البريد الإلكتروني',
+        'دعم العربية والإنجليزية مع دعم RTL',
+        'المظهر الفاتح والداكن',
+        'واجهات متجاوبة للموبايل والويب'
+      ],
+
+      technical: [
+        'استخدام Flutter وDart لتطوير التطبيق على أكثر من منصة',
+        'إدارة الحالة باستخدام Cubit / BLoC',
+        'Firebase Authentication للمصادقة وإدارة حسابات المستخدمين',
+        'Cloud Firestore لتخزين بيانات النشاط التجاري وإدارة قواعد الوصول',
+        'Supabase Storage لتخزين صور المنتجات',
+        'GetIt لحقن الاعتماديات (Dependency Injection)',
+        'GoRouter للتنقل بين الشاشات',
+        'EasyLocalization لدعم العربية والإنجليزية',
+        'SharedPreferences لحفظ التفضيلات المحلية',
+        'تنفيذ واجهات متجاوبة للموبايل والشاشات الكبيرة',
+        'تنظيم الكود باستخدام Clean Architecture',
+        'اختبارات Unit وWidget'
+      ],
+
+      challenges:
+        'تمثلت أبرز التحديات الهندسية في إعداد Firebase Security Rules لتنظيم صلاحيات الوصول إلى البيانات المشتركة، واختبار منطق التطبيق وسلوك الواجهات، وتكييف تصميم الشاشات ليتناسب مع اختلاف متطلبات الموبايل والكمبيوتر.',
+
+      links: [
+        {
+          label: 'التطبيق المباشر',
+          url: 'https://masiter.web.app/',
+          primary: true,
+          type: 'live'
+        },
+        {
+          label: 'GitHub',
+          url: 'https://github.com/rimonnnn/masiter',
+          type: 'github'
+        }
+      ]
+    }
+  }
+},
 
 
   /* =======================================================
