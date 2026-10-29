@@ -1,56 +1,439 @@
 /* =========================================================
-   header.css — navbar, theme toggle, mobile menu
+   header.css
+   Navigation bar, theme toggle, and mobile menu.
+
+   Theme-aware styling:
+   - Dark: Deep navy with subtle transparency.
+   - Light: Clean surfaces with restrained blue accents.
 ========================================================= */
+
+
+/* =========================================================
+   SITE HEADER
+========================================================= */
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(18px);
-  background: rgba(2, 6, 23, 0.72);
+
+  background: color-mix(
+    in srgb,
+    var(--bg) 84%,
+    transparent
+  );
+
   border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
-.navbar { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; }
-.brand-mark { color: var(--cyan); font-weight: 800; }
-.nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.92rem; color: var(--muted-2); }
-.nav-links a { transition: color .2s ease; }
-.nav-links a:hover { color: var(--cyan); }
-.nav-cv { padding: 10px 16px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: white !important; font-weight: 700; box-shadow: 0 12px 32px rgba(37, 99, 235, .28); }
-.menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 12px; background: rgba(15, 23, 42, .8); cursor: pointer; }
-.menu-toggle span { display: block; width: 18px; height: 2px; background: var(--text); margin: 4px auto; }
+
+/* =========================================================
+   NAVBAR LAYOUT
+========================================================= */
+
+.navbar {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand-mark {
+  color: var(--cyan);
+  font-weight: 800;
+
+  transition: color var(--duration) var(--ease);
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 0.92rem;
+  color: var(--muted-2);
+}
+
+.nav-links a {
+  position: relative;
+
+  transition:
+    color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
 
 /* Active-link underline */
-.nav-links a { position: relative; }
-.nav-links a:not(.nav-cv)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 999px; transform: scaleX(0); transform-origin: center; transition: transform .2s ease; }
-.nav-links a:not(.nav-cv):hover::after, .nav-links a:not(.nav-cv).active::after { transform: scaleX(1); }
-.nav-links a.active { color: var(--cyan); }
 
-@media (max-width: 760px) {
-  .menu-toggle { display: block; }
-  .nav-links { position: absolute; top: 76px; left: 14px; right: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px; border: 1px solid var(--border); border-radius: 18px; background: rgba(2,6,23,.96); box-shadow: var(--shadow); }
-  .nav-links.open { display: flex; }
-  .nav-links a { padding: 14px; border-radius: 12px; }
-  .nav-cv { text-align: center; margin-top: 6px; }
+.nav-links a:not(.nav-cv)::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -8px;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--blue),
+    var(--cyan)
+  );
+
+  border-radius: 999px;
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.2s ease;
 }
 
-@media (max-width: 760px) {
-  .nav-links a:not(.nav-cv)::after { display: none; }
+.nav-links a:not(.nav-cv):hover::after,
+.nav-links a:not(.nav-cv).active::after {
+  transform: scaleX(1);
 }
 
-/* Flutter identity system: header + theme toggle */
-.site-header { background: rgba(13,17,23,.78); }
+.nav-links a.active {
+  color: var(--cyan);
+}
 
-.theme-toggle { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 999px; display: inline-grid; place-items: center; background: rgba(15,23,42,.78); color: var(--text); cursor: pointer; transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease), background var(--duration) var(--ease); }
-.theme-toggle:hover { transform: translateY(-2px); border-color: rgba(84,197,248,.55); }
-.theme-toggle__icon { font-size: 1.05rem; line-height: 1; }
+
+/* =========================================================
+   CV BUTTON
+========================================================= */
+
+.nav-cv {
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    var(--blue),
+    var(--cyan)
+  );
+
+  color: #FFFFFF !important;
+
+  font-weight: 700;
+
+  box-shadow: 0 10px 28px color-mix(
+    in srgb,
+    var(--blue) 22%,
+    transparent
+  );
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nav-cv:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 34px color-mix(
+    in srgb,
+    var(--blue) 30%,
+    transparent
+  );
+}
+
+/* Keep the CV button free of the active-link underline. */
+
+.nav-links .nav-cv::after {
+  display: none;
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 auto;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  display: inline-grid;
+  place-items: center;
+
+  background: var(--card-2);
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    transform var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 48%,
+    var(--border)
+  );
+}
+
+.theme-toggle__icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE MENU TOGGLE
+========================================================= */
+
+.menu-toggle {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-2);
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    background var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.menu-toggle:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 38%,
+    var(--border)
+  );
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 18px;
+  height: 2px;
+
+  background: var(--text);
+
+  margin: 4px auto;
+
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+.nav-links a:focus-visible,
+.theme-toggle:focus-visible,
+.menu-toggle:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+body[data-theme="light"] .site-header {
+  background: rgba(255, 255, 255, 0.84);
+
+  border-bottom-color: rgba(30, 64, 175, 0.10);
+
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.035);
+}
+
+body[data-theme="light"] .nav-links {
+  color: var(--muted);
+}
+
+body[data-theme="light"] .nav-links a:hover,
+body[data-theme="light"] .nav-links a.active {
+  color: var(--accent);
+}
+
+body[data-theme="light"] .theme-toggle,
+body[data-theme="light"] .menu-toggle {
+  background: rgba(255, 255, 255, 0.92);
+
+  border-color: rgba(30, 64, 175, 0.14);
+
+  color: var(--text);
+}
+
+body[data-theme="light"] .theme-toggle:hover,
+body[data-theme="light"] .menu-toggle:hover {
+  background: #FFFFFF;
+
+  border-color: color-mix(
+    in srgb,
+    var(--accent) 40%,
+    var(--border)
+  );
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
 
 @media (max-width: 980px) {
-  .theme-toggle { margin-left: auto; }
+  .theme-toggle {
+    margin-left: auto;
+  }
 }
 
+
+/* =========================================================
+   RESPONSIVE — MOBILE NAVIGATION
+========================================================= */
+
 @media (max-width: 760px) {
-  .navbar { gap: 10px; }
-  .brand { flex: 1; }
-  .theme-toggle, .menu-toggle { width: 42px; height: 42px; flex: 0 0 auto; }
+  .navbar {
+    gap: 10px;
+  }
+
+  .brand {
+    flex: 1;
+  }
+
+  .theme-toggle,
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 auto;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    top: 76px;
+    left: 14px;
+    right: 14px;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: color-mix(
+      in srgb,
+      var(--card) 96%,
+      transparent
+    );
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 14px;
+
+    border-radius: 12px;
+  }
+
+  .nav-links a:not(.nav-cv)::after {
+    display: none;
+  }
+
+  .nav-links a:hover {
+    background: color-mix(
+      in srgb,
+      var(--cyan) 7%,
+      var(--card)
+    );
+  }
+
+  .nav-links a.active {
+    color: var(--cyan);
+  }
+
+  .nav-cv {
+    text-align: center;
+    margin-top: 6px;
+  }
+}
+
+
+/* =========================================================
+   LIGHT THEME — MOBILE MENU
+========================================================= */
+
+@media (max-width: 760px) {
+  body[data-theme="light"] .nav-links {
+    background: rgba(255, 255, 255, 0.97);
+
+    border-color: rgba(30, 64, 175, 0.12);
+
+    box-shadow: 0 20px 55px rgba(15, 23, 42, 0.12);
+  }
+
+  body[data-theme="light"] .nav-links a:hover {
+    background: rgba(2, 132, 199, 0.07);
+  }
+
+  body[data-theme="light"] .nav-links a.active {
+    color: var(--accent);
+  }
 }

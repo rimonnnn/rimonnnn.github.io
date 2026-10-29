@@ -1,65 +1,437 @@
 /* =========================================================
-   components.css — shared pieces: buttons, chips, cards, headings
+   components.css
+   Shared components: buttons, chips, cards, and headings.
+
    Load order: 2nd
+
+   Theme-aware styling:
+   - Deep navy surfaces in dark mode.
+   - Neutral surfaces in light mode.
+   - Blue and cyan interactive accents.
 ========================================================= */
 
-/* Section kicker / eyebrow base */
-.eyebrow, .section-kicker { color: var(--cyan); font-weight: 700; letter-spacing: .02em; font-size: .9rem; }
 
-/* Action rows */
-.hero-actions, .project-actions, .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+/* =========================================================
+   SECTION LABELS
+========================================================= */
 
-/* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border: 0; border-radius: 14px; font: inherit; font-weight: 800; line-height: 1; cursor: pointer; appearance: none; -webkit-appearance: none; transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease; }
-.btn:hover { transform: translateY(-2px); }
-.btn-icon { width: 1rem; height: 1rem; flex: 0 0 auto; stroke-width: 2.2; }
-.btn-small .btn-icon { width: .92rem; height: .92rem; }
-.btn svg { margin-right: 7px; }
-.btn-disabled svg { opacity: .8; }
-.btn-primary { background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff; box-shadow: 0 18px 44px rgba(37,99,235,.28); }
-.btn-primary:hover { box-shadow: 0 20px 54px rgba(37,99,235,.38); }
-.btn-secondary { border: 1px solid var(--border); background: rgba(15,23,42,.74); color: var(--text); }
-.btn-secondary:hover { border-color: rgba(56,189,248,.48); background: rgba(15,23,42,.95); }
-.btn-small { min-height: 39px; padding: 0 14px; border-radius: 11px; font-size: .88rem; }
-
-/* Chips / tag lists */
-.hero-meta, .chip-list, .tech-list, .quality-list { display: flex; gap: 8px; flex-wrap: wrap; }
-.hero-meta span, .tech-list span, .project-chip, .build-card span, .quality-list span, .skill-chip { border: 1px solid var(--border); color: var(--muted-2); background: rgba(15,23,42,.68); border-radius: 999px; padding: 7px 10px; font-size: .8rem; line-height: 1.35; }
-
-/* Section headings */
-.section-heading p:last-child { max-width: 720px; margin: 14px auto 0; }
-.centered { text-align: center; max-width: 820px; margin: 0 auto 48px; }
-
-/* Shared card surface */
-.about-card, .contact-card, .timeline, .skill-card, .project-card, .build-card, .quality-card, .education-card, .ai-project-card {
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(17,24,39,.86), rgba(15,23,42,.78));
-  border-radius: var(--radius);
-  box-shadow: 0 16px 50px rgba(0,0,0,.22);
+.eyebrow,
+.section-kicker {
+  color: var(--cyan);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 0.9rem;
 }
 
-/* Shared card hover */
-.project-card:hover, .skill-card:hover, .timeline-item:hover, .build-card:hover, .ai-project-card:hover, .quality-card:hover, .education-card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,.4); box-shadow: 0 22px 70px rgba(0,0,0,.28); }
 
-/* Tech lists */
-.tech-list { margin: 18px 0; }
-.tech-list span { font-size: .76rem; }
+/* =========================================================
+   ACTION ROWS
+========================================================= */
 
-/* Disabled button state */
-.btn-disabled, .btn[aria-disabled="true"] { cursor: not-allowed; opacity: .72; pointer-events: none; border: 1px solid rgba(148,163,184,.18); background: rgba(15,23,42,.62); color: var(--muted-2); }
-.btn[disabled] { cursor: not-allowed; opacity: .76; transform: none; }
+.hero-actions,
+.project-actions,
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
 
-/* Button shine effect */
-.btn { position: relative; overflow: hidden; isolation: isolate; }
-.btn-primary::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.22) 45%, transparent 72%); transform: translateX(-120%); transition: transform .55s ease; z-index: -1; }
-.btn-primary:hover::before { transform: translateX(120%); }
 
-/* Chip hover motion */
-.skill-chip, .project-chip, .tech-list span, .hero-meta span, .quality-list span, .about-highlights span { transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease; }
-.skill-chip:hover, .project-chip:hover, .tech-list span:hover, .hero-meta span:hover, .quality-list span:hover, .about-highlights span:hover { transform: translateY(-2px); border-color: rgba(56,189,248,.45); background: rgba(56,189,248,.1); color: var(--text); }
+/* =========================================================
+   BUTTONS — BASE
+========================================================= */
 
-/* Testimonial card (not used in index.html right now) */
-.testimonial-card { max-width: 780px; margin: 0 auto; position: relative; padding: 32px; border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(180deg, rgba(17,24,39,.86), rgba(15,23,42,.78)); box-shadow: var(--shadow); overflow: hidden; }
-.testimonial-mark { position: absolute; right: 24px; top: -18px; color: rgba(84,197,248,.22); font-size: 7rem; font-family: Georgia, serif; line-height: 1; }
-.testimonial-card p { position: relative; margin: 0 0 14px; color: var(--text); font-size: 1.12rem; font-weight: 800; }
-.testimonial-card span { color: var(--muted); font-weight: 700; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 0 18px;
+
+  border: 1px solid transparent;
+  border-radius: 14px;
+
+  font: inherit;
+  font-weight: 800;
+  line-height: 1;
+
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.btn-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  stroke-width: 2.2;
+}
+
+.btn-small .btn-icon {
+  width: 0.92rem;
+  height: 0.92rem;
+}
+
+.btn svg {
+  margin-right: 7px;
+}
+
+.btn-disabled svg {
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--blue),
+    var(--cyan)
+  );
+
+  color: #FFFFFF;
+
+  box-shadow: 0 12px 30px color-mix(
+    in srgb,
+    var(--blue) 22%,
+    transparent
+  );
+}
+
+.btn-primary:hover {
+  box-shadow: 0 16px 38px color-mix(
+    in srgb,
+    var(--blue) 30%,
+    transparent
+  );
+}
+
+.btn-primary::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 45%,
+    transparent 72%
+  );
+
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(120%);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.btn-secondary {
+  border: 1px solid var(--border);
+
+  background: var(--card-2);
+
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 42%,
+    var(--border)
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--cyan) 7%,
+    var(--card-2)
+  );
+}
+
+
+/* =========================================================
+   SMALL BUTTONS
+========================================================= */
+
+.btn-small {
+  min-height: 39px;
+  padding: 0 14px;
+
+  border-radius: 11px;
+  font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   CHIPS AND TAG LISTS
+========================================================= */
+
+.hero-meta,
+.chip-list,
+.tech-list,
+.quality-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-meta span,
+.tech-list span,
+.project-chip,
+.build-card span,
+.quality-list span,
+.skill-chip {
+  border: 1px solid var(--border);
+
+  color: var(--muted-2);
+
+  background: color-mix(
+    in srgb,
+    var(--card-2) 82%,
+    transparent
+  );
+
+  border-radius: 999px;
+  padding: 7px 10px;
+
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading p:last-child {
+  max-width: 720px;
+  margin: 14px auto 0;
+}
+
+.centered {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 48px;
+}
+
+
+/* =========================================================
+   SHARED CARD SURFACES
+========================================================= */
+
+.about-card,
+.contact-card,
+.timeline,
+.skill-card,
+.project-card,
+.build-card,
+.quality-card,
+.education-card,
+.ai-project-card {
+  border: 1px solid var(--border);
+
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--card) 96%, transparent),
+    color-mix(in srgb, var(--card-2) 82%, transparent)
+  );
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* =========================================================
+   SHARED CARD HOVER
+========================================================= */
+
+.project-card:hover,
+.skill-card:hover,
+.timeline-item:hover,
+.build-card:hover,
+.ai-project-card:hover,
+.quality-card:hover,
+.education-card:hover {
+  transform: translateY(-4px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 38%,
+    var(--border)
+  );
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   TECH LISTS
+========================================================= */
+
+.tech-list {
+  margin: 18px 0;
+}
+
+.tech-list span {
+  font-size: 0.76rem;
+}
+
+
+/* =========================================================
+   DISABLED BUTTON STATES
+========================================================= */
+
+.btn-disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.72;
+  pointer-events: none;
+
+  border: 1px solid var(--border);
+
+  background: var(--card-2);
+
+  color: var(--muted-2);
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.76;
+  transform: none;
+}
+
+
+/* =========================================================
+   CHIP HOVER
+========================================================= */
+
+.skill-chip,
+.project-chip,
+.tech-list span,
+.hero-meta span,
+.quality-list span,
+.about-highlights span {
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.skill-chip:hover,
+.project-chip:hover,
+.tech-list span:hover,
+.hero-meta span:hover,
+.quality-list span:hover,
+.about-highlights span:hover {
+  transform: translateY(-2px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 45%,
+    var(--border)
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--cyan) 10%,
+    var(--card-2)
+  );
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   TESTIMONIAL CARD
+   Currently not used in index.html.
+========================================================= */
+
+.testimonial-card {
+  max-width: 780px;
+  margin: 0 auto;
+
+  position: relative;
+  padding: 32px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--card) 96%, transparent),
+    color-mix(in srgb, var(--card-2) 82%, transparent)
+  );
+
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.testimonial-mark {
+  position: absolute;
+
+  right: 24px;
+  top: -18px;
+
+  color: color-mix(
+    in srgb,
+    var(--cyan) 24%,
+    transparent
+  );
+
+  font-size: 7rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.testimonial-card p {
+  position: relative;
+
+  margin: 0 0 14px;
+
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-weight: 700;
+}
+
+.testimonial-card span {
+  color: var(--muted);
+  font-weight: 700;
+}

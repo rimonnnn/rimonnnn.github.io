@@ -1,109 +1,928 @@
 /* =========================================================
-   hero.css — hero section, typewriter, profile frame, phone mockups
+   hero.css
+   Hero section, typewriter, profile frame, and phone mockups.
+
+   Visual identity:
+   - Dark: Deep navy with subtle blue/cyan ambient lighting.
+   - Light: Clean surfaces with restrained blue highlights.
+
+   Colors are driven by the theme variables.
 ========================================================= */
-.hero { padding-top: 104px; }
-.hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 62px; align-items: center; }
-.eyebrow { display: inline-flex; gap: 10px; align-items: center; border: 1px solid var(--border); background: rgba(15,23,42,.72); padding: 9px 14px; border-radius: 999px; color: var(--muted-2); }
-.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
 
-.hero-subtitle { font-size: 1.2rem; color: var(--text); max-width: 690px; font-weight: 600; }
-.hero-copy { max-width: 660px; color: var(--muted); }
 
-.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0; }
-.hero-stat { border: 1px solid var(--border); background: rgba(15,23,42,.68); border-radius: 18px; padding: 15px; }
-.hero-stat strong { display: block; color: var(--cyan); font-size: 1rem; margin-bottom: 5px; }
-.hero-stat span { display: block; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+/* =========================================================
+   HERO LAYOUT
+========================================================= */
 
-.hero-meta { margin: 24px 0; }
-
-.social-row { display: flex; gap: 18px; color: var(--muted); font-weight: 700; font-size: .92rem; }
-.social-row a:hover { color: var(--cyan); }
-
-.hero-visual { position: relative; min-height: 540px; display: grid; place-items: center; }
-.glow { position: absolute; border-radius: 999px; filter: blur(16px); opacity: .75; }
-.glow-one { width: 340px; height: 340px; background: rgba(37,99,235,.24); }
-.glow-two { width: 220px; height: 220px; background: rgba(56,189,248,.18); right: 32px; top: 80px; }
-
-.mockup-stack { position: relative; width: min(100%, 540px); height: 390px; }
-.phone-card { position: absolute; overflow: hidden; border: 1px solid var(--border); border-radius: 34px; background: #030712; box-shadow: var(--shadow); }
-.phone-card img { width: 100%; height: 100%; object-fit: cover; }
-.main-phone { inset: 16px 74px 0 74px; z-index: 3; }
-.phone-card-small { width: 210px; height: 310px; top: 72px; opacity: .9; }
-.phone-card-small.left { left: 0; transform: rotate(-8deg); }
-.phone-card-small.right { right: 0; transform: rotate(8deg); }
-
-.visual-card { position: absolute; left: 24px; bottom: 18px; width: 300px; padding: 18px; border: 1px solid var(--border); border-radius: 18px; background: rgba(15,23,42,.84); backdrop-filter: blur(16px); box-shadow: var(--shadow); z-index: 5; }
-.visual-card strong { display: block; margin-bottom: 6px; }
-.visual-card span { color: var(--muted); font-size: .92rem; line-height: 1.55; }
-
-/* Hero entrance motion */
-.hero-content .eyebrow, .hero-content h1, .hero-subtitle, .hero-actions, .hero-stats, .hero-meta, .social-row, .hero-visual { animation: heroFadeUp .75s ease both; }
-.hero-content h1 { animation-delay: .08s; }
-.hero-subtitle { animation-delay: .16s; }
-.hero-actions { animation-delay: .24s; }
-.hero-stats { animation-delay: .32s; }
-.hero-meta { animation-delay: .4s; }
-.social-row { animation-delay: .48s; }
-.hero-visual { animation-delay: .18s; }
-.main-phone { animation: premiumFloat 6s ease-in-out infinite; }
-
-@keyframes heroFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes premiumFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-
-@media (max-width: 980px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero { padding-top: 84px; }
-  .hero-visual { min-height: 430px; }
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 104px;
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      color-mix(in srgb, var(--cyan) 12%, transparent),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 86% 10%,
+      color-mix(in srgb, var(--blue) 12%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--cyan) 4%, transparent),
+      transparent 42%
+    );
 }
 
-@media (max-width: 760px) {
-  .hero-subtitle { font-size: 1.06rem; }
-  .hero-stats { grid-template-columns: 1fr; }
-  .hero-visual { min-height: 350px; }
-  .mockup-stack { height: 300px; }
-  .main-phone { inset: 16px 56px 0 56px; }
-  .phone-card-small { width: 160px; height: 220px; top: 58px; }
-  .visual-card { position: relative; left: auto; bottom: auto; width: 100%; margin-top: -28px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 62px;
+  align-items: center;
 }
 
-/* Flutter identity system: hero background, typewriter, profile frame */
-.hero { position: relative; overflow: hidden; background: radial-gradient(circle at 18% 20%, rgba(84,197,248,.18), transparent 30%), radial-gradient(circle at 86% 10%, rgba(1,87,155,.22), transparent 28%), linear-gradient(135deg, rgba(84,197,248,.05), transparent 42%); }
-.hero::before { content: ''; position: absolute; inset: -30%; background: linear-gradient(115deg, transparent 0 34%, rgba(84,197,248,.10) 45%, transparent 56%), radial-gradient(circle at 30% 35%, rgba(84,197,248,.16), transparent 12%), radial-gradient(circle at 68% 52%, rgba(1,87,155,.18), transparent 14%); animation: meshMove 14s ease-in-out infinite alternate; pointer-events: none; }
-@keyframes meshMove { from { transform: translate3d(-2%, -1%, 0) rotate(0deg); } to { transform: translate3d(2%, 2%, 0) rotate(4deg); } }
-.hero > .container { position: relative; }
+
+/* =========================================================
+   AMBIENT BACKGROUND
+========================================================= */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0 34%,
+      color-mix(in srgb, var(--cyan) 7%, transparent) 45%,
+      transparent 56%
+    ),
+    radial-gradient(
+      circle at 30% 35%,
+      color-mix(in srgb, var(--cyan) 10%, transparent),
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 68% 52%,
+      color-mix(in srgb, var(--blue) 10%, transparent),
+      transparent 14%
+    );
+  animation: meshMove 14s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero > .container {
+  position: relative;
+}
+
+
+/* =========================================================
+   EYEBROW / STATUS
+========================================================= */
+
+.eyebrow {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: color-mix(
+    in srgb,
+    var(--card-2) 82%,
+    transparent
+  );
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--muted-2);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
+}
+
+
+/* =========================================================
+   HERO TYPOGRAPHY
+========================================================= */
+
+.hero-subtitle {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 690px;
+  font-weight: 600;
+}
+
+.hero-copy {
+  max-width: 660px;
+  color: var(--muted);
+}
+
+.hero-title-line {
+  color: var(--text);
+  font-size: clamp(1.95rem, 4.2vw, 3.55rem);
+  line-height: 1.12;
+  margin-top: 8px;
+}
+
+
+/* =========================================================
+   TYPEWRITER ROLE
+========================================================= */
 
 h1 .typewriter-role {
   display: inline-block;
   color: var(--primary);
   min-height: 1.05em;
   white-space: nowrap;
-  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  font-size: clamp(1.45rem, 2.7vw, 2.2rem);
+  line-height: 1.3;
 }
-h1 .typewriter-role::after { content: ''; display: inline-block; width: .08em; height: .82em; margin-left: .1em; background: currentColor; vertical-align: -.08em; animation: caretBlink .9s steps(1) infinite; }
-@keyframes caretBlink { 50% { opacity: 0; } }
-.hero-title-line { color: var(--text); font-size: clamp(2rem, 5vw, 4.4rem); margin-top: 8px; }
-.hero-visual { align-content: center; gap: 18px; }
 
-.hero-profile-frame { position: relative; width: 210px; height: 210px; padding: 6px; border-radius: 50%; background: conic-gradient(from var(--spin-angle, 0deg), var(--primary), var(--accent), #7dd3fc, var(--primary)); box-shadow: 0 0 44px rgba(84,197,248,.22), var(--shadow); animation: spinGlow 6s linear infinite; z-index: 8; }
-.hero-profile-frame::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: inherit; filter: blur(16px); opacity: .38; z-index: -1; }
-.hero-profile-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; border: 4px solid var(--bg); }
-.open-work-badge { position: absolute; right: -34px; bottom: 22px; padding: 9px 12px; border: 1px solid rgba(84,197,248,.38); border-radius: 999px; background: rgba(13,17,23,.88); color: #fff; font-size: .82rem; font-weight: 900; box-shadow: 0 12px 34px rgba(0,0,0,.25); white-space: nowrap; }
-@keyframes spinGlow { to { --spin-angle: 360deg; } }
-@property --spin-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+h1 .typewriter-role::after {
+  content: '';
+  display: inline-block;
+  width: 0.08em;
+  height: 0.82em;
+  margin-left: 0.1em;
+  background: currentColor;
+  vertical-align: -0.08em;
+  animation: caretBlink 0.9s steps(1) infinite;
+}
 
-.hero-stat strong { font-size: 1.22rem; }
+
+/* =========================================================
+   HERO ACTIONS & SOCIAL LINKS
+========================================================= */
+
+.hero-meta {
+  margin: 24px 0;
+}
+
+.social-row {
+  display: flex;
+  gap: 18px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.social-row a {
+  transition: color 0.2s ease;
+}
+
+.social-row a:hover {
+  color: var(--cyan);
+}
+
+
+/* =========================================================
+   HERO STATISTICS
+========================================================= */
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 26px 0;
+}
+
+.hero-stat {
+  border: 1px solid var(--border);
+  background: color-mix(
+    in srgb,
+    var(--card-2) 86%,
+    transparent
+  );
+  border-radius: 18px;
+  padding: 15px;
+  transition:
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+
+.hero-stat:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--cyan) 35%,
+    var(--border)
+  );
+}
+
+.hero-stat strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 1.22rem;
+  margin-bottom: 5px;
+}
+
+.hero-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+  position: relative;
+  min-height: 540px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 18px;
+}
+
+
+/* =========================================================
+   AMBIENT GLOWS
+========================================================= */
+
+.glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(16px);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.glow-one {
+  width: 340px;
+  height: 340px;
+  background: color-mix(
+    in srgb,
+    var(--blue) 20%,
+    transparent
+  );
+}
+
+.glow-two {
+  width: 220px;
+  height: 220px;
+  background: color-mix(
+    in srgb,
+    var(--cyan) 15%,
+    transparent
+  );
+  right: 32px;
+  top: 80px;
+}
+
+
+/* =========================================================
+   PHONE MOCKUPS
+   Portrait proportions and staggered composition.
+
+   Main:
+   - News App
+   - Centered
+   - Largest device
+
+   Side devices:
+   - Shopino on the left
+   - Masiter on the right
+   - Smaller, slightly rotated, and vertically staggered
+========================================================= */
+
+.mockup-stack {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 560px);
+  height: 520px;
+  margin-inline: auto;
+}
+
+/* Shared phone frame */
+
+.phone-card {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /*
+    Keep a realistic portrait-screen ratio.
+    The height is calculated from the width.
+  */
+  aspect-ratio: 9 / 19;
+  height: auto;
+
+  padding: 6px;
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--border) 75%,
+    var(--text) 12%
+  );
+
+  border-radius: 32px;
+
+  background: var(--card-2);
+
+  box-shadow:
+    0 24px 58px rgba(2, 6, 23, 0.25),
+    var(--shadow);
+}
+
+/* Actual application screenshot */
+
+.phone-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 25px;
+}
+
+/* Subtle speaker / camera area */
+
+.phone-card::before {
+  content: '';
+  position: absolute;
+
+  top: 10px;
+  left: 50%;
+
+  width: 28%;
+  max-width: 54px;
+  min-width: 26px;
+  height: 7px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--border) 70%,
+    var(--text) 15%
+  );
+
+  border-radius: 999px;
+  background: var(--bg);
+
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Main phone: News App */
+
+.main-phone {
+  top: 12px;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+
+  width: 40%;
+  height: auto;
+  aspect-ratio: 9 / 19;
+
+  transform: translateX(-50%);
+
+  z-index: 3;
+
+  animation: premiumFloat 6s ease-in-out infinite;
+}
+
+/* Secondary phones */
+
+.phone-card-small {
+  width: 29%;
+  height: auto;
+  aspect-ratio: 9 / 19;
+
+  opacity: 0.98;
+}
+
+/* Shopino: left side, lower than the main phone */
+
+.phone-card-small.left {
+  top: 72px;
+  left: 1.5%;
+  right: auto;
+
+  z-index: 1;
+
+  transform: rotate(-7deg);
+}
+
+/* Masiter: right side, slightly higher than Shopino */
+
+.phone-card-small.right {
+  top: 112px;
+  right: 1.5%;
+  left: auto;
+
+  z-index: 2;
+
+  transform: rotate(7deg);
+}
+
+
+/* =========================================================
+   VISUAL INFORMATION CARD
+========================================================= */
+
+.visual-card {
+  position: absolute;
+  left: 24px;
+  bottom: 18px;
+
+  width: 300px;
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background: color-mix(
+    in srgb,
+    var(--card) 90%,
+    transparent
+  );
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow: var(--shadow);
+  z-index: 5;
+}
+
+.visual-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.visual-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   PROFILE FRAME
+========================================================= */
+
+.hero-profile-frame {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  padding: 6px;
+
+  border-radius: 50%;
+
+  background: conic-gradient(
+    from var(--spin-angle, 0deg),
+    var(--primary),
+    var(--accent),
+    var(--cyan),
+    var(--primary)
+  );
+
+  box-shadow:
+    0 0 36px color-mix(
+      in srgb,
+      var(--primary) 18%,
+      transparent
+    ),
+    var(--shadow);
+
+  animation: spinGlow 6s linear infinite;
+  z-index: 8;
+}
+
+.hero-profile-frame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+
+  border-radius: 50%;
+  background: inherit;
+
+  filter: blur(16px);
+  opacity: 0.32;
+  z-index: -1;
+}
+
+.hero-profile-frame img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+
+  border: 4px solid var(--bg);
+}
+
+
+/* =========================================================
+   OPEN FOR WORK BADGE
+========================================================= */
+
+.open-work-badge {
+  position: absolute;
+  right: -34px;
+  bottom: 22px;
+
+  padding: 9px 12px;
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--cyan) 35%,
+    var(--border)
+  );
+
+  border-radius: 999px;
+
+  background: color-mix(
+    in srgb,
+    var(--card) 94%,
+    transparent
+  );
+
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 900;
+
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ENTRANCE ANIMATIONS
+========================================================= */
+
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-subtitle,
+.hero-actions,
+.hero-stats,
+.hero-meta,
+.social-row,
+.hero-visual {
+  animation: heroFadeUp 0.75s ease both;
+}
+
+.hero-content h1 {
+  animation-delay: 0.08s;
+}
+
+.hero-subtitle {
+  animation-delay: 0.16s;
+}
+
+.hero-actions {
+  animation-delay: 0.24s;
+}
+
+.hero-stats {
+  animation-delay: 0.32s;
+}
+
+.hero-meta {
+  animation-delay: 0.4s;
+}
+
+.social-row {
+  animation-delay: 0.48s;
+}
+
+.hero-visual {
+  animation-delay: 0.18s;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  Keep the main device centered while it floats.
+  Including translateX(-50%) prevents the animation from
+  overriding the horizontal centering transform.
+*/
+
+@keyframes premiumFloat {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, -8px);
+  }
+}
+
+@keyframes meshMove {
+  from {
+    transform: translate3d(-2%, -1%, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(2%, 2%, 0) rotate(4deg);
+  }
+}
+
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes spinGlow {
+  to {
+    --spin-angle: 360deg;
+  }
+}
+
+
+/* =========================================================
+   ANIMATED CONIC GRADIENT
+========================================================= */
+
+@property --spin-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   Keep decorative lighting subtle on bright backgrounds.
+========================================================= */
+
+body[data-theme="light"] .hero {
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      color-mix(in srgb, var(--cyan) 7%, transparent),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 86% 10%,
+      color-mix(in srgb, var(--blue) 6%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--cyan) 3%, transparent),
+      transparent 42%
+    );
+}
+
+body[data-theme="light"] .hero::before {
+  opacity: 0.6;
+}
+
+body[data-theme="light"] .glow {
+  opacity: 0.35;
+}
+
+body[data-theme="light"] .phone-card {
+  border-color: rgba(30, 64, 175, 0.14);
+  box-shadow:
+    0 22px 48px rgba(15, 23, 42, 0.12),
+    var(--shadow-soft);
+}
+
+body[data-theme="light"] .phone-card::before {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+body[data-theme="light"] .hero-profile-frame {
+  box-shadow:
+    0 0 32px color-mix(
+      in srgb,
+      var(--primary) 14%,
+      transparent
+    ),
+    var(--shadow-soft);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
 
 @media (max-width: 980px) {
-  .hero-profile-frame { width: 186px; height: 186px; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 84px;
+  }
+
+  .hero-visual {
+    min-height: 560px;
+  }
+
+  .mockup-stack {
+    width: min(100%, 560px);
+    height: 520px;
+  }
+
+  .hero-profile-frame {
+    width: 186px;
+    height: 186px;
+  }
 }
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
 
 @media (max-width: 760px) {
-  .hero-profile-frame { width: 166px; height: 166px; }
-  .open-work-badge { right: -18px; bottom: 10px; font-size: .72rem; padding: 8px 10px; }
-  .hero-title-line { font-size: clamp(1.8rem, 10vw, 3rem); }
+  .hero-subtitle {
+    font-size: 1.06rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .mockup-stack {
+    width: min(100%, 390px);
+    height: 390px;
+  }
+
+  /* Keep the main phone tall and centered. */
+
+  .main-phone {
+    top: 4px;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    width: 46%;
+    height: auto;
+    aspect-ratio: 9 / 19;
+  }
+
+  /* Smaller side phones remain independently visible. */
+
+  .phone-card-small {
+    width: 31%;
+    height: auto;
+    aspect-ratio: 9 / 19;
+  }
+
+  .phone-card-small.left {
+    top: 48px;
+    left: 0.5%;
+    right: auto;
+  }
+
+  .phone-card-small.right {
+    top: 82px;
+    right: 0.5%;
+    left: auto;
+  }
+
+  .phone-card {
+    padding: 5px;
+    border-radius: 25px;
+  }
+
+  .phone-card img {
+    border-radius: 19px;
+  }
+
+  .phone-card::before {
+    top: 8px;
+    height: 6px;
+  }
+
+  .visual-card {
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    width: 100%;
+    margin-top: -28px;
+  }
+
+  .hero-profile-frame {
+    width: 166px;
+    height: 166px;
+  }
+
+  .open-work-badge {
+    right: -18px;
+    bottom: 10px;
+
+    font-size: 0.72rem;
+    padding: 8px 10px;
+  }
+
+  .hero-title-line {
+    font-size: clamp(1.7rem, 7vw, 2.5rem);
+    line-height: 1.18;
+  }
 }
 
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
 @media (max-width: 390px) {
-  .hero-actions .btn { width: 100%; }
-  .social-row { flex-wrap: wrap; }
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .social-row {
+    flex-wrap: wrap;
+  }
+
+  .mockup-stack {
+    width: 100%;
+    height: 360px;
+  }
+
+  .main-phone {
+    width: 45%;
+  }
+
+  .phone-card-small {
+    width: 29%;
+  }
+
+  .phone-card-small.left {
+    top: 48px;
+    left: 0;
+  }
+
+  .phone-card-small.right {
+    top: 78px;
+    right: 0;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   Respect users who prefer fewer animations.
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .eyebrow,
+  .hero-content h1,
+  .hero-subtitle,
+  .hero-actions,
+  .hero-stats,
+  .hero-meta,
+  .social-row,
+  .hero-visual,
+  .main-phone,
+  .hero-profile-frame,
+  .hero::before,
+  h1 .typewriter-role::after {
+    animation: none;
+  }
+
+  .hero-profile-frame {
+    background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--accent),
+      var(--cyan)
+    );
+  }
+
+  .main-phone {
+    transform: translateX(-50%);
+  }
 }

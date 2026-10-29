@@ -1,0 +1,188 @@
+/* =========================================================
+   language.css
+   Language switch and first-pass RTL adjustments.
+========================================================= */
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.language-toggle:hover {
+  color: var(--cyan);
+  border-color: color-mix(in srgb, var(--cyan) 45%, var(--border));
+  transform: translateY(-1px);
+}
+
+.language-toggle:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* Use an Arabic-capable font only when Arabic is active. */
+html[dir="rtl"] body {
+  font-family: "IBM Plex Sans Arabic", "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+html[dir="rtl"] .navbar,
+html[dir="rtl"] .nav-links,
+html[dir="rtl"] .hero-grid,
+html[dir="rtl"] .hero-meta,
+html[dir="rtl"] .social-row,
+html[dir="rtl"] .project-actions,
+html[dir="rtl"] .contact-actions,
+html[dir="rtl"] .form-actions-row {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .about-intro,
+html[dir="rtl"] .project-content,
+html[dir="rtl"] .build-card,
+html[dir="rtl"] .skill-card,
+html[dir="rtl"] .certificate-body,
+html[dir="rtl"] .contact-card > div:first-child,
+html[dir="rtl"] .contact-form,
+html[dir="rtl"] .project-modal__body {
+  text-align: right;
+}
+
+html[dir="rtl"] .section-heading.centered,
+html[dir="rtl"] .section-heading.centered > *,
+html[dir="rtl"] .section-heading.centered .section-kicker {
+  text-align: center;
+}
+
+html[dir="rtl"] .hero-stats,
+html[dir="rtl"] .about-details-grid,
+html[dir="rtl"] .project-grid,
+html[dir="rtl"] .build-grid,
+html[dir="rtl"] .skills-grid,
+html[dir="rtl"] .timeline {
+  direction: rtl;
+}
+
+html[dir="rtl"] .form-field input,
+html[dir="rtl"] .form-field textarea {
+  text-align: right;
+}
+
+html[dir="rtl"] .project-modal__tech,
+html[dir="rtl"] .tech-list,
+html[dir="rtl"] .skill-chips,
+html[dir="rtl"] .about-highlights {
+  direction: rtl;
+}
+
+/* Do not reverse logos, technology names, email addresses, or code-like tokens. */
+html[dir="rtl"] .brand,
+html[dir="rtl"] .brand-mark,
+html[dir="rtl"] .tech-list,
+html[dir="rtl"] .skill-chip,
+html[dir="rtl"] .project-chip,
+html[dir="rtl"] .project-type,
+html[dir="rtl"] .contact-details a,
+html[dir="rtl"] .hero-meta span,
+html[dir="rtl"] .social-row a {
+  unicode-bidi: plaintext;
+}
+
+@media (max-width: 760px) {
+  .language-toggle {
+    min-width: 44px;
+    min-height: 38px;
+    padding-inline: 9px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Arabic typography: use open, readable line-height and remove Latin-style
+   negative letter spacing, which makes Arabic headings feel crowded. */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] .hero-title-line,
+html[dir="rtl"] .typewriter-role,
+html[dir="rtl"] .project-placeholder strong,
+html[dir="rtl"] .project-modal__placeholder strong,
+html[dir="rtl"] .project-card .project-content h3,
+html[dir="rtl"] .about-profile-text h3 {
+  font-family: "IBM Plex Sans Arabic", "Inter", sans-serif;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+html[dir="rtl"] h1 {
+  font-size: clamp(2rem, 4.7vw, 3.75rem);
+}
+
+html[dir="rtl"] h2,
+html[dir="rtl"] .section-heading h2,
+html[dir="rtl"] .project-modal__body h2 {
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  line-height: 1.45;
+}
+
+html[dir="rtl"] .hero-title-line {
+  font-size: clamp(1.8rem, 3.8vw, 3.05rem);
+  line-height: 1.45;
+}
+
+html[dir="rtl"] h1 .typewriter-role {
+  max-width: 100%;
+  white-space: normal;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.5;
+}
+
+html[dir="rtl"] .hero-subtitle,
+html[dir="rtl"] .about-intro p,
+html[dir="rtl"] .project-short,
+html[dir="rtl"] .project-modal__overview,
+html[dir="rtl"] .project-detail-block p,
+html[dir="rtl"] .project-detail-block li,
+html[dir="rtl"] .build-card p,
+html[dir="rtl"] .timeline-item p,
+html[dir="rtl"] .form-field input,
+html[dir="rtl"] .form-field textarea {
+  line-height: 1.9;
+}
+
+@media (max-width: 760px) {
+  html[dir="rtl"] h1 {
+    font-size: clamp(1.85rem, 8vw, 2.85rem);
+  }
+
+  html[dir="rtl"] h2,
+  html[dir="rtl"] .section-heading h2,
+  html[dir="rtl"] .project-modal__body h2 {
+    font-size: clamp(1.55rem, 6vw, 2.15rem);
+  }
+
+  html[dir="rtl"] .hero-title-line {
+    font-size: clamp(1.65rem, 6.8vw, 2.35rem);
+  }
+}
+

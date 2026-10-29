@@ -1,28 +1,85 @@
 /* =========================================================
-   utilities.css — scroll-reveal, focus ring, reduced motion
+   utilities.css
+   Scroll-reveal, focus ring, and reduced motion.
+
    Load LAST.
+
+   Accessibility colors are driven by theme variables.
 ========================================================= */
 
-/* SCROLL-REVEAL ANIMATION UTILITIES
-   Elements are only hidden when JavaScript is running
-   (<html class="js"> is set by the inline bootstrap in index.html).
-   Without JS, or if the scripts fail to load, content stays visible. */
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-.js .reveal.visible { opacity: 1; transform: translateY(0); }
-.delay-1 { transition-delay: .12s; }
-.delay-2 { transition-delay: .2s; }
-.delay-3 { transition-delay: .28s; }
 
-/* Keyboard focus ring */
-:focus-visible { outline: 3px solid rgba(56,189,248,.62); outline-offset: 4px; }
+/* =========================================================
+   SCROLL-REVEAL ANIMATION UTILITIES
 
-/* ACCESSIBILITY: reduced motion */
+   Elements are hidden only when JavaScript is running
+   and the .js class is set on the <html> element.
+
+   Without JavaScript, content remains visible.
+========================================================= */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.js .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   STAGGERED ANIMATION DELAYS
+========================================================= */
+
+.delay-1 {
+  transition-delay: 0.12s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.28s;
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   Focus color adapts to the active theme.
+========================================================= */
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   Respect the user's operating-system preference.
+========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
+
     scroll-behavior: auto !important;
-    transition-duration: .001ms !important;
+
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
   }
-  .reveal { opacity: 1 !important; transform: none !important; }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

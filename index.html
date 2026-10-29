@@ -1,749 +1,1553 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rimon Abdelmasih portfolio — Flutter Developer building clean, API-driven mobile apps with Flutter, Dart, REST APIs, local storage, and modern UI." />
-  <meta name="theme-color" content="#0D1117" />
-  <link rel="canonical" href="https://rimonnnn.github.io/" />
+<!doctype html>
+<html lang="en" dir="ltr" data-language="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rimon Abdelmasih portfolio — Flutter Developer building clean, API-driven mobile apps with Flutter, Dart, REST APIs, local storage, and modern UI."
+    />
+    <meta name="theme-color" content="#080D18" />
+    <link rel="canonical" href="https://rimonnnn.github.io/" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
 
-<link rel="icon" type="image/png" href="assets/favicon.png" />
-<link rel="apple-touch-icon" href="assets/favicon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rimon Abdelmasih",
+        "jobTitle": "Flutter Developer",
+        "url": "https://rimonnnn.github.io/",
+        "image": "https://rimonnnn.github.io/profile_photo.png",
+        "sameAs": [
+          "https://github.com/rimonnnn",
+          "https://www.linkedin.com/in/rimon-abdelmasih"
+        ],
+        "email": "rimonabdelmasih92@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "EG"
+        },
+        "knowsAbout": [
+          "Flutter",
+          "Dart",
+          "REST APIs",
+          "Clean Architecture",
+          "BLoC",
+          "Mobile App Development"
+        ]
+      }
+    </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Rimon Abdelmasih",
-  "jobTitle": "Flutter Developer",
-  "url": "https://rimonnnn.github.io/",
-  "image": "https://rimonnnn.github.io/profile_photo.png",
-  "sameAs": [
-    "https://github.com/rimonnnn",
-    "https://www.linkedin.com/in/rimon-abdelmasih"
-  ],
-  "email": "mailto:rimonabdelmasih92@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "EG"
-  },
-  "knowsAbout": ["Flutter", "Dart", "REST APIs", "Clean Architecture", "BLoC", "Mobile App Development"]
-}
-</script>
+    <meta
+      property="og:title"
+      content="Rimon Abdelmasih | Flutter Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Flutter Developer portfolio with practical mobile apps, REST API integration, local storage, state management, and AI/Data Science background."
+    />
+    <meta
+      property="og:image"
+      content="https://rimonnnn.github.io/profile_photo.png"
+    />
+    <meta property="og:url" content="https://rimonnnn.github.io/" />
+    <meta property="og:type" content="website" />
 
-  <meta property="og:title" content="Rimon Abdelmasih | Flutter Developer Portfolio">
-  <meta property="og:description" content="Flutter Developer portfolio with practical mobile apps, REST API integration, local storage, state management, and AI/Data Science background.">
-  <meta property="og:image" content="https://rimonnnn.github.io/profile_photo.png">
-  <meta property="og:url" content="https://rimonnnn.github.io/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rimon Abdelmasih | Flutter Developer Portfolio">
-  <meta name="twitter:description" content="Flutter portfolio with practical mobile apps, API integration, local storage, and AI/Data Science background.">
-  <meta name="twitter:image" content="https://rimonnnn.github.io/profile_photo.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Rimon Abdelmasih | Flutter Developer Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Flutter portfolio with practical mobile apps, API integration, local storage, and AI/Data Science background."
+    />
+    <meta
+      name="twitter:image"
+      content="https://rimonnnn.github.io/profile_photo.png"
+    />
 
-  <title>Rimon Abdelmasih | Flutter Developer Portfolio</title>
+    <title>Rimon Abdelmasih | Flutter Developer Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/hero.css">
-<link rel="stylesheet" href="css/about.css">
-<link rel="stylesheet" href="css/projects.css">
-<link rel="stylesheet" href="css/build-skills.css">
-<link rel="stylesheet" href="css/training.css">
-<link rel="stylesheet" href="css/contact.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/utilities.css">
-</head>
-<body data-theme="dark">
-  <script>
-    /* Critical, render-blocking, pre-paint bootstrap.
-       Placed first inside <body> (not <head>, since body already exists here).
-       It does three things before any content is parsed:
-       1) Marks the page as JS-enabled (<html class="js">) so scroll-reveal
-          content is only hidden when JavaScript is actually running.
-       2) Defines window.handleImgError so inline onerror="" handlers on <img>
-          tags can never run before the function exists (main.js is deferred).
-       3) Resolves the saved theme to prevent a flash of the wrong theme. */
-    (function () {
-      var root = document.documentElement;
-      root.classList.add('js');
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/build-skills.css" />
+    <link rel="stylesheet" href="css/training.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/language.css" />
+  </head>
 
-      window.handleImgError = function (imgEl, fallbackSrc) {
-        imgEl.onerror = null;
-        imgEl.src = fallbackSrc;
-      };
+  <body data-theme="dark">
+    <script>
+      /* Critical pre-paint bootstrap:
+         1. Flags JS support for scroll reveal.
+         2. Defines the image fallback handler.
+         3. Applies the saved theme and matching browser theme color.
+         4. Safety net: reveals content if main.js fails to load. */
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("js");
 
-      try {
-        var stored = localStorage.getItem('portfolio-theme');
-        var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
-        document.body.setAttribute('data-theme', theme);
-      } catch (e) { /* localStorage unavailable — fall back to default dark */ }
+        window.handleImgError = function (img, fallbackSrc) {
+          if (!img) return;
+          img.onerror = null;
+          if (fallbackSrc) img.src = fallbackSrc;
+        };
 
-      /* Safety net: if main.js never runs (blocked or failed to load),
-         drop the "js" class so .reveal content is not left invisible. */
-      window.setTimeout(function () {
-        if (!window.__portfolioReady) root.classList.remove('js');
-      }, 4000);
-    })();
-  </script>
+        function updateThemeColor(theme) {
+          const meta = document.querySelector('meta[name="theme-color"]');
 
-  <div class="page-noise"></div>
+          if (!meta) return;
 
-  <header class="site-header" id="top">
-    <nav class="navbar container" aria-label="Primary navigation">
-      <a href="#top" class="brand" aria-label="Rimon home">
-        <span class="brand-mark">&lt;/&gt;</span>
-        <span>Rimon.dev</span>
-      </a>
+          meta.setAttribute(
+            "content",
+            theme === "light" ? "#F8FAFC" : "#080D18",
+          );
+        }
 
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-        <span class="theme-toggle__icon" aria-hidden="true">☾</span>
-      </button>
+        var theme = "dark";
+        try {
+          var stored = localStorage.getItem("portfolio-theme");
+          if (stored === "light" || stored === "dark") theme = stored;
+        } catch (e) {
+          /* localStorage unavailable: keep default dark theme. */
+        }
+        document.body.setAttribute("data-theme", theme);
+        updateThemeColor(theme);
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        var language = "en";
+        try {
+          var storedLanguage = localStorage.getItem("portfolio-language");
+          if (storedLanguage === "ar" || storedLanguage === "en") {
+            language = storedLanguage;
+          }
+        } catch (e) {
+          /* localStorage unavailable: keep English as the default language. */
+        }
+        root.setAttribute("lang", language);
+        root.setAttribute("dir", language === "ar" ? "rtl" : "ltr");
+        root.setAttribute("data-language", language);
 
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#ai-project">AI Project</a>
-        <a href="#build">What I Build</a>
-        <a href="#skills">Skills</a>
-        <a href="#training">Training</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cv" href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
-      </div>
-    </nav>
-  </header>
+        window.setTimeout(function () {
+          if (!window.__portfolioReady) root.classList.remove("js");
+        }, 4000);
+      })();
+    </script>
 
-  <main>
-    <section class="hero section-padding">
-      <div class="container hero-grid">
-        <div class="hero-content reveal">
-          <div class="eyebrow">
-            <span class="status-dot"></span>
-            Open to Flutter Internships &amp; Junior Roles
-          </div>
+    <!-- SVG icon sprite: each icon is defined once and reused via <use> -->
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <symbol id="i-list" viewBox="0 0 24 24">
+          <path d="M3 5h18" />
+          <path d="M3 12h18" />
+          <path d="M3 19h18" />
+        </symbol>
+        <symbol id="i-cv" viewBox="0 0 24 24">
+          <path
+            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+          />
+          <path d="M14 2v6h6" />
+          <path d="M16 13H8" />
+          <path d="M16 17H8" />
+          <path d="M10 9H8" />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z" />
+          <path d="m22 6-10 7L2 6" />
+        </symbol>
+        <symbol id="i-info" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4" />
+          <path d="M12 8h.01" />
+        </symbol>
+        <symbol id="i-external" viewBox="0 0 24 24">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <path d="M15 3h6v6" />
+          <path d="M10 14 21 3" />
+        </symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+          <path
+            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+          />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="M7 4v16l13-8z" />
+        </symbol>
+        <symbol id="i-game" viewBox="0 0 24 24">
+          <path d="M6 12h12" />
+          <path d="M12 6v12" />
+          <path d="M17 17l3 3" />
+          <path d="M7 17l-3 3" />
+          <rect x="3" y="8" width="18" height="8" rx="4" />
+        </symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24">
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"
+          />
+        </symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24">
+          <path
+            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+          />
+          <path d="M2 9h4v12H2z" />
+          <circle cx="4" cy="4" r="2" />
+        </symbol>
+      </defs>
+    </svg>
 
-          <h1 aria-label="Flutter Developer. Building clean, API-driven mobile apps with Flutter"><span class="typewriter-role" id="typewriterRole" aria-hidden="true">Flutter Developer</span><span class="hero-title-line">Building clean, API-driven mobile apps with Flutter</span></h1>
+    <div class="page-noise" aria-hidden="true"></div>
 
-          <p class="hero-subtitle">
-            I build responsive Flutter apps with REST APIs, local storage, state management, and clean project structure.
-          </p>
+    <header class="site-header" id="top">
+      <nav class="navbar container" aria-label="Primary navigation">
+        <a href="#top" class="brand" aria-label="Rimon home">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>Rimon.dev</span>
+        </a>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg>View Projects</a>
-            <a class="btn btn-secondary" href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>View CV</a>
-            <a class="btn btn-secondary" href="#contact"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Contact Me</a>
-          </div>
+        <button
+          class="language-toggle"
+          id="languageToggle"
+          type="button"
+          aria-label="Switch language to Arabic"
+          lang="ar"
+          dir="auto"
+        >
+          العربية
+        </button>
 
-          <div class="hero-stats" aria-label="Quick achievements">
-            <div class="hero-stat">
-              <strong><span class="counter" data-count="6">0</span>+</strong>
-              <span>Projects</span>
-            </div>
-            <div class="hero-stat">
-              <strong><span class="counter" data-count="3">0</span>+</strong>
-              <span>REST API skills: Dio &amp; JSON</span>
-            </div>
-            <div class="hero-stat">
-              <strong><span class="counter" data-count="2">0</span></strong>
-              <span>Cubit / Provider State Management</span>
-            </div>
-            <div class="hero-stat">
-              <strong><span class="counter" data-count="1">0</span></strong>
-              <span>AI &amp; DS Academic Background</span>
-            </div>
-          </div>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+        </button>
 
-          <div class="hero-meta" aria-label="Core details">
-            <span>Egypt</span>
-            <span>Flutter</span>
-            <span>Dart</span>
-            <span>REST APIs</span>
-            <span>GoRouter</span>
-            <span>SQLite</span>
-          </div>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-          <div class="social-row">
-            <a href="https://github.com/rimonnnn" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">Email</a>
-          </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#ai-project">AI Project</a>
+          <a href="#build">What I Build</a>
+          <a href="#skills">Skills</a>
+          <a href="#training">Training</a>
+          <a href="#contact">Contact</a>
+          <a
+            class="nav-cv"
+            href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <use href="#i-cv" />
+            </svg>
+            View CV
+          </a>
         </div>
+      </nav>
+    </header>
 
-        <div class="hero-visual reveal delay-1" aria-label="Flutter project previews">
-          <div class="glow glow-one"></div>
-          <div class="glow glow-two"></div>
-
-          <div class="hero-profile-frame" aria-label="Rimon Abdelmasih profile photo">
-            <img src="./assets/profile_photo.png" onerror="handleImgError(this, 'profile_photo.png')" alt="Photo of Rimon Abdelmasih" width="190" height="190" loading="eager" decoding="async" />
-            <span class="open-work-badge">Open to Work 🚀</span>
-          </div>
-
-          <div class="mockup-stack">
-            <article class="phone-card phone-card-small left">
-              <img src="./assets/meals_app.png" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/meals_app.png')" alt="Meals App preview" loading="lazy" decoding="async" />
-            </article>
-
-            <article class="phone-card main-phone">
-              <img src="assets/news_app.png" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/news_app.png')" alt="News App preview" loading="eager" decoding="async" />
-            </article>
-
-            <article class="phone-card phone-card-small right">
-              <img src="./assets/finance_app.png" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/finance_app.png')" alt="Finance App preview" loading="lazy" decoding="async" />
-            </article>
-          </div>
-
-          <div class="visual-card">
-            <strong>Flutter &amp; Dart</strong>
-            <span>Responsive iOS &amp; Android apps with maintainable codebases.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about section-padding" id="about">
-      <div class="container about-layout">
-        <div class="about-intro reveal">
-          <p class="section-kicker">About Me</p>
-          <h2>Building reliable Flutter apps with clean structure and practical features.</h2>
-          <p>
-            I’m a Flutter Developer from Egypt building responsive Flutter apps with REST APIs, local storage, routing, and maintainable feature-based structure. I’m currently training at NTI and looking for Flutter internship or entry-level opportunities where I can contribute to real product features and keep improving through practical work.
-          </p>
-
-          <div class="about-highlights">
-            <span>Flutter</span>
-            <span>Dart</span>
-            <span>REST APIs</span>
-            <span>Local Storage</span>
-            <span>Clean Structure</span>
-          </div>
-        </div>
-
-        <div class="about-showcase reveal delay-1">
-          <div class="profile-frame">
-            <img
-              src="assets/about_photo.jpg"
-              onerror="handleImgError(this, 'profile_photo.png')"
-              alt="Photo of Rimon Abdelmasih"
-              loading="lazy"
-              decoding="async"
-              width="360"
-              height="450"
-            />
-          </div>
-
-          <div class="about-card premium-about-card">
-            <div class="about-profile-text">
-              <h3>Rimon Abdelmasih</h3>
-              <p>Flutter Developer · Egypt</p>
+    <main>
+      <section class="hero section-padding">
+        <div class="container hero-grid">
+          <div class="hero-content reveal">
+            <div class="eyebrow">
+              <span class="status-dot" aria-hidden="true"></span>
+              Open to Flutter Internships &amp; Junior Roles
             </div>
 
-            <div class="stats-grid about-stats">
-              <div>
-                <strong>4+</strong>
-                <span>Practice &amp; Portfolio Projects</span>
-              </div>
-              <div>
-                <strong>2+</strong>
-                <span>Training Programs</span>
-              </div>
-              <div>
-                <strong>1</strong>
-                <span>Main Focus: Flutter</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            <h1
+              aria-label="Flutter Developer. Building clean, API-driven mobile apps with Flutter"
+            >
+              <span
+                class="typewriter-role"
+                id="typewriterRole"
+                aria-hidden="true"
+                >Flutter Developer</span
+              >
+              <span class="hero-title-line"
+                >Building clean, API-driven mobile apps with Flutter</span
+              >
+            </h1>
 
-        <div class="about-details-grid">
-          <div class="education-card reveal">
-            <h3>Education</h3>
-            <div class="education-meta">
-              <div>
-                <strong>Expected Graduation</strong>
-                <span>2027</span>
-              </div>
-              <div>
-                <strong>Degree</strong>
-                <span>B.Sc. in Computers and Information — AI &amp; Data Science Track</span>
-              </div>
-              <div>
-                <strong>Faculty / University</strong>
-                <span>Faculty of Computers and Information, Beni-Suef National University</span>
-              </div>
-            </div>
-          </div>
+            <p class="hero-subtitle">
+              I build responsive Flutter apps with REST APIs, local storage,
+              state management, and clean project structure.
+            </p>
 
-          <div class="quality-card reveal delay-1">
-            <h3>Code Quality Focus</h3>
-            <div class="quality-list">
-              <span>Feature-based folder structure</span>
-              <span>Reusable widgets</span>
-              <span>Clear state handling</span>
-              <span>API error handling</span>
-              <span>Responsive design</span>
-              <span>Clean and readable code</span>
-              <span>GitHub README documentation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="projects section-padding" id="projects">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="section-kicker">Featured Projects</p>
-          <h2>Clean project cards with full details on demand.</h2>
-          <p>Compact cards for fast scanning, with detailed case-study information available inside responsive project modals.</p>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card reveal" data-project-card="shopino">
-            <button class="project-image project-image-button" type="button" data-project-open="shopino" aria-label="Open Shopino details — view all 4 screens">
-              <img src="assets/category.jpg" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/category.jpg')" alt="Shopino screenshot showing product listing screen" loading="lazy" decoding="async" width="520" height="360" />
-              <span class="project-image-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="7" width="14" height="14" rx="2.5"/><path d="M7 7V5.5A2.5 2.5 0 0 1 9.5 3H19a2 2 0 0 1 2 2v9.5a2.5 2.5 0 0 1-2.5 2.5H17"/></svg>4</span>
-              <span class="project-image-hint">View Gallery</span>
-            </button>
-            <div class="project-content">
-              <div class="project-topline badge-row">
-                <span class="project-type">Functional App</span>
-                <span class="project-chip">Completed</span>
-                <span class="project-chip">Clean Architecture</span>
-              </div>
-              <h3>Shopino</h3>
-              <p class="project-short">Full-featured e-commerce app with authentication, product browsing, cart, and favorites.</p>
-              <div class="tech-list compact-tech-list" aria-label="Shopino tech stack">
-                <span>Flutter</span>
-                <span>Dart</span>
-                <span>Cubit/Bloc</span>
-                <span>Dio</span>
-                <span>Clean Architecture</span>
-              </div>
-              <div class="project-actions">
-                <button class="btn btn-small btn-primary" type="button" data-project-open="shopino"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/shopino_store" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1hLKaIuwPIpzSWSK5bf1QOYVSc8mJMEfF/view?usp=drivesdk" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal delay-1" data-project-card="news">
-            <button class="project-image project-image-button" type="button" data-project-open="news" aria-label="Open News App details — view all 4 screens">
-              <img src="assets/project_news_app_photo.jpg" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/news_app.jpg')" alt="News App screenshot showing live article feed" loading="lazy" decoding="async" width="520" height="360" />
-              <span class="project-image-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="7" width="14" height="14" rx="2.5"/><path d="M7 7V5.5A2.5 2.5 0 0 1 9.5 3H19a2 2 0 0 1 2 2v9.5a2.5 2.5 0 0 1-2.5 2.5H17"/></svg>4</span>
-              <span class="project-image-hint">View Gallery</span>
-            </button>
-
-            <div class="project-content">
-              <div class="project-topline badge-row">
-                <span class="project-type">Functional App</span>
-                <span class="project-chip">Completed</span>
-                <span class="project-chip">API Integrated</span>
-              </div>
-
-              <h3>News App</h3>
-              <p class="project-short">Live news app with search, categories, article details, and localization.</p>
-
-              <div class="tech-list compact-tech-list" aria-label="News App tech stack">
-                <span>Flutter</span>
-                <span>Dart</span>
-                <span>Cubit</span>
-                <span>Dio</span>
-                <span>NewsAPI</span>
-              </div>
-
-              <div class="project-actions">
-                <button class="btn btn-small btn-primary" type="button" data-project-open="news"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/news_app" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal delay-2" data-project-card="meals">
-            <button class="project-image project-image-button" type="button" data-project-open="meals" aria-label="Open Meals App details — view all 4 screens">
-              <img src="assets/project_meals_app_photo.jpg" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/project_meals_app_photo.jpg')" alt="Meals App screenshot showing meal recipe list" loading="lazy" decoding="async" width="520" height="360" />
-              <span class="project-image-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="7" width="14" height="14" rx="2.5"/><path d="M7 7V5.5A2.5 2.5 0 0 1 9.5 3H19a2 2 0 0 1 2 2v9.5a2.5 2.5 0 0 1-2.5 2.5H17"/></svg>4</span>
-              <span class="project-image-hint">View Gallery</span>
-            </button>
-
-            <div class="project-content">
-              <div class="project-topline badge-row">
-                <span class="project-type">Local Storage App</span>
-                <span class="project-chip">Completed</span>
-                <span class="project-chip">SQLite</span>
-              </div>
-
-              <h3>Meals App</h3>
-              <p class="project-short">Meal recipe app using local storage, validation, onboarding, and responsive screens.</p>
-
-              <div class="tech-list compact-tech-list" aria-label="Meals App tech stack">
-                <span>Flutter</span>
-                <span>Dart</span>
-                <span>SQLite</span>
-                <span>SharedPreferences</span>
-                <span>GoRouter</span>
-              </div>
-
-              <div class="project-actions">
-                <button class="btn btn-small btn-primary" type="button" data-project-open="meals"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/meals-app-" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1lrQaTsGKwYp64qPKxSP401-SRwm5Ph_c/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal delay-3" data-project-card="finance">
-            <button class="project-image project-image-button" type="button" data-project-open="finance" aria-label="Open Finance App UI details">
-              <img src="assets/project_finance_app_photo.jpg" onerror="handleImgError(this, 'https://rimonnnn.github.io/assets/finance_app.png')" alt="Finance App UI screenshot showing dashboard and statistics screens" loading="lazy" decoding="async" width="520" height="360" />
-            </button>
-
-            <div class="project-content">
-              <div class="project-topline badge-row">
-                <span class="project-type">UI Project</span>
-                <span class="project-chip">UI Only</span>
-                <span class="project-chip">Provider</span>
-              </div>
-
-              <h3>Finance App UI</h3>
-              <p class="project-short">Finance app interface with onboarding, authentication, dashboard, and profile screens.</p>
-
-              <div class="tech-list compact-tech-list" aria-label="Finance App tech stack">
-                <span>Flutter</span>
-                <span>Dart</span>
-                <span>Provider</span>
-                <span>GoRouter</span>
-                <span>Custom UI</span>
-              </div>
-
-              <div class="project-actions">
-                <button class="btn btn-small btn-primary" type="button" data-project-open="finance"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/financeApp" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-                <a class="btn btn-small btn-secondary" href="https://drive.google.com/file/d/1J96z7iNbL92opdPAS02uuOmmN3QUyCTT/view?usp=drive_link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Demo Video</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="projects-footer reveal">
-          <a class="btn btn-secondary" href="https://github.com/rimonnnn?tab=repositories" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>View All Repositories</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="project-modal" id="projectModal" aria-hidden="true">
-      <div class="project-modal__backdrop" data-modal-close></div>
-
-      <article class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" tabindex="-1">
-        <button class="project-modal__close" type="button" data-modal-close aria-label="Close project details">×</button>
-
-        <div class="project-modal__media" id="modalProjectMedia"></div>
-
-        <div class="project-modal__body">
-          <span class="project-modal__label" id="modalProjectLabel"></span>
-          <h2 id="modalProjectTitle"></h2>
-          <p class="project-modal__overview" id="modalProjectOverview"></p>
-
-          <div class="project-modal__sections" id="modalProjectSections"></div>
-
-          <div class="tech-list project-modal__tech" id="modalProjectTech" aria-label="Project tech stack"></div>
-
-          <div class="project-actions project-modal__actions" id="modalProjectLinks"></div>
-        </div>
-      </article>
-    </div>
-
-    <section class="ai-project section-padding" id="ai-project">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="section-kicker">AI Projects</p>
-          <h2>AI and Data Science work, presented with the same project-card system.</h2>
-          <p>Compact AI project cards for quick scanning, with full Reinforcement Learning details available inside the responsive modal.</p>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card reveal" data-project-card="gridworld">
-            <button class="project-image project-image-button" type="button" data-project-open="gridworld" aria-label="Open Grid World Q-Learning Game details">
-              <img src="./assets/grid_world_game.png" onerror="handleImgError(this, 'assets/grid_world_game.png')" alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal" loading="lazy" decoding="async" width="520" height="360" />
-            </button>
-
-            <div class="project-content">
-              <div class="project-topline badge-row">
-                <span class="project-type">AI Project</span>
-                <span class="project-chip">Reinforcement Learning</span>
-                <span class="project-chip">Playable</span>
-              </div>
-
-              <h3>Grid World Q-Learning Game</h3>
-              <p class="project-short">Interactive Q-Learning game where an agent learns to reach a goal while avoiding fire cells.</p>
-
-              <div class="tech-list compact-tech-list" aria-label="Grid World AI concepts and tech stack">
-                <span>Python</span>
-                <span>Q-Learning</span>
-                <span>Reinforcement Learning</span>
-                <span>Tkinter</span>
-                <span>JSON</span>
-              </div>
-
-              <div class="project-actions">
-                <button class="btn btn-small btn-primary" type="button" data-project-open="gridworld"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>View Details</button>
-                <a class="btn btn-small btn-secondary" href="https://github.com/rimonnnn/grid_world_game.git" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-                <a class="btn btn-small btn-secondary" href="grid_world_game/index.html" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 12h12"/><path d="M12 6v12"/><path d="M17 17l3 3"/><path d="M7 17l-3 3"/><rect x="3" y="8" width="18" height="8" rx="4"/></svg>Try Game</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="build section-padding" id="build">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="section-kicker">What I Can Build</p>
-          <h2>Mobile features for real products.</h2>
-          <p>Clean Flutter screens and app flows ready to connect with APIs, local storage, and production-style structure.</p>
-        </div>
-
-        <div class="build-grid compact-build">
-          <article class="build-card reveal">
-            <span>API</span>
-            <h3>API-Based Flutter Apps</h3>
-            <p>Mobile apps connected to REST APIs with Dio, JSON parsing, loading states, and error handling.</p>
-            <a class="build-ref" href="#projects">→ See: News App</a>
-          </article>
-
-          <article class="build-card reveal delay-1">
-            <span>Storage</span>
-            <h3>Local Storage Apps</h3>
-            <p>Offline-friendly features using SQLite and SharedPreferences for app data and user preferences.</p>
-            <a class="build-ref" href="#projects">→ See: Meals App</a>
-          </article>
-
-          <article class="build-card reveal delay-2">
-            <span>Auth</span>
-            <h3>Auth &amp; Onboarding Flows</h3>
-            <p>Login, register, onboarding, OTP UI, validation, and clean user journey screens.</p>
-            <a class="build-ref" href="#projects">→ See: Finance App</a>
-          </article>
-
-          <article class="build-card reveal">
-            <span>Tasks</span>
-            <h3>Admin / User Task Apps</h3>
-            <p>Role-based screens for admins, users, teams, tasks, dashboards, and workflow management.</p>
-            <a class="build-ref" href="#projects">→ See: E-commerce App</a>
-          </article>
-
-          <article class="build-card reveal delay-1">
-            <span>UI</span>
-            <h3>Responsive UI from Figma</h3>
-            <p>Modern mobile screens converted from designs into responsive Flutter layouts and reusable widgets.</p>
-            <a class="build-ref" href="#projects">→ See: Finance App</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="skills section-padding" id="skills">
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="section-kicker">Technical Skills</p>
-          <h2>Grouped for quick scanning.</h2>
-          <p>Skills I use across Flutter projects, APIs, local storage, UI implementation, and AI/Data Science basics.</p>
-        </div>
-
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <h3>Flutter Core</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">Flutter</span>
-              <span class="skill-chip">Dart</span>
-              <span class="skill-chip">Responsive UI</span>
-              <span class="skill-chip">Custom Widgets</span>
-              <span class="skill-chip">GoRouter</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal delay-1">
-            <h3>State Management</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">Cubit</span>
-              <span class="skill-chip">Bloc</span>
-              <span class="skill-chip">Provider</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal delay-2">
-            <h3>APIs &amp; Storage</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">REST APIs</span>
-              <span class="skill-chip">Dio</span>
-              <span class="skill-chip">JSON</span>
-              <span class="skill-chip">SQLite</span>
-              <span class="skill-chip">SharedPreferences</span>
-              <span class="skill-chip">Error Handling</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <h3>Code Quality</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">OOP</span>
-              <span class="skill-chip">SOLID Basics</span>
-              <span class="skill-chip">Clean Architecture Basics</span>
-              <span class="skill-chip">Feature-based Structure</span>
-              <span class="skill-chip">Reusable Widgets</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal delay-1">
-            <h3>Tools</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">Git</span>
-              <span class="skill-chip">GitHub</span>
-              <span class="skill-chip">Postman</span>
-              <span class="skill-chip">Figma</span>
-              <span class="skill-chip">Android Studio</span>
-              <span class="skill-chip">VS Code</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal delay-2">
-            <h3>AI &amp; Data Basics</h3>
-            <div class="skill-chips">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">Pandas</span>
-              <span class="skill-chip">NumPy</span>
-              <span class="skill-chip">Machine Learning Basics</span>
-              <span class="skill-chip">Q-Learning Basics</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="training section-padding" id="training">
-      <div class="container two-column">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Training &amp; Certifications</p>
-          <h2>Hands-on learning behind my Flutter path.</h2>
-          <p>Training programs and courses focused on practical mobile development, teamwork, and project delivery.</p>
-        </div>
-
-        <div class="timeline cert-grid reveal delay-1">
-          <article class="timeline-item certificate-card">
-            <div class="certificate-thumb certificate-placeholder" aria-hidden="true">NTI</div>
-            <div class="certificate-body">
-              <time>Mar 2026 — Present</time>
-              <h3>Flutter Developer Trainee — NTI</h3>
-              <p>Intensive training covering Dart, OOP, Flutter, Clean Architecture, SOLID principles, Dio, local storage, and animations.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item certificate-card">
-            <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener" aria-label="View Sprints Microsoft certificate">
-              <img src="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" alt="Sprints and Microsoft Mobile Development Bootcamp certificate preview" loading="lazy" decoding="async" width="320" height="112" />
-            </a>
-            <div class="certificate-body">
-              <time>2025</time>
-              <h3>Mobile Development Bootcamp — Sprints × Microsoft</h3>
-              <p>Practical mobile development program focused on teamwork, implementation, code reviews, and real project delivery.</p>
-              <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/sprints-microsoft-certificate.png" target="_blank" rel="noopener">View Certificate</a>
-            </div>
-          </article>
-
-          <article class="timeline-item certificate-card">
-            <a class="certificate-thumb" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener" aria-label="View Udemy Flutter and Dart certificate">
-              <img src="https://rimonnnn.github.io/certificates/udemy_1.jpeg" alt="Udemy Flutter and Dart course certificate preview" loading="lazy" decoding="async" width="320" height="112" />
-            </a>
-            <div class="certificate-body">
-              <time>2025</time>
-              <h3>Flutter &amp; Dart Course — Udemy</h3>
-              <p>Structured learning covering UI development, navigation, REST API integration, and project-based Flutter practice.</p>
-              <a class="btn btn-small btn-primary" href="https://rimonnnn.github.io/certificates/udemy_1.jpeg" target="_blank" rel="noopener">View Certificate</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact section-padding" id="contact">
-      <div class="container">
-        <div class="contact-card reveal">
-          <div>
-            <p class="section-kicker">Let’s Work Together</p>
-            <h2>Have a Flutter role, internship opportunity, or freelance project?</h2>
-            <p>Available for Flutter internships, junior roles, and small freelance mobile app projects.</p>
-
-            <div class="contact-actions">
-              <a class="btn btn-primary" href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email Directly</a>
-              <a class="btn btn-secondary" href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you." target="_blank" rel="noopener noreferrer"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>WhatsApp</a>
-              <a class="btn btn-secondary" href="https://github.com/rimonnnn" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a>
-              <a class="btn btn-secondary" href="https://www.linkedin.com/in/rimon-abdelmasih" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <use href="#i-list" />
+                </svg>
+                View Projects
+              </a>
+              <a
+                class="btn btn-secondary"
+                href="Rimon_Abdelmasih_CV_ATS_Updated-1%20%282%29.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <use href="#i-cv" />
+                </svg>
+                View CV
+              </a>
+              <a class="btn btn-secondary" href="#contact">
+                <svg
+                  class="btn-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <use href="#i-mail" />
+                </svg>
+                Contact Me
+              </a>
             </div>
 
-            <div class="contact-details">
-              <a href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity">rimonabdelmasih92@gmail.com</a>
+            <div class="hero-stats" aria-label="Quick achievements">
+              <div class="hero-stat">
+                <strong><span class="counter" data-count="4">0</span>+</strong>
+                <span>Projects</span>
+              </div>
+              <div class="hero-stat">
+                <strong><span class="counter" data-count="3">0</span>+</strong>
+                <span>REST API skills: Dio &amp; JSON</span>
+              </div>
+              <div class="hero-stat">
+                <strong><span class="counter" data-count="2">0</span></strong>
+                <span>Cubit / Provider State Management</span>
+              </div>
+              <div class="hero-stat">
+                <strong><span class="counter" data-count="1">0</span></strong>
+                <span>AI &amp; DS Academic Background</span>
+              </div>
+            </div>
+
+            <div class="hero-meta" aria-label="Core details">
               <span>Egypt</span>
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>REST APIs</span>
+              <span>Firebase</span>
+              <span>CS Fundamentals</span>
+            </div>
+
+            <div class="social-row">
+              <a
+                href="https://github.com/rimonnnn"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/rimon-abdelmasih"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+              <a
+                href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"
+                >Email</a
+              >
             </div>
           </div>
 
-          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdwnzdo" method="POST">
-            <input type="hidden" name="_subject" value="New portfolio message from Rimon.dev">
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+          <div
+            class="hero-visual reveal delay-1"
+            aria-label="Flutter project previews"
+          >
+            <div class="glow glow-one" aria-hidden="true"></div>
+            <div class="glow glow-two" aria-hidden="true"></div>
 
-            <div class="form-row">
-              <div class="form-field">
-                <label for="clientName">Name</label>
-                <input id="clientName" type="text" name="name" placeholder="Your name" required>
-              </div>
-
-              <div class="form-field">
-                <label for="clientEmail">Email</label>
-                <input id="clientEmail" type="email" name="email" placeholder="you@example.com" required>
-              </div>
+            <div class="hero-profile-frame">
+              <img
+                src="./assets/profile_photo.png"
+                onerror="handleImgError(this, 'profile_photo.png')"
+                alt="Photo of Rimon Abdelmasih"
+                width="190"
+                height="190"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <span class="open-work-badge">Open to Work 🚀</span>
             </div>
 
-            <div class="form-field">
-              <label for="clientMessage">Message</label>
-              <textarea id="clientMessage" name="message" placeholder="Tell me about the role, internship, or project..." required></textarea>
+            <div class="mockup-stack" aria-label="App screenshots">
+              <article class="phone-card phone-card-small left">
+                <img
+                  src="assets/shopino_hero.jpg"
+                  alt="Shopino App preview"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </article>
+              <article class="phone-card main-phone">
+                <img
+                  src="assets/masiter_hero.jpeg"
+                  alt="Masiter App preview"
+                  loading="eager"
+                  decoding="async"
+                />
+              </article>
+              <article class="phone-card phone-card-small right">
+                <img
+                  src="assets/news_hero.jpg"
+                  alt="News App preview"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </article>
             </div>
 
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            <div class="form-actions-row" aria-label="Choose how to send your message">
-              <button class="btn btn-primary" id="submitButton" type="submit"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Send via Email</button>
-              <button class="btn btn-secondary" id="whatsappSubmitButton" type="button"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-1.2 4.32A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-4.32-1.2L3 20l1.2-5.18A8.38 8.38 0 0 1 3 10.5 8.5 8.5 0 0 1 11.5 2h.5A8.5 8.5 0 0 1 21 10.5z"/></svg>Send via WhatsApp</button>
+            <div class="visual-card">
+              <strong>Flutter &amp; Dart</strong>
+              <span
+                >Responsive iOS &amp; Android apps with maintainable
+                codebases.</span
+              >
             </div>
-            <p class="form-hint">Choose Email to send the message through the contact form, or WhatsApp to open a ready message directly.</p>
-          </form>
+          </div>
         </div>
+      </section>
+
+      <section class="about section-padding" id="about">
+        <div class="container about-layout">
+          <div class="about-intro reveal">
+            <p class="section-kicker">About Me</p>
+            <h2>
+              Building reliable Flutter apps with clean structure and practical
+              features.
+            </h2>
+            <p>
+              I’m a Flutter Developer from Egypt building responsive Flutter
+              apps with REST APIs, local storage, routing, and maintainable
+              feature-based structure. I’m currently training at NTI and looking
+              for Flutter internship or entry-level opportunities where I can
+              contribute to real product features and keep improving through
+              practical work.
+            </p>
+            <div class="about-highlights">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>REST APIs</span>
+              <span>Local Storage</span>
+              <span>Clean Structure</span>
+            </div>
+          </div>
+
+          <div class="about-showcase reveal delay-1">
+            <div class="profile-frame">
+              <img
+                src="assets/about_photo.jpg"
+                onerror="handleImgError(this, 'profile_photo.png')"
+                alt="Photo of Rimon Abdelmasih"
+                loading="lazy"
+                decoding="async"
+                width="360"
+                height="450"
+              />
+            </div>
+            <div class="about-card premium-about-card">
+              <div class="about-profile-text">
+                <h3>Rimon Abdelmasih</h3>
+                <p>Flutter Developer · Egypt</p>
+              </div>
+              <div class="stats-grid about-stats">
+                <div>
+                  <strong>4+</strong>
+                  <span>Projects across Flutter &amp; AI</span>
+                </div>
+                <div>
+                  <strong>2+</strong>
+                  <span>Training Programs</span>
+                </div>
+                <div>
+                  <strong>1</strong>
+                  <span>Main Focus: Flutter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-details-grid">
+            <div class="education-card reveal">
+              <h3>Education</h3>
+              <div class="education-meta">
+                <div>
+                  <strong>Expected Graduation</strong>
+                  <span>2027</span>
+                </div>
+                <div>
+                  <strong>Degree</strong>
+                  <span
+                    >B.Sc. in Computers and Information — AI &amp; Data Science
+                    Track</span
+                  >
+                </div>
+                <div>
+                  <strong>Faculty / University</strong>
+                  <span
+                    >Faculty of Computers and Information, Beni-Suef National
+                    University</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="quality-card reveal delay-1">
+              <h3>Code Quality Focus</h3>
+              <div class="quality-list">
+                <span>Feature-based folder structure</span>
+                <span>Reusable widgets</span>
+                <span>Clear state handling</span>
+                <span>API error handling</span>
+                <span>Responsive design</span>
+                <span>Clean and readable code</span>
+                <span>GitHub README documentation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects section-padding" id="projects">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">Featured Projects</p>
+            <h2>Clean project cards with full details on demand.</h2>
+            <p>
+              Compact cards for fast scanning, with detailed case-study
+              information available inside responsive project modals.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <!-- Masiter -->
+            <article class="project-card reveal" data-project-card="masiter">
+              <button
+                class="project-image project-image-button"
+                type="button"
+                data-project-open="masiter"
+                aria-label="Open Masiter project details"
+              >
+                <img
+                  src="assets/masiter.jpeg"
+                  alt="Masiter business management application collage"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="project-image-hint">View Details</span>
+              </button>
+
+              <div class="project-content">
+                <div class="project-topline badge-row">
+                  <span class="project-type">Business Management</span>
+                  <span class="project-chip">Android &amp; Web</span>
+                  <span class="project-chip">Arabic / English</span>
+                </div>
+
+                <h3>Masiter | مسيطر</h3>
+
+                <p class="project-short">
+                  A Flutter app for small shops to manage products, inventory,
+                  sales invoices, customers, and outstanding balances across
+                  mobile and web.
+                </p>
+
+                <div
+                  class="tech-list compact-tech-list"
+                  aria-label="Masiter tech stack"
+                >
+                  <span>Flutter</span>
+                  <span>Dart</span>
+                  <span>Cubit / BLoC</span>
+                  <span>Firebase</span>
+                  <span>Supabase</span>
+                </div>
+
+                <div class="project-actions">
+                  <button
+                    class="btn btn-small btn-primary"
+                    type="button"
+                    data-project-open="masiter"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-info" />
+                    </svg>
+                    View Details
+                  </button>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://masiter.web.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-external" />
+                    </svg>
+                    Live Web App
+                  </a>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://github.com/rimonnnn/masiter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-github" />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Shopino -->
+            <article class="project-card reveal" data-project-card="shopino">
+              <button
+                class="project-image project-image-button"
+                type="button"
+                data-project-open="shopino"
+                aria-label="Open Shopino project details"
+              >
+                <img
+                  src="assets/shopino.jpeg"
+                  alt="Shopino project preview"
+                  loading="lazy"
+                  decoding="async"
+                  width="520"
+                  height="325"
+                />
+                <span class="project-image-hint">View Details</span>
+              </button>
+
+              <div class="project-content">
+                <div class="project-topline badge-row">
+                  <span class="project-type">Functional App</span>
+                  <span class="project-chip">Completed</span>
+                  <span class="project-chip">Clean Architecture</span>
+                </div>
+
+                <h3>Shopino</h3>
+
+                <p class="project-short">
+                  Full-featured e-commerce app with authentication, product
+                  browsing, cart, and favorites.
+                </p>
+
+                <div
+                  class="tech-list compact-tech-list"
+                  aria-label="Shopino tech stack"
+                >
+                  <span>Flutter</span>
+                  <span>Dart</span>
+                  <span>Cubit/Bloc</span>
+                  <span>Dio</span>
+                  <span>Clean Architecture</span>
+                </div>
+
+                <div class="project-actions">
+                  <button
+                    class="btn btn-small btn-primary"
+                    type="button"
+                    data-project-open="shopino"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-info" />
+                    </svg>
+                    View Details
+                  </button>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://github.com/rimonnnn/shopino_store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://drive.google.com/file/d/1hLKaIuwPIpzSWSK5bf1QOYVSc8mJMEfF/view?usp=drivesdk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-play" />
+                    </svg>
+                    Demo Video
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- News App -->
+            <article
+              class="project-card reveal delay-1"
+              data-project-card="news"
+            >
+              <button
+                class="project-image project-image-button"
+                type="button"
+                data-project-open="news"
+                aria-label="Open News App project details"
+              >
+                <img
+                  src="assets/news_app.jpeg"
+                  alt="News App project preview"
+                  loading="lazy"
+                  decoding="async"
+                  width="520"
+                  height="325"
+                />
+                <span class="project-image-hint">View Details</span>
+              </button>
+
+              <div class="project-content">
+                <div class="project-topline badge-row">
+                  <span class="project-type">Functional App</span>
+                  <span class="project-chip">Completed</span>
+                  <span class="project-chip">API Integrated</span>
+                </div>
+
+                <h3>News App</h3>
+
+                <p class="project-short">
+                  Live news app with search, categories, article details, and
+                  localization.
+                </p>
+
+                <div
+                  class="tech-list compact-tech-list"
+                  aria-label="News App tech stack"
+                >
+                  <span>Flutter</span>
+                  <span>Dart</span>
+                  <span>Cubit</span>
+                  <span>Dio</span>
+                  <span>NewsAPI</span>
+                </div>
+
+                <div class="project-actions">
+                  <button
+                    class="btn btn-small btn-primary"
+                    type="button"
+                    data-project-open="news"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-info" />
+                    </svg>
+                    View Details
+                  </button>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://github.com/rimonnnn/news_app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://drive.google.com/file/d/1yh2RKrWxusozg1gjavGbvnTWAoYrISUx/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-play" />
+                    </svg>
+                    Demo Video
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="projects-footer reveal">
+            <a
+              class="btn btn-secondary"
+              href="https://github.com/rimonnnn?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <use href="#i-github" />
+              </svg>
+              View All Repositories
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="project-modal__backdrop" data-modal-close></div>
+        <article
+          class="project-modal__panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modalProjectTitle"
+          tabindex="-1"
+        >
+          <button
+            class="project-modal__close"
+            type="button"
+            data-modal-close
+            aria-label="Close project details"
+          >
+            ×
+          </button>
+          <div class="project-modal__media" id="modalProjectMedia"></div>
+          <div class="project-modal__body">
+            <span class="project-modal__label" id="modalProjectLabel"></span>
+            <h2 id="modalProjectTitle"></h2>
+            <p class="project-modal__overview" id="modalProjectOverview"></p>
+            <div
+              class="project-modal__sections"
+              id="modalProjectSections"
+            ></div>
+            <div
+              class="tech-list project-modal__tech"
+              id="modalProjectTech"
+              aria-label="Project tech stack"
+            ></div>
+            <div
+              class="project-actions project-modal__actions"
+              id="modalProjectLinks"
+            ></div>
+          </div>
+        </article>
       </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 Rimon Abdelmasih · Junior Flutter Developer · Egypt</p>
-      <a href="#top">Back to top</a>
-    </div>
-  </footer>
+      <section class="ai-project section-padding" id="ai-project">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">AI Projects</p>
+            <h2>
+              AI and Data Science work, presented with the same project-card
+              system.
+            </h2>
+            <p>
+              Compact AI project cards for quick scanning, with full
+              Reinforcement Learning details available inside the responsive
+              modal.
+            </p>
+          </div>
 
-  <script src="js/main.js" defer></script>
-<script src="js/theme.js" defer></script>
-<script src="js/nav.js" defer></script>
-<script src="js/animations.js" defer></script>
-<script src="js/contact-form.js" defer></script>
-<script src="js/projects-data.js" defer></script>
-<script src="js/project-modal.js" defer></script>
-</body>
+          <div class="project-grid">
+            <article class="project-card reveal" data-project-card="gridworld">
+              <button
+                class="project-image project-image-button"
+                type="button"
+                data-project-open="gridworld"
+                aria-label="Open Grid World Q-Learning Game project details"
+              >
+                <img
+                  src="./assets/grid_world_game.png"
+                  alt="Grid World Q-Learning Game cover showing agent, fire cells, and goal"
+                  loading="lazy"
+                  decoding="async"
+                  width="520"
+                  height="325"
+                />
+                <span class="project-image-hint">View Details</span>
+              </button>
+
+              <div class="project-content">
+                <div class="project-topline badge-row">
+                  <span class="project-type">AI Project</span>
+                  <span class="project-chip">Reinforcement Learning</span>
+                  <span class="project-chip">Playable</span>
+                </div>
+
+                <h3>Grid World Q-Learning Game</h3>
+
+                <p class="project-short">
+                  Interactive Q-Learning game where an agent learns to reach a
+                  goal while avoiding fire cells.
+                </p>
+
+                <div
+                  class="tech-list compact-tech-list"
+                  aria-label="Grid World AI concepts and tech stack"
+                >
+                  <span>Python</span>
+                  <span>Q-Learning</span>
+                  <span>Reinforcement Learning</span>
+                  <span>Tkinter</span>
+                  <span>JSON</span>
+                </div>
+
+                <div class="project-actions">
+                  <button
+                    class="btn btn-small btn-primary"
+                    type="button"
+                    data-project-open="gridworld"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-info" />
+                    </svg>
+                    View Details
+                  </button>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="https://github.com/rimonnnn/grid_world_game.git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-github" />
+                    </svg>
+                    GitHub
+                  </a>
+
+                  <a
+                    class="btn btn-small btn-secondary"
+                    href="grid_world_game/index.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <use href="#i-game" />
+                    </svg>
+                    Try Game
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="build section-padding" id="build">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">What I Can Build</p>
+            <h2>Mobile features for real products.</h2>
+            <p>
+              Clean Flutter screens and app flows ready to connect with APIs,
+              local storage, and production-style structure.
+            </p>
+          </div>
+
+          <div class="build-grid compact-build">
+            <article class="build-card reveal">
+              <span>API</span>
+              <h3>API-Based Flutter Apps</h3>
+              <p>
+                Mobile apps connected to REST APIs with Dio, JSON parsing,
+                loading states, and error handling.
+              </p>
+              <a class="build-ref" href="#projects">→ See: News App</a>
+            </article>
+            <article class="build-card reveal delay-1">
+              <span>Storage</span>
+              <h3>Local Storage Apps</h3>
+              <p>
+                Offline-friendly features using SQLite and SharedPreferences for
+                app data and user preferences.
+              </p>
+            </article>
+            <article class="build-card reveal delay-2">
+              <span>Auth</span>
+              <h3>Auth &amp; Onboarding Flows</h3>
+              <p>
+                Login, register, onboarding, OTP UI, validation, and clean user
+                journey screens.
+              </p>
+              <a class="build-ref" href="#projects">→ See: Shopino</a>
+            </article>
+            <article class="build-card reveal">
+              <span>Tasks</span>
+              <h3>Admin / User Task Apps</h3>
+              <p>
+                Role-based screens for admins, users, teams, tasks, dashboards,
+                and workflow management.
+              </p>
+            </article>
+            <article class="build-card reveal delay-1">
+              <span>UI</span>
+              <h3>Responsive UI from Figma</h3>
+              <p>
+                Modern mobile screens converted from designs into responsive
+                Flutter layouts and reusable widgets.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section-padding" id="skills">
+        <div class="container">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">Technical Skills</p>
+            <h2>Grouped for quick scanning.</h2>
+            <p>
+              Skills I use across Flutter projects, APIs, local storage, UI
+              implementation, and AI/Data Science basics.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-card reveal">
+              <h3>Flutter Core</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Flutter</span>
+                <span class="skill-chip">Dart</span>
+                <span class="skill-chip">Responsive UI</span>
+                <span class="skill-chip">Animations</span>
+                <span class="skill-chip">Custom Widgets</span>
+                <span class="skill-chip">GoRouter</span>
+              </div>
+            </article>
+            <article class="skill-card reveal delay-1">
+              <h3>State Management</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Cubit</span>
+                <span class="skill-chip">Bloc</span>
+                <span class="skill-chip">Provider</span>
+              </div>
+            </article>
+
+            <article class="skill-card reveal delay-1">
+              <h3>CS</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">DSA</span>
+                <span class="skill-chip">Database</span>
+                <span class="skill-chip">OS</span>
+              </div>
+            </article>
+            <article class="skill-card reveal delay-2">
+              <h3>APIs &amp; Storage</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">REST APIs</span>
+                <span class="skill-chip">Dio</span>
+                <span class="skill-chip">JSON</span>
+                <span class="skill-chip">SQLite</span>
+                <span class="skill-chip">SharedPreferences</span>
+                <span class="skill-chip">Error Handling</span>
+                <span class="skill-chip">Firestore</span>
+                <span class="skill-chip">Subabase</span>
+              </div>
+            </article>
+            <article class="skill-card reveal">
+              <h3>Code Quality</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">OOP</span>
+                <span class="skill-chip">SOLID Basics</span>
+                <span class="skill-chip">Clean Architecture Basics</span>
+                <span class="skill-chip">Feature-based Structure</span>
+                <span class="skill-chip">Reusable Widgets</span>
+              </div>
+            </article>
+            <article class="skill-card reveal delay-1">
+              <h3>Tools</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Git</span>
+                <span class="skill-chip">GitHub</span>
+                <span class="skill-chip">Postman</span>
+                <span class="skill-chip">Figma</span>
+                <span class="skill-chip">Android Studio</span>
+                <span class="skill-chip">VS Code</span>
+              </div>
+            </article>
+            <article class="skill-card reveal delay-2">
+              <h3>AI &amp; Data Basics</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">Pandas</span>
+                <span class="skill-chip">NumPy</span>
+                <span class="skill-chip">Machine Learning Basics</span>
+                <span class="skill-chip">Q-Learning Basics</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="training section-padding" id="training">
+        <div class="container two-column">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Training &amp; Certifications</p>
+            <h2>Hands-on learning behind my Flutter path.</h2>
+            <p>
+              Training programs and courses focused on practical mobile
+              development, teamwork, and project delivery.
+            </p>
+          </div>
+
+          <div class="timeline cert-grid reveal delay-1">
+            <article class="timeline-item certificate-card">
+              <a
+                class="certificate-thumb"
+                href="certificates/iti.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Sprints Microsoft certificate"
+              >
+                <img
+                  src="certificates/iti.jpg"
+                  alt="Sprints and Microsoft Mobile Development Bootcamp certificate preview"
+                  loading="lazy"
+                  decoding="async"
+                  width="320"
+                  height="112"
+                />
+              </a>
+              <div class="certificate-body">
+                <time>Jul 2026 — Aug</time>
+                <h3>Flutter Developer Trainee — ITI</h3>
+                <p>
+                  Completed an online training program at ITI focused on mobile
+                  application development. Gained practical experience in
+                  Flutter and Dart, applying core concepts to mobile
+                  development. Strengthened programming skills and developed a
+                  solid understanding of mobile app development practices.
+                </p>
+                <a
+                  class="btn btn-small btn-primary"
+                  href="certificates/iti.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Certificate</a
+                >
+              </div>
+            </article>
+            <article class="timeline-item certificate-card">
+              <div
+                class="certificate-thumb certificate-placeholder"
+                aria-hidden="true"
+              >
+                NTI
+              </div>
+              <div class="certificate-body">
+                <time>Mar 2026 — Jun</time>
+                <h3>Flutter Developer Trainee — NTI</h3>
+                <p>
+                  Intensive training covering Dart, OOP, Flutter, Clean
+                  Architecture, SOLID principles, Dio, local storage, and
+                  animations.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-item certificate-card">
+              <a
+                class="certificate-thumb"
+                href="certificates/sprints-microsoft-certificate.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Sprints Microsoft certificate"
+              >
+                <img
+                  src="certificates/sprints-microsoft-certificate.png"
+                  alt="Sprints and Microsoft Mobile Development Bootcamp certificate preview"
+                  loading="lazy"
+                  decoding="async"
+                  width="320"
+                  height="112"
+                />
+              </a>
+              <div class="certificate-body">
+                <time>2025</time>
+                <h3>Mobile Development Bootcamp — Sprints × Microsoft</h3>
+                <p>
+                  Practical mobile development program focused on teamwork,
+                  implementation, code reviews, and real project delivery.
+                </p>
+                <a
+                  class="btn btn-small btn-primary"
+                  href="certificates/sprints-microsoft-certificate.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Certificate</a
+                >
+              </div>
+            </article>
+
+            <article class="timeline-item certificate-card">
+              <a
+                class="certificate-thumb"
+                href="certificates/udemy_1.jpeg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Udemy Flutter and Dart certificate"
+              >
+                <img
+                  src="certificates/udemy_1.jpeg"
+                  alt="Udemy Flutter and Dart course certificate preview"
+                  loading="lazy"
+                  decoding="async"
+                  width="320"
+                  height="112"
+                />
+              </a>
+              <div class="certificate-body">
+                <time>2025</time>
+                <h3>Flutter &amp; Dart Course — Udemy</h3>
+                <p>
+                  Structured learning covering UI development, navigation, REST
+                  API integration, and project-based Flutter practice.
+                </p>
+                <a
+                  class="btn btn-small btn-primary"
+                  href="certificates/udemy_1.jpeg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Certificate</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section-padding" id="contact">
+        <div class="container">
+          <div class="contact-card reveal">
+            <div>
+              <p class="section-kicker">Let’s Work Together</p>
+              <h2>
+                Have a Flutter role, internship opportunity, or freelance
+                project?
+              </h2>
+              <p>
+                Available for Flutter internships, junior roles, and small
+                freelance mobile app projects.
+              </p>
+
+              <div class="contact-actions">
+                <a
+                  class="btn btn-primary"
+                  href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"
+                >
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-mail" />
+                  </svg>
+                  Email Directly
+                </a>
+                <a
+                  class="btn btn-secondary"
+                  href="https://wa.me/201206174130?text=Hi%20Rimon%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20contact%20you"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-whatsapp" />
+                  </svg>
+                  WhatsApp
+                </a>
+                <a
+                  class="btn btn-secondary"
+                  href="https://github.com/rimonnnn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-github" />
+                  </svg>
+                  GitHub
+                </a>
+                <a
+                  class="btn btn-secondary"
+                  href="https://www.linkedin.com/in/rimon-abdelmasih"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-linkedin" />
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+
+              <div class="contact-details">
+                <a
+                  href="mailto:rimonabdelmasih92@gmail.com?subject=Flutter%20Opportunity"
+                  >rimonabdelmasih92@gmail.com</a
+                >
+                <span>Egypt</span>
+              </div>
+            </div>
+
+            <form
+              class="contact-form"
+              id="contactForm"
+              action="https://formspree.io/f/mbdwnzdo"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="New portfolio message from Rimon.dev"
+              />
+              <input
+                type="text"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+                style="
+                  position: absolute;
+                  left: -9999px;
+                  width: 1px;
+                  height: 1px;
+                  opacity: 0;
+                "
+                aria-hidden="true"
+              />
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="clientName">Name</label>
+                  <input
+                    id="clientName"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="clientEmail">Email</label>
+                  <input
+                    id="clientEmail"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="clientMessage">Message</label>
+                <textarea
+                  id="clientMessage"
+                  name="message"
+                  placeholder="Tell me about the role, internship, or project..."
+                  required
+                ></textarea>
+              </div>
+
+              <p
+                class="form-status"
+                id="formStatus"
+                role="status"
+                aria-live="polite"
+              ></p>
+
+              <div
+                class="form-actions-row"
+                aria-label="Choose how to send your message"
+              >
+                <button class="btn btn-primary" id="submitButton" type="submit">
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-mail" />
+                  </svg>
+                  Send via Email
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  id="whatsappSubmitButton"
+                  type="button"
+                >
+                  <svg
+                    class="btn-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-whatsapp" />
+                  </svg>
+                  Send via WhatsApp
+                </button>
+              </div>
+              <p class="form-hint">
+                Choose Email to send the message through the contact form, or
+                WhatsApp to open a ready message directly.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© 2026 Rimon Abdelmasih · Junior Flutter Developer · Egypt</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="js/translations.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/contact-form.js" defer></script>
+    <script src="js/projects-data.js" defer></script>
+    <script src="js/project-modal.js" defer></script>
+  </body>
 </html>

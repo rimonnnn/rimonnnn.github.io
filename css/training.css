@@ -1,30 +1,231 @@
 /* =========================================================
-   training.css — training timeline + certificates
+   training.css
+   Training timeline and certificates.
+
+   Theme-aware colors:
+   - Dark: Deep navy surfaces with cyan accents.
+   - Light: Clean neutral surfaces with professional blue.
 ========================================================= */
-.two-column { display: grid; grid-template-columns: .78fr 1.22fr; gap: 52px; align-items: start; }
 
-.timeline { padding: 10px; }
-.timeline-item { padding: 22px; border-radius: 18px; border: 1px solid transparent; transition: transform .22s ease, border-color .22s ease, background .22s ease; }
-.timeline-item:not(:last-child) { border-bottom: 1px solid var(--border); }
-.timeline-item time { color: var(--cyan); font-weight: 800; font-size: .9rem; }
-.timeline-item h3 { margin: 9px 0 8px; }
-.timeline-item p { margin: 0 0 10px; color: var(--muted); }
-.inline-link { color: var(--cyan); font-weight: 800; }
-.inline-link:hover { color: var(--cyan); }
 
-@media (max-width: 980px) {
-  .two-column { grid-template-columns: 1fr; }
+/* =========================================================
+   TWO-COLUMN LAYOUT
+========================================================= */
+
+.two-column {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 52px;
+  align-items: start;
 }
 
-/* Flutter identity system: certificates */
-.cert-grid { display: grid; gap: 16px; }
-.certificate-card { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 18px; align-items: center; border-bottom: 0 !important; background: rgba(2,6,23,.22); }
-.certificate-thumb { min-height: 112px; border-radius: 18px; border: 1px solid rgba(84,197,248,.22); overflow: hidden; display: grid; place-items: center; background: linear-gradient(135deg, rgba(84,197,248,.16), rgba(1,87,155,.24)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
-.certificate-thumb img { width: 100%; height: 112px; object-fit: cover; }
-.certificate-placeholder { color: var(--primary); font-weight: 900; font-size: 1.4rem; letter-spacing: .05em; }
-.certificate-body .btn { margin-top: 12px; }
+
+/* =========================================================
+   TRAINING TIMELINE
+========================================================= */
+
+.timeline {
+  padding: 10px;
+}
+
+.timeline-item {
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.timeline-item:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item time {
+  color: var(--cyan);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.timeline-item h3 {
+  margin: 9px 0 8px;
+  color: var(--text);
+}
+
+.timeline-item p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+/* Subtle hover treatment */
+
+.timeline-item:hover {
+  background: color-mix(
+    in srgb,
+    var(--cyan) 4%,
+    transparent
+  );
+}
+
+
+/* =========================================================
+   INLINE LINKS
+========================================================= */
+
+.inline-link {
+  color: var(--cyan);
+  font-weight: 800;
+
+  transition: color 0.2s ease;
+}
+
+.inline-link:hover {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   CERTIFICATES GRID
+========================================================= */
+
+.cert-grid {
+  display: grid;
+  gap: 16px;
+}
+
+
+/* =========================================================
+   CERTIFICATE CARD
+========================================================= */
+
+.certificate-card {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+
+  border-bottom: 0 !important;
+
+  background: color-mix(
+    in srgb,
+    var(--card-2) 65%,
+    transparent
+  );
+}
+
+
+/* =========================================================
+   CERTIFICATE THUMBNAIL
+========================================================= */
+
+.certificate-thumb {
+  min-height: 112px;
+
+  border-radius: 18px;
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--cyan) 24%,
+    var(--border)
+  );
+
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cyan) 13%, var(--card)),
+    color-mix(in srgb, var(--blue) 18%, var(--card-2))
+  );
+
+  box-shadow: inset 0 0 0 1px color-mix(
+    in srgb,
+    var(--text) 4%,
+    transparent
+  );
+}
+
+.certificate-thumb img {
+  width: 100%;
+  height: 112px;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   CERTIFICATE PLACEHOLDER
+========================================================= */
+
+.certificate-placeholder {
+  color: var(--primary);
+
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   CERTIFICATE ACTIONS
+========================================================= */
+
+.certificate-body .btn {
+  margin-top: 12px;
+}
+
+
+/* =========================================================
+   LIGHT THEME REFINEMENTS
+========================================================= */
+
+body[data-theme="light"] .certificate-card {
+  background: color-mix(
+    in srgb,
+    var(--card) 94%,
+    var(--bg-soft)
+  );
+}
+
+body[data-theme="light"] .certificate-thumb {
+  border-color: color-mix(
+    in srgb,
+    var(--accent) 20%,
+    var(--border)
+  );
+
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.025);
+}
+
+body[data-theme="light"] .timeline-item:hover {
+  background: color-mix(
+    in srgb,
+    var(--cyan) 5%,
+    var(--card)
+  );
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 980px) {
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 760px) {
-  .certificate-card { grid-template-columns: 1fr; }
-  .certificate-thumb img { height: 180px; }
+  .certificate-card {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-thumb img {
+    height: 180px;
+  }
 }

@@ -1,37 +1,121 @@
 /* =========================================================
-   theme.css — dark/light theme variables + light-mode overrides
-   Load near the end: these selectors are more specific on purpose.
+   theme.css
+   Premium dark/light theme for a modern developer portfolio.
+
+   Palette:
+   - Dark: Deep navy + electric blue + cyan
+   - Light: Soft neutral surfaces + professional blue accents
+
+   Load after the main stylesheet.
 ========================================================= */
+
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
 body[data-theme="dark"] {
-  --bg: #0D1117;
-  --bg-soft: #101826;
-  --card: #111827;
-  --card-2: #172033;
-  --border: rgba(148, 163, 184, 0.20);
-  --blue: #01579B;
-  --cyan: #54C5F8;
-  --text: #f8fafc;
-  --muted: #9aa8bb;
-  --muted-2: #d4e0ee;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  /* Backgrounds */
+  --bg: #080D18;
+  --bg-soft: #0D1524;
+
+  /* Surfaces */
+  --card: #111C2F;
+  --card-2: #17253B;
+
+  /* Borders */
+  --border: rgba(148, 163, 184, 0.16);
+
+  /* Brand colors */
+  --blue: #3B82F6;
+  --cyan: #38BDF8;
+  --accent: #38BDF8;
+
+  /* Typography */
+  --text: #F1F5F9;
+  --muted: #9AAAC0;
+  --muted-2: #CBD5E1;
+
+  /* Elevation */
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+
   color-scheme: dark;
+
+  /* Subtle ambient lighting */
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(56, 189, 248, 0.10),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(59, 130, 246, 0.09),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #080D18 0%,
+      #0B1220 52%,
+      #080D18 100%
+    );
 }
 
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
 body[data-theme="light"] {
-  --bg: #f8fbff;
-  --bg-soft: #eef7ff;
-  --card: #ffffff;
-  --card-2: #f0f7ff;
-  --border: rgba(1, 87, 155, 0.14);
-  --blue: #01579B;
-  --cyan: #028bd4;
-  --text: #0f172a;
-  --muted: #475569;
-  --muted-2: #334155;
-  --shadow: 0 22px 70px rgba(1,87,155,.14);
+  /* Backgrounds: soft blue-gray instead of near-white */
+  --bg: #EEF1F6;
+  --bg-soft: #E5EAF2;
+
+  /* Surfaces: slightly off-white so cards don't glare */
+  --card: #F8FAFC;
+  --card-2: #EDF1F7;
+
+  /* Borders: a bit more visible, neutral slate */
+  --border: rgba(51, 65, 99, 0.14);
+
+  /* Brand colors: calmer, less saturated */
+  --blue: #2F55C8;
+  --cyan: #0E7490;
+  --accent: #0B5F8A;
+
+  /* Typography: soft slate, not near-black */
+  --text: #1E293B;
+  --muted: #55657A;
+  --muted-2: #3B4A5E;
+
+  /* Elevation: softer, tighter shadow */
+  --shadow: 0 12px 40px rgba(30, 41, 59, 0.08);
+
   color-scheme: light;
-  background: radial-gradient(circle at 15% 8%, rgba(84,197,248,.20), transparent 34%), radial-gradient(circle at 82% 14%, rgba(1,87,155,.10), transparent 31%), linear-gradient(180deg, #ffffff 0%, #f3f9ff 48%, #ffffff 100%);
+
+  /* Background: gentle highlights, no pure white anywhere */
+  background:
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(14, 116, 144, 0.08),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(47, 85, 200, 0.05),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #F3F5F9 0%,
+      #EEF1F6 52%,
+      #E9EDF4 100%
+    );
 }
+
+/* =========================================================
+   LIGHT THEME — NAVIGATION & GLASS SURFACES
+========================================================= */
 
 body[data-theme="light"] .site-header,
 body[data-theme="light"] .nav-links,
@@ -41,12 +125,40 @@ body[data-theme="light"] .eyebrow,
 body[data-theme="light"] .hero-stat,
 body[data-theme="light"] .visual-card,
 body[data-theme="light"] .contact-form,
-body[data-theme="light"] .form-field input,
-body[data-theme="light"] .form-field textarea,
 body[data-theme="light"] .contact-details span,
 body[data-theme="light"] .contact-details a {
-  background: rgba(255,255,255,.86);
+  background: rgba(248, 250, 252, 0.82);
 }
+
+
+/* =========================================================
+   LIGHT THEME — FORM FIELDS
+   Slightly darker than the card so inputs read as "inset".
+========================================================= */
+
+body[data-theme="light"] .form-field input,
+body[data-theme="light"] .form-field textarea {
+  background: var(--card-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+body[data-theme="light"] .form-field input::placeholder,
+body[data-theme="light"] .form-field textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+body[data-theme="light"] .form-field input:focus,
+body[data-theme="light"] .form-field textarea:focus {
+  background: var(--card);
+  border-color: var(--blue);
+}
+
+
+/* =========================================================
+   LIGHT THEME — MAIN CARDS
+========================================================= */
 
 body[data-theme="light"] .about-card,
 body[data-theme="light"] .contact-card,
@@ -59,16 +171,43 @@ body[data-theme="light"] .education-card,
 body[data-theme="light"] .about-intro,
 body[data-theme="light"] .project-modal__panel,
 body[data-theme="light"] .testimonial-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,248,255,.90));
+  background: linear-gradient(145deg, #F8FAFC 0%, #F0F3F8 100%);
+  border-color: var(--border);
   box-shadow: var(--shadow);
 }
+
+
+/* =========================================================
+   LIGHT THEME — SECONDARY (INSET) SURFACES
+========================================================= */
 
 body[data-theme="light"] .case-item,
 body[data-theme="light"] .project-detail-block,
 body[data-theme="light"] .stats-grid div,
 body[data-theme="light"] .education-meta div {
-  background: rgba(255,255,255,.74);
+  background: var(--card-2);
+  border-color: var(--border);
 }
 
-body[data-theme="light"] .open-work-badge { background: rgba(255,255,255,.96); color: var(--accent); }
-body[data-theme="light"] .project-image-count { background: rgba(15,23,42,.78); border-color: rgba(15,23,42,.14); }
+
+/* =========================================================
+   LIGHT THEME — STATUS BADGE
+========================================================= */
+
+body[data-theme="light"] .open-work-badge {
+  background: var(--card);
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+
+/* =========================================================
+   IMAGE COUNTER
+   Stays dark in both themes so it's readable over screenshots.
+========================================================= */
+
+body[data-theme="light"] .project-image-count {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+}
